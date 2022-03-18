@@ -24,6 +24,8 @@ public class LoginController implements Initializable {
     private Label databaseStatus;
     @FXML
     private ComboBox<option> choice;
+    @FXML
+    private Button quitButton;
 
     public void login(ActionEvent event) {
         try {
@@ -49,6 +51,11 @@ public class LoginController implements Initializable {
 
     public void userLogin() {
         System.out.println("In User");
+    }
+
+    public void quit() {
+        Stage stage = (Stage) this.quitButton.getScene().getWindow();
+        stage.close();
     }
 
     @Override

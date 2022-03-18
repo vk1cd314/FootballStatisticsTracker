@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.football.statisticstracker.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="623.0" styleClass="borderpain" stylesheets="@loginStyleSheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.football.statisticstracker.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="243.0" style="-fx-background-color: #a86205;" BorderPane.alignment="CENTER">
          <children>
@@ -66,7 +66,7 @@
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
                </font></PasswordField>
-            <Button fx:id="loginButton" alignment="CENTER" layoutX="133.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: #d4a313;" text="Login" textFill="#9a7601">
+            <Button fx:id="loginButton" alignment="CENTER" layoutX="133.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: #d4a313;" styleClass="label-login" stylesheets="@loginStyleSheet.css" text="Login" textFill="#9a7601">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="21.0" />
                </font>
@@ -87,6 +87,11 @@
                </font>
             </Label>
             <ComboBox fx:id="choice" layoutX="139.0" layoutY="232.0" prefHeight="24.0" prefWidth="163.0" promptText="Admin / User" />
+            <Button fx:id="quitButton" alignment="CENTER" layoutX="308.0" layoutY="454.0" mnemonicParsing="false" onAction="#quit" prefHeight="41.0" prefWidth="50.0" style="-fx-background-color: #d4a313;" styleClass="label-login" stylesheets="@loginStyleSheet.css" text="Quit" textFill="#836b00">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </right>
