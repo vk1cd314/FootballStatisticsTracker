@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -38,6 +39,7 @@ public class LoginController implements Initializable {
                 }
             } else {
                 this.loginStatus.setText("Wrong Credentials");
+                //this.loginStatus.setTextFill(Color.RED);
             }
         } catch (Exception localex) {
             localex.printStackTrace();
@@ -64,6 +66,7 @@ public class LoginController implements Initializable {
             this.databaseStatus.setText("Connected");
         } else {
             this.databaseStatus.setText("Not Connected");
+            this.databaseStatus.setTextFill(Color.RED);
         }
         this.choice.setItems(FXCollections.observableArrayList(option.values()));
     }
