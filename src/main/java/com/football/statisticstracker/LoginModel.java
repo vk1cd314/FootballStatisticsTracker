@@ -1,6 +1,7 @@
 package com.football.statisticstracker;
 
-import database.DatabaseConnection;
+//import database.DatabaseConnection;
+import database.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

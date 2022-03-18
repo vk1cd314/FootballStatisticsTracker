@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String SQLConn = "jdbc:sqlite:/home/muhnay/Desktop/FootballStatisticsTracker/src/main/resources/database/login-info.db";
+    private static final String SQLConn = "jdbc:sqlite:src/main/java/database/login-info.db";
 
     public static Connection getConnection() throws SQLException {
         try {
