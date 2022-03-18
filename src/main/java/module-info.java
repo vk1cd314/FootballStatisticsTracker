@@ -2,6 +2,7 @@ module com.football.statisticstracker {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
+    requires java.sql;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -9,6 +10,7 @@ module com.football.statisticstracker {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires sqlite.jdbc;
 
     opens com.football.statisticstracker to javafx.fxml;
     exports com.football.statisticstracker;

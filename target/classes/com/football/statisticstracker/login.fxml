@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -10,32 +11,34 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.football.statisticstracker.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="243.0" style="-fx-background-color: #a86205;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="119.0" prefHeight="16.0" prefWidth="224.0" text="Football">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="152.0" prefHeight="16.0" prefWidth="224.0" text="Football">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="19.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="147.0" prefHeight="16.0" prefWidth="224.0" text="Statistics">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="175.0" prefHeight="16.0" prefWidth="224.0" text="Statistics">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="19.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="175.0" prefHeight="16.0" prefWidth="224.0" text="Tracker">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="200.0" prefHeight="16.0" prefWidth="224.0" text="Tracker">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="19.0" />
                </font>
             </Label>
-            <ImageView fitHeight="85.0" fitWidth="99.0" layoutX="79.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="85.0" fitWidth="99.0" layoutX="79.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../football_transparent.png" />
+                  <Image url="@../../../images/football_transparent.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="36.0" layoutY="481.0" prefHeight="16.0" prefWidth="166.0" text="Copyright(c) 2022" />
+            <Label alignment="CENTER" layoutX="36.0" layoutY="481.0" prefHeight="16.0" prefWidth="166.0" text="Copyright(c) 2022">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </left>
@@ -47,11 +50,23 @@
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="26.0" />
                </font>
             </Label>
-            <Label layoutX="46.0" layoutY="140.0" prefHeight="28.0" prefWidth="82.0" text="Username" />
-            <Label layoutX="46.0" layoutY="185.0" prefHeight="16.0" prefWidth="75.0" text="Password" />
-            <TextField fx:id="loginUsername" layoutX="137.0" layoutY="142.0" promptText="Username" />
-            <PasswordField fx:id="loginPassword" layoutX="137.0" layoutY="181.0" promptText="Password" />
-            <Button fx:id="loginButton" alignment="CENTER" layoutX="133.0" layoutY="245.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: #d4a313;" text="Login" textFill="#9a7601">
+            <Label layoutX="46.0" layoutY="140.0" prefHeight="28.0" prefWidth="82.0" text="Username">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Label>
+            <Label layoutX="46.0" layoutY="185.0" prefHeight="16.0" prefWidth="75.0" text="Password">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Label>
+            <TextField fx:id="loginUsername" layoutX="137.0" layoutY="142.0" prefHeight="28.0" prefWidth="166.0" promptText="Username">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></TextField>
+            <PasswordField fx:id="loginPassword" layoutX="137.0" layoutY="181.0" prefHeight="28.0" prefWidth="165.0" promptText="Password">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></PasswordField>
+            <Button fx:id="loginButton" alignment="CENTER" layoutX="133.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: #d4a313;" text="Login" textFill="#9a7601">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="21.0" />
                </font>
@@ -61,6 +76,17 @@
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="14.0" />
                </font>
             </Label>
+            <Label fx:id="databaseStatus" alignment="CENTER" layoutX="162.0" layoutY="484.0" prefHeight="16.0" prefWidth="92.0" textFill="#04a112">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="483.0" prefHeight="20.0" prefWidth="127.0" text="Database Status">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="choice" layoutX="139.0" layoutY="232.0" prefHeight="24.0" prefWidth="163.0" promptText="Admin / User" />
          </children>
       </AnchorPane>
    </right>
