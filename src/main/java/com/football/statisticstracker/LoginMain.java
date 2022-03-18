@@ -22,8 +22,8 @@ public class LoginMain extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(LoginMain.class.getResource("login.fxml")));
         //FXMLLoader fxmlLoader = new FXMLLoader(LoginMain.class.getResource("login.fxml"));
         Scene scene = new Scene(root, Color.TRANSPARENT);
-        //root.setStyle("-fx-background-radius: 15px;");
-        //root.setStyle("-fx-background-color: transparent;");
+        root.setStyle("-fx-background-radius: 15px;");
+        root.setStyle("-fx-background-color: transparent;");
         root.setOnMousePressed((MouseEvent event) -> {
             x = event.getSceneX();
             y = event.getSceneY();
