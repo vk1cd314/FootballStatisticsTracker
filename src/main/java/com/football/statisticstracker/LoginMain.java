@@ -1,7 +1,6 @@
 package com.football.statisticstracker;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,8 +13,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginMain extends Application {
-    private double x = 0;
-    private double y = 0;
+    private double xShift = 0;
+    private double yShift = 0;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -25,12 +24,12 @@ public class LoginMain extends Application {
         root.setStyle("-fx-background-radius: 15px;");
         root.setStyle("-fx-background-color: transparent;");
         root.setOnMousePressed((MouseEvent event) -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
+            xShift = event.getSceneX();
+            yShift = event.getSceneY();
         });
         root.setOnMouseDragged((MouseEvent event) -> {
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
+            stage.setX(event.getScreenX() - xShift);
+            stage.setY(event.getScreenY() - yShift);
         });
         stage.initStyle(StageStyle.UNDECORATED);
         //stage.setResizable(false);
