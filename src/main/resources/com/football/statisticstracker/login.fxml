@@ -32,7 +32,7 @@
             </Label>
             <ImageView fitHeight="85.0" fitWidth="99.0" layoutX="79.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/football_transparent.png" />
+                  <Image url="@../../../football_transparent.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="36.0" layoutY="481.0" prefHeight="16.0" prefWidth="166.0" text="Copyright(c) 2022">

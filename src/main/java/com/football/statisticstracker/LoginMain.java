@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -32,7 +33,8 @@ public class LoginMain extends Application {
             stage.setY(event.getScreenY() - yShift);
         });
         stage.initStyle(StageStyle.UNDECORATED);
-        //stage.setResizable(false);
+        stage.getIcons().add(new Image("football_transparent.png"));
+        stage.setResizable(false);
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
