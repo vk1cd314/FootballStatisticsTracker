@@ -8,17 +8,17 @@
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/java/database/login-info.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-<!--    <data-source source="LOCAL" name="Football-stats" uuid="77c88b4d-a629-4062-bda9-a91c1781dd85">-->
-<!--      <driver-ref>sqlite.xerial</driver-ref>-->
-<!--      <synchronize>true</synchronize>-->
-<!--      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>-->
-<!--      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/java/database/Football-stats.db</jdbc-url>-->
-<!--      <working-dir>$ProjectFileDir$</working-dir>-->
-<!--      <libraries>-->
-<!--        <library>-->
-<!--          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.36.0.3/sqlite-jdbc-3.36.0.3.jar</url>-->
-<!--        </library>-->
-<!--      </libraries>-->
-<!--    </data-source>-->
+    <data-source source="LOCAL" name="Football-stats" uuid="ff39226e-ca93-44d9-9179-7211cb71f45e">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/java/database/Football-stats.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.36.0.3/sqlite-jdbc-3.36.0.3.jar</url>
+        </library>
+      </libraries>
+    </data-source>
   </component>
 </project>
