@@ -38,6 +38,8 @@ public class LoginController implements Initializable {
     private ComboBox<option> choice;
     @FXML
     private Button quitButton;
+    @FXML
+    private Button signUpbutton;
 
     public void login(ActionEvent event) {
         try {
@@ -75,7 +77,23 @@ public class LoginController implements Initializable {
             exception.printStackTrace();
         }
     }
+    public void sigunUp(){
+        try{
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("signUp.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.getIcons().add(new Image("football_transparent.png"));
+            stage.setResizable(false);
+            stage.setTitle("Sign Up");
+            stage.setScene(scene);
+            stage.show();
 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void userLogin() {
         System.out.println("In User");
     }
