@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -20,26 +22,34 @@ public class SignUpController implements Initializable {
     @FXML
     private TextField username;
     @FXML
-    private TextField password;
+    private PasswordField password;
     @FXML
-    private Button signupbutton;
+    private PasswordField password1;
+    @FXML
+    private Label statuslabel;
     @FXML
     private Button backbutton;
 
     public void sigunUp(){
-        String sqlInsert = "INSERT INTO loginInfo(Username, Password, Type) VALUES(?,?,?)";
-        try{
-            Connection conn = DatabaseConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sqlInsert);
+        if(password.getText().compareTo(password1.getText())!=0){
+            statuslabel.setText("Passwords don't match");
+        }
+        else {
+            String sqlInsert = "INSERT INTO loginInfo(Username, Password, Type) VALUES(?,?,?)";
+            try {
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sqlInsert);
 
-            stmt.setString(1, this.username.getText());
-            stmt.setString(2, this.password.getText());
-            stmt.setString(3, "User");
-            stmt.execute();
-            conn.close();
+                stmt.setString(1, this.username.getText());
+                stmt.setString(2, this.password.getText());
+                stmt.setString(3, "User");
+                stmt.execute();
+                conn.close();
 
-        }catch(SQLException e){
-            e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            statuslabel.setText("Success!");
         }
     }
 
