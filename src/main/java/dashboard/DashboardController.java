@@ -1,9 +1,10 @@
-package com.football.statisticstracker;
+package dashboard;
 
-import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -11,15 +12,20 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.Objects;
+import java.util.Date;
 
-public class LoginMain extends Application {
+public class DashboardController {
     private double xShift = 0;
     private double yShift = 0;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginMain.class.getResource("login.fxml")));
+    @FXML
+    private Label currentDate;
+
+    public DashboardController() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("dashboardFXML.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root, Color.TRANSPARENT);
         root.setOnMousePressed((MouseEvent event) -> {
             xShift = event.getSceneX();
@@ -35,9 +41,12 @@ public class LoginMain extends Application {
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
+        setTime();
     }
 
-    public static void main(String[] args) {
-        launch();
+    public void setTime() {
+        long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        this.currentDate.setText(date.toString());
     }
 }

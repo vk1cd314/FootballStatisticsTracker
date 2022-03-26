@@ -1,5 +1,6 @@
 package com.football.statisticstracker;
 
+import dashboard.DashboardController;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -46,9 +48,12 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void adminLogin() {
-        //try {
-        System.out.println("In Admin");
+    public void adminLogin() throws IOException {
+        //System.out.println("In Admin");
+        //Dashboard dashboard = new Dashboard();
+        quit();
+        DashboardController dashboardController = new DashboardController();
+
     }
 
     public void userLogin() {

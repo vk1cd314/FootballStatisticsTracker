@@ -13,5 +13,7 @@ module com.football.statisticstracker {
     requires sqlite.jdbc;
 
     opens com.football.statisticstracker to javafx.fxml;
+    opens dashboard;
     exports com.football.statisticstracker;
+    exports dashboard;
 }
