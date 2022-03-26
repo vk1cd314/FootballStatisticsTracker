@@ -4,17 +4,26 @@ import dashboard.DashboardController;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//import static dashboard.DashboardController.setTime;
+
 public class LoginController implements Initializable {
     LoginModel loginModel = new LoginModel();
+
     @FXML
     private Label loginStatus;
     @FXML
@@ -33,8 +42,7 @@ public class LoginController implements Initializable {
     public void login(ActionEvent event) {
         try {
             if (this.loginModel.isLogin(this.loginUsername.getText(), this.loginPassword.getText(), ((option)this.choice.getValue()).toString())) {
-                //Stage stage = (Stage)this.loginButton.getScene().getWindow();
-                //stage.close();
+                quit();
                 switch (((option) this.choice.getValue()).toString()) {
                     case "Admin" -> adminLogin();
                     case "User" -> userLogin();
@@ -50,10 +58,22 @@ public class LoginController implements Initializable {
 
     public void adminLogin() throws IOException {
         //System.out.println("In Admin");
-        //Dashboard dashboard = new Dashboard();
-        quit();
-        DashboardController dashboardController = new DashboardController();
-
+        //DashboardController dashboardController = new DashboardController();
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/dashboard/dashboardFXML.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root, Color.TRANSPARENT);
+            stage.getIcons().add(new Image("football_transparent.png"));
+            stage.setResizable(false);
+            stage.setTitle("Dashboard");
+            stage.setScene(scene);
+            stage.show();
+            //setTime();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void userLogin() {
