@@ -1,0 +1,7 @@
+.dashboard-back{
+    -fx-background-color: #dbdbdb;
+    -fx-background-radius: 0px 0px 30px 30px;
+}
+.search-bar{
+    -fx-background-radius: 10px;
+}
