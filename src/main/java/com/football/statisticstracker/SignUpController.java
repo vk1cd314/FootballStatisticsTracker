@@ -33,7 +33,10 @@ public class SignUpController implements Initializable {
 
     public void sigunUp(){
         if(password.getText().compareTo(password1.getText())!=0){
-            statuslabel.setText("Passwords don't match");
+            statuslabel.setText("Passwords don't match.");
+        }
+        else if(this.signUpModel.isUser(username.getText())){
+            statuslabel.setText("Username already exists.");
         }
         else {
             String sqlInsert = "INSERT INTO loginInfo(Username, Password, Type) VALUES(?,?,?)";
