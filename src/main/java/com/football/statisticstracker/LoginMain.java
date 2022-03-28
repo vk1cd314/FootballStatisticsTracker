@@ -14,27 +14,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginMain extends Application {
-    private double xShift = 0;
-    private double yShift = 0;
-
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginMain.class.getResource("login.fxml")));
-        Scene scene = new Scene(root, Color.TRANSPARENT);
-        root.setOnMousePressed((MouseEvent event) -> {
-            xShift = event.getSceneX();
-            yShift = event.getSceneY();
-        });
-        root.setOnMouseDragged((MouseEvent event) -> {
-            stage.setX(event.getScreenX() - xShift);
-            stage.setY(event.getScreenY() - yShift);
-        });
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.getIcons().add(new Image("football_transparent.png"));
-        stage.setResizable(false);
-        stage.setTitle("Login");
-        stage.setScene(scene);
-        stage.show();
+        LoginController.loginStart(stage);
     }
 
     public static void main(String[] args) {

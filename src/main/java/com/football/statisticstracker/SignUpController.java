@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,7 +46,6 @@ public class SignUpController implements Initializable {
                 stmt.setString(3, "User");
                 stmt.execute();
                 conn.close();
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -56,10 +56,12 @@ public class SignUpController implements Initializable {
     public void clear(){
         this.username.setText("");
         this.password.setText("");
+        this.password1.setText("");
     }
-    public void back(){
+    public void back() throws IOException {
         Stage stage = (Stage) this.backbutton.getScene().getWindow();
         stage.close();
+        LoginController.loginStart(new Stage());
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){

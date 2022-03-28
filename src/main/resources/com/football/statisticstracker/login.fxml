@@ -58,11 +58,11 @@
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
                </font></Label>
-            <TextField fx:id="loginUsername" layoutX="137.0" layoutY="142.0" prefHeight="28.0" prefWidth="166.0" promptText="Username">
+            <TextField fx:id="loginUsername" layoutX="137.0" layoutY="142.0" prefHeight="28.0" prefWidth="166.0" promptText="Username" styleClass="text" stylesheets="@loginStyleSheet.css">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
                </font></TextField>
-            <PasswordField fx:id="loginPassword" layoutX="137.0" layoutY="181.0" prefHeight="28.0" prefWidth="165.0" promptText="Password">
+            <PasswordField fx:id="loginPassword" layoutX="137.0" layoutY="181.0" prefHeight="28.0" prefWidth="165.0" promptText="Password" styleClass="text" stylesheets="@loginStyleSheet.css">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
                </font></PasswordField>
@@ -92,7 +92,7 @@
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="signUpbutton" alignment="CENTER" layoutX="132.0" layoutY="343.0" mnemonicParsing="false" onAction="#sigunUp" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: #d4a313;" styleClass="label-login" stylesheets="@loginStyleSheet.css" text="Sign Up" textFill="#9a7601">
+            <Button fx:id="signUpbutton" alignment="CENTER" layoutX="124.0" layoutY="343.0" mnemonicParsing="false" onAction="#sigunUp" prefHeight="44.0" prefWidth="133.0" style="-fx-background-color: #d4a313;" styleClass="label-login" stylesheets="@loginStyleSheet.css" text="Sign Up" textFill="#9a7601">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="21.0" />
                </font>

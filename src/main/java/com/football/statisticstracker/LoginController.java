@@ -1,6 +1,5 @@
 package com.football.statisticstracker;
 
-import dashboard.DashboardController;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,12 +16,15 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-//import static dashboard.DashboardController.setTime;
+//import static com.football.statisticstracker.DashboardController.setTime;
 
 public class LoginController implements Initializable {
     LoginModel loginModel = new LoginModel();
+    private static double xShift = 0;
+    private static double yShift = 0;
 
     @FXML
     private Label loginStatus;
@@ -60,39 +62,52 @@ public class LoginController implements Initializable {
 
     public void adminLogin() throws IOException {
         //System.out.println("In Admin");
-        //DashboardController dashboardController = new DashboardController();
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/dashboard/dashboardFXML.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root, Color.TRANSPARENT);
-            stage.getIcons().add(new Image("football_transparent.png"));
-            stage.setResizable(false);
-            stage.setTitle("Dashboard");
-            stage.setScene(scene);
-            stage.show();
-            //setTime();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        DashboardController dashboardController = new DashboardController();
+        dashboardController.dashboardStart();
     }
     public void sigunUp(){
-        try{
+        try {
+            quit();
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("signUp.fxml"));
             Parent root = loader.load();
+            root.setOnMousePressed((MouseEvent event) -> {
+                xShift = event.getSceneX();
+                yShift = event.getSceneY();
+            });
+            root.setOnMouseDragged((MouseEvent event) -> {
+                stage.setX(event.getScreenX() - xShift);
+                stage.setY(event.getScreenY() - yShift);
+            });
             Scene scene = new Scene(root);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.getIcons().add(new Image("football_transparent.png"));
             stage.setResizable(false);
             stage.setTitle("Sign Up");
             stage.setScene(scene);
             stage.show();
-
-        }catch(Exception e){
+        } catch(Exception e){
             e.printStackTrace();
         }
+    }
+    public static void loginStart(Stage stage) throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("login.fxml")));
+        Scene scene = new Scene(root, Color.TRANSPARENT);
+        root.setOnMousePressed((MouseEvent event) -> {
+            xShift = event.getSceneX();
+            yShift = event.getSceneY();
+        });
+        root.setOnMouseDragged((MouseEvent event) -> {
+            stage.setX(event.getScreenX() - xShift);
+            stage.setY(event.getScreenY() - yShift);
+        });
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(new Image("football_transparent.png"));
+        stage.setResizable(false);
+        stage.setTitle("Login");
+        stage.setScene(scene);
+        stage.show();
     }
     public void userLogin() {
         System.out.println("In User");

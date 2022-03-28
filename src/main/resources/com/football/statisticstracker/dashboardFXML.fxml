@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.football.statisticstracker.DashboardController">
    <children>
       <VBox prefHeight="694.0" prefWidth="253.0" style="-fx-background-color: #faf3c8;" />
       <VBox layoutX="253.0" prefHeight="76.0" prefWidth="807.0" style="-fx-background-color: #dbdbdb;" styleClass="dashboard-back" stylesheets="@dashboardStylesheet.css">
          <children>
-            <Label alignment="CENTER" prefHeight="76.0" prefWidth="171.0" text="Dashboard">
+            <Label fx:id="dashboard" alignment="CENTER" prefHeight="76.0" prefWidth="171.0" text="Dashboard">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
                </font>
@@ -19,7 +19,7 @@
          </children>
       </VBox>
       <Separator layoutX="401.0" layoutY="14.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="21.0" />
-      <Label fx:id="currentDate" layoutX="907.0" layoutY="5.0" prefHeight="67.0" prefWidth="131.0">
+      <Label fx:id="currentDate" layoutX="907.0" layoutY="5.0" prefHeight="67.0" prefWidth="131.0" text="Baal">
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="15.0" />
          </font>

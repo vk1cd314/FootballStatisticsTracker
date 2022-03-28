@@ -12,8 +12,6 @@ module com.football.statisticstracker {
     requires eu.hansolo.tilesfx;
     requires sqlite.jdbc;
 
-    opens com.football.statisticstracker to javafx.fxml;
-    opens dashboard;
     exports com.football.statisticstracker;
-    exports dashboard;
+    opens com.football.statisticstracker;
 }
