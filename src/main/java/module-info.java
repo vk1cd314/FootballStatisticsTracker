@@ -3,6 +3,7 @@ module com.football.statisticstracker {
     requires javafx.fxml;
     requires javafx.web;
     requires java.sql;
+    requires fontawesomefx;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;

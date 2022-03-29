@@ -5,3 +5,10 @@
 .search-bar{
     -fx-background-radius: 10px;
 }
+.quit {
+    -fx-background-radius: 0px 0px 0px 25px;
+    -fx-background-color: #ff0000;
+}
+.dashboard-items:hover{
+    -fx-background-color: #6e3c00;
+}

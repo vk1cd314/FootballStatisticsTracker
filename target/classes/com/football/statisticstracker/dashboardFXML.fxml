@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.football.statisticstracker.DashboardController">
    <children>
-      <VBox prefHeight="694.0" prefWidth="253.0" style="-fx-background-color: #faf3c8;" />
+      <VBox prefHeight="694.0" prefWidth="253.0" style="-fx-background-color: #8f4f00;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../dashboard-f.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="dashboard1" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" text="Dashboard">
+                     <font>
+                        <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
+                     </font>
+                  </Label>
+               </children></HBox>
+            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+               <children>
+                  <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../star%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="dashboard11" alignment="CENTER" prefHeight="33.0" prefWidth="157.0" text="Favourites">
+                     <font>
+                        <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+               <children>
+                  <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../users.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="dashboard111" alignment="CENTER" prefHeight="33.0" prefWidth="84.0" text="Teams">
+                     <font>
+                        <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+               <children>
+                  <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../users.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="dashboard1111" alignment="CENTER" prefHeight="33.0" prefWidth="133.0" text="My Teams">
+                     <font>
+                        <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+               <children>
+                  <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../shield-half.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="dashboard11111" alignment="CENTER" prefHeight="33.0" prefWidth="114.0" text="Leagues">
+                     <font>
+                        <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children></VBox>
       <VBox layoutX="253.0" prefHeight="76.0" prefWidth="807.0" style="-fx-background-color: #dbdbdb;" styleClass="dashboard-back" stylesheets="@dashboardStylesheet.css">
          <children>
             <Label fx:id="dashboard" alignment="CENTER" prefHeight="76.0" prefWidth="171.0" text="Dashboard">
@@ -24,5 +102,28 @@
             <Font name="Meslo LG M Regular Nerd Font Complete" size="15.0" />
          </font>
       </Label>
+      <ImageView fitHeight="122.0" fitWidth="107.0" layoutX="76.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../user%20(1).png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="-2.0" layoutY="154.0" prefHeight="36.0" prefWidth="253.0" text="Generic Username">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="429.0" layoutY="23.0" prefHeight="30.0" prefWidth="377.0" promptText="Search" style="-fx-background-radius: 30;">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></TextField>
+      <ImageView fitHeight="51.0" fitWidth="38.0" layoutX="806.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../search.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="cross" alignment="CENTER" layoutX="1009.0" minWidth="51.0" mnemonicParsing="false" onAction="#quit" prefHeight="36.0" prefWidth="51.0" styleClass="quit" stylesheets="@dashboardStylesheet.css" text="X" textAlignment="CENTER">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>

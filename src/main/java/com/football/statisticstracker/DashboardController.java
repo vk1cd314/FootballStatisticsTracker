@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -22,9 +23,8 @@ public class DashboardController {
     private Label currentDate;
     @FXML
     private Label dashboard;
-
-    public DashboardController() {
-    }
+    @FXML
+    private Button cross;
 
     public void dashboardStart() {
         try {
@@ -47,11 +47,16 @@ public class DashboardController {
             stage.setTitle("Dashboard");
             stage.setScene(scene);
             stage.show();
-            this.dashboard.setText("NO");
-            setTime();
+            //this.dashboard.setText("NO");
+            //setTime();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+    }
+
+    public void quit() {
+        Stage stage = (Stage) this.cross.getScene().getWindow();
+        stage.close();
     }
 
     public void setTime() {
