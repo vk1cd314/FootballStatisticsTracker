@@ -147,6 +147,11 @@ public class LeagueData {
     private int goal_difference;
     private int clean_sheets;
 
+    public LeagueData(String team_name, int league_position) {
+        this.team_name = team_name;
+        this.league_position = league_position;
+    }
+
     public String getTeam_name() {
         return team_name;
     }
@@ -227,7 +232,8 @@ public class LeagueData {
         return clean_sheets;
     }
 
-    public LeagueData(String team_name, int league_position, int matches_played, int wins, int draws, int losses, int goals_scored, int goals_conceded, int goal_difference, int clean_sheets){
+    public LeagueData(String team_name, int league_position, int matches_played, int wins, int draws,
+                      int losses, int goals_scored, int goals_conceded, int goal_difference, int clean_sheets){
 //        this.team_name = new SimpleStringProperty(team_name);
 //        this.league_position = new SimpleIntegerProperty(league_position);
 //        this.matches_played = new SimpleIntegerProperty(matches_played);

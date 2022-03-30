@@ -97,7 +97,7 @@
          </children>
       </VBox>
       <Separator layoutX="401.0" layoutY="14.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="21.0" />
-      <Label fx:id="currentDate" layoutX="907.0" layoutY="5.0" prefHeight="67.0" prefWidth="131.0" text="Baal">
+      <Label fx:id="currentDate" layoutX="907.0" layoutY="5.0" prefHeight="67.0" prefWidth="131.0" text="Hello">
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="15.0" />
          </font>
