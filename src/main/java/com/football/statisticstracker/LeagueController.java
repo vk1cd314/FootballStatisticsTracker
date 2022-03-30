@@ -52,8 +52,6 @@ public class LeagueController implements Initializable {
     private TableColumn<LeagueData, Integer> goal_difference_col;
     @FXML
     private TableColumn<LeagueData, Integer> clean_sheets_col;
-    //@FXML
-    //private HBox teamLayout;
     @FXML
     private Button backbutton;
     private Connection dc;
@@ -136,7 +134,7 @@ public class LeagueController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void back() throws IOException {
+    void back() throws IOException {
         Stage stage = (Stage) this.backbutton.getScene().getWindow();
         stage.close();
         DashboardController dashboardController = new DashboardController();
