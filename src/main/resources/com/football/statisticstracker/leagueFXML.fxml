@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="696.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.football.statisticstracker.LeagueController">
+   <children>
+      <TableView fx:id="leagueTable" layoutX="192.0" layoutY="35.0" prefHeight="660.0" prefWidth="867.0">
+        <columns>
+          <TableColumn fx:id="team_name_col" prefWidth="162.57171630859375" text="Team Name" />
+            <TableColumn fx:id="league_position_col" prefWidth="55.85284423828125" text="Pos" />
+            <TableColumn fx:id="matches_played_col" prefWidth="60.83978271484375" text="Played" />
+            <TableColumn fx:id="wins_col" prefWidth="50.865997314453125" text="Wins" />
+            <TableColumn fx:id="draws_col" prefWidth="53.858154296875" text="Draws" />
+            <TableColumn fx:id="losses_col" prefWidth="65.82659912109375" text="Losses" />
+            <TableColumn fx:id="goals_scored_col" prefWidth="83.779296875" text="Goals For" />
+            <TableColumn fx:id="goals_conceded_col" prefWidth="114.69775390625" text="Goals Conceded" />
+            <TableColumn fx:id="goal_difference_col" prefWidth="116.692626953125" text=" Goal Difference" />
+            <TableColumn fx:id="clean_sheets_col" prefWidth="92.75555419921875" text="Clean sheets" />
+        </columns>
+      </TableView>
+      <Button fx:id="backbutton" layoutX="27.0" layoutY="636.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="106.0" layoutY="636.0" mnemonicParsing="false" onAction="#loadLeagueData" text="reload" />
+   </children>
+</AnchorPane>

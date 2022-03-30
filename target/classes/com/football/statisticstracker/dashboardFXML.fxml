@@ -72,7 +72,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+            <HBox onMouseClicked="#showLeague" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>

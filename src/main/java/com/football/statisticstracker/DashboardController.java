@@ -58,6 +58,11 @@ public class DashboardController {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
     }
+    public void showLeague(){
+        LeagueController leagueController = new LeagueController();
+        quit();
+        leagueController.leagueStart();
+    }
 
     public void setTime() {
         long millis = System.currentTimeMillis();
