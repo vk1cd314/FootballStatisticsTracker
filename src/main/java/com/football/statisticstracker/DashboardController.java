@@ -59,8 +59,8 @@ public class DashboardController {
         stage.close();
     }
     public void showLeague(){
-        LeagueController leagueController = new LeagueController();
         quit();
+        LeagueController leagueController = new LeagueController();
         leagueController.leagueStart();
     }
 
