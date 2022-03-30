@@ -134,7 +134,7 @@ public class LeagueController implements Initializable {
             e.printStackTrace();
         }
     }
-    void back() throws IOException {
+    public void back() throws IOException {
         Stage stage = (Stage) this.backbutton.getScene().getWindow();
         stage.close();
         DashboardController dashboardController = new DashboardController();

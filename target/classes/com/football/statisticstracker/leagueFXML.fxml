@@ -21,6 +21,6 @@
             <TableColumn fx:id="clean_sheets_col" prefWidth="148.0" text="Clean Sheets" />
         </columns>
       </TableView>
-      <Button layoutX="954.0" layoutY="4.0" mnemonicParsing="false" text="Back" />
+      <Button fx:id="backbutton" layoutX="954.0" layoutY="4.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>
