@@ -1,19 +1,19 @@
 package com.football.statisticstracker;
 
 public abstract class Player {
-    String name;
-    int age;
-    String birthday;
-    String league;
-    String position;
-    String club;
-    String nationality;
-    int appearances;
-    int goals_scored;
-    int assists;
-    int clean_sheets;
-    int red_cards;
-    int yellow_cards;
+    public String  name;
+    public int age;
+    public String birthday;
+    public String league;
+    public String position;
+    public String club;
+    public String nationality;
+    public int appearances;
+    public int goals_scored;
+    public int assists;
+    public int clean_sheets;
+    public int red_cards;
+    public int yellow_cards;
     public Player(String pos, String name, int age, String birthday, String league, String club, String nation, int app, int goals, int ass, int cs, int rc, int yc){
         this.position = pos;
         this.name = name;
