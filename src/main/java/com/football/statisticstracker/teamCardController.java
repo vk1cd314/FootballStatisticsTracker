@@ -7,7 +7,7 @@ public class teamCardController {
     @FXML
     private Label teamName;
 
-    public void setData( LeagueData league){
+    public void setData(LeagueData league) {
         teamName.setText(league.getTeam_name());
     }
 }

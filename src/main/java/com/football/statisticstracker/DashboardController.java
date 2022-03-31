@@ -12,7 +12,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.util.Date;
 
 public class DashboardController {
@@ -58,7 +57,8 @@ public class DashboardController {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
     }
-    public void showLeague(){
+
+    public void showLeague() {
         quit();
         LeagueController leagueController = new LeagueController();
         leagueController.leagueStart();

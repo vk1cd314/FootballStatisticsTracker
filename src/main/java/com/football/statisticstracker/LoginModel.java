@@ -1,7 +1,8 @@
 package com.football.statisticstracker;
 
 //import database.DatabaseConnection;
-import database.*;
+
+import database.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +21,9 @@ public class LoginModel {
         if (this.connection == null) System.exit(1);
     }
 
-    public boolean isDatabaseConnected() { return this.connection != null; }
+    public boolean isDatabaseConnected() {
+        return this.connection != null;
+    }
 
     public boolean isLogin(String username, String password, String type) throws Exception {
         PreparedStatement preparedStatement = null;
@@ -38,8 +41,7 @@ public class LoginModel {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
-        }
-        finally {
+        } finally {
             assert preparedStatement != null;
             preparedStatement.close();
             assert resultSet != null;

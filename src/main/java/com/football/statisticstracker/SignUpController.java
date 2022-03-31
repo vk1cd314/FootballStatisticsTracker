@@ -1,7 +1,6 @@
 package com.football.statisticstracker;
 
 import database.DatabaseConnection;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -31,17 +30,16 @@ public class SignUpController implements Initializable {
     @FXML
     private Button backbutton;
 
-    public void sigunUp(){
-        if(password.getText().compareTo(password1.getText())!=0){
+    public void sigunUp() {
+        if (password.getText().compareTo(password1.getText()) != 0) {
             statuslabel.setText("Passwords don't match.");
-        }
-        else if(this.signUpModel.isUser(username.getText())){
+        } else if (this.signUpModel.isUser(username.getText())) {
             statuslabel.setText("Username already exists.");
-        }
-        else {
+        } else {
             String sqlInsert = "INSERT INTO loginInfo(Username, Password, Type) VALUES(?,?,?)";
             try {
                 Connection conn = DatabaseConnection.getConnection();
+                assert conn != null;
                 PreparedStatement stmt = conn.prepareStatement(sqlInsert);
 
                 stmt.setString(1, this.username.getText());
@@ -56,18 +54,20 @@ public class SignUpController implements Initializable {
         }
     }
 
-    public void clear(){
+    public void clear() {
         this.username.setText("");
         this.password.setText("");
         this.password1.setText("");
     }
+
     public void back() throws IOException {
         Stage stage = (Stage) this.backbutton.getScene().getWindow();
         stage.close();
         LoginController.loginStart(new Stage());
     }
+
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
+    public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
 }

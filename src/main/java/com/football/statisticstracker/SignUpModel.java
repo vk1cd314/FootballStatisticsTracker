@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class SignUpModel {
     Connection connection;
 
-    public SignUpModel(){
+    public SignUpModel() {
         try {
             this.connection = DatabaseConnection.getConnection();
         } catch (SQLException ex) {
@@ -18,16 +18,17 @@ public class SignUpModel {
         }
         if (this.connection == null) System.exit(1);
     }
-    public boolean isUser(String name){
+
+    public boolean isUser(String name) {
         String sql = "SELECT Username FROM loginInfo WHERE Username = ?";
         PreparedStatement pr = null;
         ResultSet rs = null;
-        try{
+        try {
             pr = this.connection.prepareStatement(sql);
             pr.setString(1, name);
             rs = pr.executeQuery();
-            if(rs.next()) return true;
-        }catch (SQLException e){
+            if (rs.next()) return true;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;

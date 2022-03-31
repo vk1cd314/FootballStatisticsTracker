@@ -19,8 +19,6 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-//import static com.football.statisticstracker.DashboardController.setTime;
-
 public class LoginController implements Initializable {
     LoginModel loginModel = new LoginModel();
     private static double xShift = 0;
@@ -45,15 +43,15 @@ public class LoginController implements Initializable {
 
     public void login(ActionEvent event) {
         try {
-            if (this.loginModel.isLogin(this.loginUsername.getText(), this.loginPassword.getText(), ((option)this.choice.getValue()).toString())) {
+            if (this.loginModel.isLogin(this.loginUsername.getText(), this.loginPassword.getText(), this.choice.getValue().toString())) {
                 quit();
-                switch (((option) this.choice.getValue()).toString()) {
+                switch (this.choice.getValue().toString()) {
                     case "Admin" -> adminLogin();
                     case "User" -> userLogin();
                 }
             } else {
                 this.loginStatus.setText("Wrong Credentials");
-                //this.loginStatus.setTextFill(Color.RED);
+                this.loginStatus.setTextFill(Color.RED);
             }
         } catch (Exception localex) {
             localex.printStackTrace();
@@ -61,11 +59,11 @@ public class LoginController implements Initializable {
     }
 
     public void adminLogin() throws IOException {
-        //System.out.println("In Admin");
         DashboardController dashboardController = new DashboardController();
         dashboardController.dashboardStart();
     }
-    public void sigunUp(){
+
+    public void sigunUp() {
         try {
             quit();
             Stage stage = new Stage();
@@ -87,11 +85,12 @@ public class LoginController implements Initializable {
             stage.setTitle("Sign Up");
             stage.setScene(scene);
             stage.show();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public static void loginStart(Stage stage) throws IOException{
+
+    public static void loginStart(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(LoginController.class.getResource("login.fxml")));
         Scene scene = new Scene(root, Color.TRANSPARENT);
         root.setOnMousePressed((MouseEvent event) -> {
@@ -109,6 +108,7 @@ public class LoginController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     public void userLogin() {
         System.out.println("In User");
     }

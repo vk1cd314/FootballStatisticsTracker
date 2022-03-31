@@ -2,72 +2,77 @@ package com.football.statisticstracker;
 
 import java.util.ArrayList;
 
-public class MyTeam extends Team{
-    private int goalkeepernumber;
-    private int defendernumber;
-    private int midfieldernumber;
-    private int forwardnumber;
-    private int goalkeeperlimit;
-    private int defenderlimit;
-    private int midfielderlimit;
-    private int forwardlimit;
-    private ArrayList<Goalkeeper> goalkeepers = new ArrayList<>();
-    private ArrayList<Defender> defenders = new ArrayList<>();
-    private ArrayList<Midfielder> midfielders = new ArrayList<>();
-    private ArrayList<Forward> forwards = new ArrayList<>();
+public class MyTeam extends Team {
+    private int goalKeeperNumber;
+    private int defenderNumber;
+    private int midfielderNumber;
+    private int forwardNumber;
+    private int goalkeeperLimit;
+    private int defenderLimit;
+    private int midfielderLimit;
+    private int forwardLimit;
+    private final ArrayList<Goalkeeper> goalkeepers = new ArrayList<>();
+    private final ArrayList<Defender> defenders = new ArrayList<>();
+    private final ArrayList<Midfielder> midfielders = new ArrayList<>();
+    private final ArrayList<Forward> forwards = new ArrayList<>();
+
     public MyTeam(String name, int position, int mp, int w, int l, int d, int gs, int gc, int gd, int cs) {
         super(name, 0, mp, 0, 0, 0, gs, gc, gd, cs);
-        goalkeepernumber = 0;
-        goalkeeperlimit = 2;
-        defendernumber = 0;
-        defenderlimit = 5;
-        midfieldernumber = 0;
-        midfielderlimit = 6;
-        forwardnumber = 0;
-        forwardlimit = 3;
-    }
-    public void setGoalkeepernumber(int goalkeepernumber) {
-        this.goalkeepernumber = goalkeepernumber;
+        goalKeeperNumber = 0;
+        goalkeeperLimit = 2;
+        defenderNumber = 0;
+        defenderLimit = 5;
+        midfielderNumber = 0;
+        midfielderLimit = 6;
+        forwardNumber = 0;
+        forwardLimit = 3;
     }
 
-    public void setGoalkeeperlimit(int goalkeeperlimit) {
-        this.goalkeeperlimit = goalkeeperlimit;
+    public void setGoalKeeperNumber(int goalKeeperNumber) {
+        this.goalKeeperNumber = goalKeeperNumber;
     }
 
-    public void setDefenderlimit(int defenderlimit) {
-        this.defenderlimit = defenderlimit;
+    public void setGoalkeeperLimit(int goalkeeperLimit) {
+        this.goalkeeperLimit = goalkeeperLimit;
     }
 
-    public void setMidfielderlimit(int midfielderlimit) {
-        this.midfielderlimit = midfielderlimit;
+    public void setDefenderLimit(int defenderLimit) {
+        this.defenderLimit = defenderLimit;
     }
 
-    public void setForwardlimit(int forwardlimit) {
-        this.forwardlimit = forwardlimit;
+    public void setMidfielderLimit(int midfielderLimit) {
+        this.midfielderLimit = midfielderLimit;
     }
 
-    public void addGoalkeeper(Goalkeeper x){
-        if(goalkeepernumber<goalkeeperlimit){
+    public void setForwardLimit(int forwardLimit) {
+        this.forwardLimit = forwardLimit;
+    }
+
+    public void addGoalkeeper(Goalkeeper x) {
+        if (goalKeeperNumber < goalkeeperLimit) {
             this.goalkeepers.add(x);
-            goalkeepernumber++;
+            goalKeeperNumber++;
         }
     }
-    public void addDefender(Defender x){
-        if(defendernumber<defenderlimit){
+
+    public void addDefender(Defender x) {
+        if (defenderNumber < defenderLimit) {
             this.defenders.add(x);
-            defendernumber++;
+            defenderNumber++;
         }
     }
-    public void addMidfielder(Midfielder x){
-        if(midfieldernumber<midfielderlimit){
+
+    public void addMidfielder(Midfielder x) {
+        if (midfielderNumber < midfielderLimit) {
             this.midfielders.add(x);
-            midfieldernumber++;
+            midfielderNumber++;
         }
     }
-    public void addForward(Forward x){
-        if(forwardnumber<forwardlimit){
+
+    public void addForward(Forward x) {
+        if (forwardNumber < forwardLimit) {
             this.forwards.add(x);
-            forwardnumber++;
+            forwardNumber++;
         }
     }
 }
