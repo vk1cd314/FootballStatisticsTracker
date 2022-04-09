@@ -8,10 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.Date;
 
 public class DashboardController {
@@ -24,6 +27,8 @@ public class DashboardController {
     private Label dashboard;
     @FXML
     private Button cross;
+    @FXML
+    private BorderPane borderPane;
 
     public void dashboardStart() {
         try {
@@ -47,13 +52,30 @@ public class DashboardController {
             stage.setScene(scene);
             stage.show();
             //this.dashboard.setText("NO");
+            dashboardHbox();
             //setTime();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
 
+    public void dashboardHbox() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("dashboardHboxFXML.fxml"));
+        //assert this.borderPane == null;
+        //assert this.borderPane != null;
+        //assert 3 == 4;
+        //if (this.borderPane.getScene().getWindow() == null) System.out.println("Cringe");
+        //else System.out.println("Also Cringe");
+        if (this.cross == null) System.out.println("Cross Cringe");
+        else System.out.println("Cross Also Cringe");
+        this.borderPane = new BorderPane(root);
+        this.borderPane.setCenter(root);
+    }
+
     public void quit() {
+        //assert this.cross != null;
+        if (this.cross == null) System.out.println("Cross Cringe");
+        else System.out.println("Cross Also Cringe");
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
     }

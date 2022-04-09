@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -125,5 +126,6 @@
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
          </font></Button>
+      <BorderPane fx:id="borderPane" layoutX="253.0" layoutY="77.0" prefHeight="618.0" prefWidth="807.0" />
    </children>
 </AnchorPane>
