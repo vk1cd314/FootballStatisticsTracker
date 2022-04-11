@@ -16,6 +16,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Objects;
 
 public class DashboardController {
     private static double xShift = 0;
@@ -29,6 +30,25 @@ public class DashboardController {
     private Button cross;
     @FXML
     private BorderPane borderPane;
+    @FXML
+    private HBox tilesContainer;
+
+    public void initialize() {
+        Parent root = null;
+        HBox tiles = null, tiles2 = null;
+        try {
+            //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
+            tiles = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile1.fxml")));
+            tiles2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile2.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //this.borderPane.setCenter(root);
+        //this.tilescontainer.getChildren().add(tiles);
+        this.tilesContainer.getChildren().add(tiles);
+        this.tilesContainer.getChildren().add(tiles2);
+    }
+
 
     public void dashboardStart() {
         try {
@@ -52,7 +72,7 @@ public class DashboardController {
             stage.setScene(scene);
             stage.show();
             //this.dashboard.setText("NO");
-            dashboardHbox();
+            //dashboardHbox();
             //setTime();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -60,22 +80,22 @@ public class DashboardController {
     }
 
     public void dashboardHbox() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("dashboardHboxFXML.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("dashboardHboxFXML.fxml"));
         //assert this.borderPane == null;
         //assert this.borderPane != null;
         //assert 3 == 4;
         //if (this.borderPane.getScene().getWindow() == null) System.out.println("Cringe");
         //else System.out.println("Also Cringe");
-        if (this.cross == null) System.out.println("Cross Cringe");
-        else System.out.println("Cross Also Cringe");
-        this.borderPane = new BorderPane(root);
-        this.borderPane.setCenter(root);
+        //if (this.cross == null) System.out.println("Cross Cringe");
+        //else System.out.println("Cross Also Cringe");
+        //this.borderPane = new BorderPane(root);
+        //this.borderPane.setCenter(root);
     }
 
     public void quit() {
         //assert this.cross != null;
-        if (this.cross == null) System.out.println("Cross Cringe");
-        else System.out.println("Cross Also Cringe");
+        //if (this.cross == null) System.out.println("Cross Cringe");
+        //else System.out.println("Cross Also Cringe");
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
     }
