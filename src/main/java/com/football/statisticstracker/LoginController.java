@@ -1,5 +1,6 @@
 package com.football.statisticstracker;
 
+import dashboard.DashboardController;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import signup.SignUpController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,28 +65,30 @@ public class LoginController implements Initializable {
         dashboardController.dashboardStart();
     }
 
-    public void sigunUp() {
+    public void signUp() {
         try {
             quit();
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("signUp.fxml"));
-            Parent root = loader.load();
-            root.setOnMousePressed((MouseEvent event) -> {
-                xShift = event.getSceneX();
-                yShift = event.getSceneY();
-            });
-            root.setOnMouseDragged((MouseEvent event) -> {
-                stage.setX(event.getScreenX() - xShift);
-                stage.setY(event.getScreenY() - yShift);
-            });
-            Scene scene = new Scene(root);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.getIcons().add(new Image("football_transparent.png"));
-            stage.setResizable(false);
-            stage.setTitle("Sign Up");
-            stage.setScene(scene);
-            stage.show();
+            //Stage stage = new Stage();
+            //FXMLLoader loader = new FXMLLoader();
+            //loader.setLocation(getClass().getResource("signUp.fxml"));
+            //Parent root = loader.load();
+            //root.setOnMousePressed((MouseEvent event) -> {
+            //    xShift = event.getSceneX();
+            //    yShift = event.getSceneY();
+            //});
+            //root.setOnMouseDragged((MouseEvent event) -> {
+            //    stage.setX(event.getScreenX() - xShift);
+            //    stage.setY(event.getScreenY() - yShift);
+            //});
+            //Scene scene = new Scene(root);
+            //stage.initStyle(StageStyle.UNDECORATED);
+            //stage.getIcons().add(new Image("football_transparent.png"));
+            //stage.setResizable(false);
+            //stage.setTitle("Sign Up");
+            //stage.setScene(scene);
+            //stage.show();
+            SignUpController signUpController = new SignUpController();
+            signUpController.realSignup();
         } catch (Exception e) {
             e.printStackTrace();
         }
