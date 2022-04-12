@@ -15,4 +15,14 @@ module com.football.statisticstracker {
 
     exports com.football.statisticstracker;
     opens com.football.statisticstracker;
+    exports dashboard;
+    opens dashboard;
+    exports teams;
+    opens teams;
+    exports leagues;
+    opens leagues;
+    exports players;
+    opens players;
+    exports signup;
+    opens signup;
 }
