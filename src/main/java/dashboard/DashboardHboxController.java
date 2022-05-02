@@ -50,13 +50,14 @@ public class DashboardHboxController {
         //this.tilesContainer.getChildren().add(tile2);
         //System.out.println("Gets Here");
         //Do nothing? not anymore lul
-        Parent root = null;
+        //Parent root = null;
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
+            //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
+            FXMLLoader root = new FXMLLoader(getClass().getResource("dashboardHboxFXML.fxml"));
+            borderPane.setCenter(root.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        borderPane.setCenter(root);
     }
 
     public void quit() {

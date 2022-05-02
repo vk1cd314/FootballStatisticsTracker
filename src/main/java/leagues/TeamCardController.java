@@ -33,16 +33,16 @@ public class TeamCardController implements Initializable {
     public TeamCardController(){
         //this.team = inTeam;
         System.out.println("el chodu");
-//        leaguePosition.setText(String.valueOf(this.team.getPosition()));
-//        teamName.setText(this.team.getName());
-//        matches.setText(String.valueOf(this.team.getMatchesPlayed()));
-//        won.setText(String.valueOf(this.team.getWins()));
-//        lost.setText(String.valueOf(this.team.getLosses()));
-//        points.setText(String.valueOf(this.team.getPoints()));
+        //leaguePosition.setText(String.valueOf(this.team.getPosition()));
+        //teamName.setText(this.team.getName());
+        //matches.setText(String.valueOf(this.team.getMatchesPlayed()));
+        //won.setText(String.valueOf(this.team.getWins()));
+        //lost.setText(String.valueOf(this.team.getLosses()));
+        //points.setText(String.valueOf(this.team.getPoints()));
     }
     public void setData(Team inTeam){
         this.team = inTeam;
-        System.out.println(inTeam.getName()+" "+inTeam.getWins());
+        System.out.println(team.getName()+" "+team.getWins());
 
         leaguePosition.setText(String.valueOf(inTeam.getPosition()));
         teamName.setText(inTeam.getName());
@@ -53,7 +53,7 @@ public class TeamCardController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb){
-//        leaguePosition.setText(String.valueOf(this.team.getPosition()));
+        //leaguePosition.setText("baal");
 //        teamName.setText(this.team.getName());
 //        matches.setText(String.valueOf(this.team.getMatchesPlayed()));
 //        won.setText(String.valueOf(this.team.getWins()));

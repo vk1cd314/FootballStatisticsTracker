@@ -43,14 +43,14 @@ public class LeagueController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadLeagueData();
-        for (int i = 0; i <= 1; i++) {
+        for (int i = 0; i < data.size(); i++) {
             //data.get(i).print();
 
             try {
-                TeamCardController teamCard = new TeamCardController();
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("teamCard.fxml"));
                 tile = fxmlLoader.load();
+                TeamCardController teamCard = fxmlLoader.getController();
 
                 teamCard.setData(data.get(i));
                 teamListCont.getChildren().add(tile);
@@ -107,23 +107,30 @@ public class LeagueController implements Initializable {
     }
 
     public void leagueStart(BorderPane borderPane) {
-        Parent root = null;
+        //Parent root = null;
+        //try {
+        //    //Stage stage = new Stage();
+        //    //FXMLLoader loader = new FXMLLoader();
+        //    //loader.setLocation(getClass().getResource("leagueFXML.fxml"));
+        //    //Parent root = loader.load();
+        //    //Scene scene = new Scene(root);
+        //    //stage.getIcons().add(new Image("football_transparent.png"));
+        //    //stage.setResizable(false);
+        //    //stage.setTitle("LeagueView");
+        //    //stage.setScene(scene);
+        //    //stage.show();
+        //    root = FXMLLoader.load(getClass().getResource("leagueFXML.fxml"));
+        //} catch (IOException e) {
+        //    e.printStackTrace();
+        //}
+        //borderPane.setCenter(root);
         try {
-            //Stage stage = new Stage();
-            //FXMLLoader loader = new FXMLLoader();
-            //loader.setLocation(getClass().getResource("leagueFXML.fxml"));
-            //Parent root = loader.load();
-            //Scene scene = new Scene(root);
-            //stage.getIcons().add(new Image("football_transparent.png"));
-            //stage.setResizable(false);
-            //stage.setTitle("LeagueView");
-            //stage.setScene(scene);
-            //stage.show();
-            root = FXMLLoader.load(getClass().getResource("leagueFXML.fxml"));
+            //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
+            FXMLLoader root = new FXMLLoader(getClass().getResource("leagueFXML.fxml"));
+            borderPane.setCenter(root.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        borderPane.setCenter(root);
     }
 
     public void quit() throws IOException {

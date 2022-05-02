@@ -7,10 +7,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Admin extends User{
+public class Admin {
     public boolean isAdmin = true;
+    public String name, password;
     public Admin(String name, String pass){
-        super(name, pass);
+        this.name = name;
+        this.password = pass;
     }
     public void makeAdmin(String name){
         String makeAdmin = "UPDATE loginInfo SET Type = ? WHERE Username = ?";
