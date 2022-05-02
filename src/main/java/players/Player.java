@@ -1,6 +1,6 @@
 package players;
 
-public abstract class Player {
+public class Player {
     public String name;
     public int age;
     public String birthday;
@@ -31,4 +31,57 @@ public abstract class Player {
         this.red_cards = rc;
         this.yellow_cards = yc;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public String getLeague() {
+        return league;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getClub() {
+        return club;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public int getAppearances() {
+        return appearances;
+    }
+
+    public int getGoals_scored() {
+        return goals_scored;
+    }
+
+    public int getAssists() {
+        return assists;
+    }
+
+    public int getClean_sheets() {
+        return clean_sheets;
+    }
+
+    public int getRed_cards() {
+        return red_cards;
+    }
+
+    public int getYellow_cards() {
+        return yellow_cards;
+    }
+
 }
