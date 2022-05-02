@@ -86,12 +86,13 @@ public class LeagueController implements Initializable {
     @FXML
     private void search(){
         teamSearch.setOnKeyReleased(keyEvent -> {
+            data.clear();
+            teamListCont.getChildren().clear();
             if(teamSearch.getText().equals("")){
                 loadLeagueData();
+                loadCards();
             }
             else{
-                data.clear();
-                teamListCont.getChildren().clear();
                 try{
                     Connection conn = DatabaseConnection.getStatsConnection();
                     String sql = "SELECT team_name, league_position, matches_played, wins, draws,losses, goals_scored, goals_conceded, goal_difference, clean_sheets FROM teams WHERE team_name like '%"+teamSearch.getText()+"%' ORDER BY league_position ASC";
