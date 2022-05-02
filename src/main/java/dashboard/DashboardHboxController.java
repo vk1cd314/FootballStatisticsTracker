@@ -29,6 +29,7 @@ public class DashboardHboxController {
         //if (this.tilesContainer == null) System.out.println("chudi life ke");
         //System.out.println("Gets Here");
         this.tilesContainer.getChildren().add(tile1);
+        //this.tilesContainer.getChildren().add(tile1);
         //System.out.println("Gets Here");
         this.tilesContainer.getChildren().add(tile2);
         //System.out.println("Gets Here");

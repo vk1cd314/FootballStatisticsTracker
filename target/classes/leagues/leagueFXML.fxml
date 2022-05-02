@@ -3,13 +3,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.LeagueController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.LeagueController">
    <children>
+      <TextField layoutX="180.0" layoutY="12.0" prefHeight="28.0" prefWidth="434.0" promptText="Search Teams" />
       <Label layoutX="15.0" layoutY="9.0" text="League Teams">
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="22.0" />
@@ -20,20 +21,9 @@
             <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
          </font>
       </Button>
-      <ScrollPane layoutY="54.0" prefHeight="642.0" prefWidth="807.0" />
-      <TableView fx:id="table" layoutY="54.0" prefHeight="642.0" prefWidth="1085.0">
-         <columns>
-            <TableColumn fx:id="league_position_col" prefWidth="145.0" text="League Position" />
-            <TableColumn fx:id="team_name_col" prefWidth="107.0" text="Team Name" />
-            <TableColumn fx:id="matches_played_col" prefWidth="145.0" text="Matches Played" />
-            <TableColumn fx:id="wins_col" prefWidth="93.0" text="Wins" />
-            <TableColumn fx:id="draws_col" prefWidth="74.0" text="Draws" />
-            <TableColumn fx:id="losses_col" prefWidth="77.0" text="Losses" />
-            <TableColumn fx:id="goals_scored_col" prefWidth="96.0" text="Goals Scored" />
-            <TableColumn fx:id="goals_conceded_col" prefWidth="104.0" text="Goals Conceded" />
-            <TableColumn fx:id="goal_difference_col" prefWidth="115.0" text="Goal difference" />
-            <TableColumn fx:id="clean_sheets_col" prefWidth="118.0" text="Clean Sheets" />
-         </columns>
-      </TableView>
+      <ScrollPane layoutY="54.0" prefHeight="642.0" prefWidth="807.0">
+         <content>
+            <VBox fx:id="teamListCont" prefHeight="627.0" prefWidth="809.0" />
+         </content></ScrollPane>
    </children>
 </AnchorPane>
