@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LeagueController implements Initializable {
@@ -47,7 +49,7 @@ public class LeagueController implements Initializable {
     @FXML
     private TableColumn<LeagueData, Integer> clean_sheets_col;
     @FXML
-    private Button backbutton;
+    private Button cross;
     private Connection dc;
     private final ObservableList<LeagueData> data = FXCollections.observableArrayList();
 
@@ -81,31 +83,34 @@ public class LeagueController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(data.size());
-        data.forEach(LeagueData::printLeague);
+        //System.out.println(data.size());
+        //data.forEach(LeagueData::printLeague);
     }
 
-    public void leagueStart() {
+    public void leagueStart(BorderPane borderPane) {
+        Parent root = null;
         try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("leagueFXML.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.getIcons().add(new Image("football_transparent.png"));
-            stage.setResizable(false);
-            stage.setTitle("LeagueView");
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
+            //Stage stage = new Stage();
+            //FXMLLoader loader = new FXMLLoader();
+            //loader.setLocation(getClass().getResource("leagueFXML.fxml"));
+            //Parent root = loader.load();
+            //Scene scene = new Scene(root);
+            //stage.getIcons().add(new Image("football_transparent.png"));
+            //stage.setResizable(false);
+            //stage.setTitle("LeagueView");
+            //stage.setScene(scene);
+            //stage.show();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("leagueFXML.fxml")));
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        borderPane.setCenter(root);
     }
 
-    public void back() throws IOException {
-        Stage stage = (Stage) this.backbutton.getScene().getWindow();
+    public void quit() throws IOException {
+        Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
-        DashboardController dashboardController = new DashboardController();
-        dashboardController.dashboardStart();
+        //DashboardController dashboardController = new DashboardController();
+        //dashboardController.dashboardStart();
     }
 }

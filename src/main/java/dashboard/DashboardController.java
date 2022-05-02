@@ -24,30 +24,25 @@ public class DashboardController {
     private static double yShift = 0;
 
     @FXML
-    private Label currentDate;
-    @FXML
-    private Label dashboard;
-    @FXML
-    private Button cross;
-    @FXML
-    private BorderPane borderPane;
-    @FXML
-    private HBox tilesContainer;
+    public BorderPane borderPane;
 
     public void initialize() {
         Parent root = null;
-        HBox tiles = null, tiles2 = null;
+        //HBox tiles = null, tiles2 = null;
         try {
-            //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
-            tiles = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile1.fxml")));
-            tiles2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile2.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
+            //tiles = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile1.fxml")));
+            //tiles2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile2.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //this.borderPane.setCenter(root);
+        this.borderPane.setCenter(root);
+        DashboardHboxController dashboardHboxController = new DashboardHboxController();
+        //dashboardHboxController.dashboardStart();
+        //showDashboard();
         //this.tilescontainer.getChildren().add(tiles);
-        this.tilesContainer.getChildren().add(tiles);
-        this.tilesContainer.getChildren().add(tiles2);
+        //this.tilesContainer.getChildren().add(tiles);
+        //this.tilesContainer.getChildren().add(tiles2);
     }
 
     public void dashboardStart() {
@@ -96,19 +91,30 @@ public class DashboardController {
         //assert this.cross != null;
         //if (this.cross == null) System.out.println("Cross Cringe");
         //else System.out.println("Cross Also Cringe");
-        Stage stage = (Stage) this.cross.getScene().getWindow();
+        Stage stage = (Stage) this.borderPane.getScene().getWindow();
         stage.close();
     }
 
-    public void showLeague() {
-        quit();
-        LeagueController leagueController = new LeagueController();
-        leagueController.leagueStart();
+    public void showDashboard() {
+        DashboardHboxController dashboardHboxController = new DashboardHboxController();
+        dashboardHboxController.dashboardStart(this.borderPane);
     }
 
-    public void setTime() {
-        long millis = System.currentTimeMillis();
-        Date date = new Date(millis);
-        this.currentDate.setText("Bro wot");
+    public void showLeague() {
+        //quit();
+        //Parent root = null;
+        //try {
+        //    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lea")))
+        //} catch (IOException e) {
+        //    e.printStackTrace();
+        //}
+        LeagueController leagueController = new LeagueController();
+        leagueController.leagueStart(this.borderPane);
     }
+
+    //public void setTime() {
+    //    long millis = System.currentTimeMillis();
+    //    Date date = new Date(millis);
+    //    this.currentDate.setText("Bro wot");
+    //}
 }
