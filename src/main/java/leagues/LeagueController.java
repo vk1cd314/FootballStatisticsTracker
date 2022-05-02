@@ -31,28 +31,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LeagueController implements Initializable {
-//    @FXML
-//    private TableView<LeagueData> table;
-//    @FXML
-//    private TableColumn<LeagueData, String> team_name_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> league_position_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> matches_played_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> wins_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> draws_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> losses_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> goals_scored_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> goals_conceded_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> goal_difference_col;
-//    @FXML
-//    private TableColumn<LeagueData, Integer> clean_sheets_col;
+//hagu
     @FXML
     private VBox teamListCont;
     @FXML
