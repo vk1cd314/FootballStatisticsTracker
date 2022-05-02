@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.LeagueController">
    <children>
-      <TextField layoutX="180.0" layoutY="12.0" prefHeight="28.0" prefWidth="434.0" promptText="Search Teams" />
+      <TextField fx:id="teamSearch" layoutX="180.0" layoutY="12.0" onKeyReleased="#search" prefHeight="28.0" prefWidth="434.0" promptText="Search Teams" />
       <Label layoutX="15.0" layoutY="9.0" text="League Teams">
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="22.0" />

@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -39,26 +40,28 @@ public class LeagueController implements Initializable {
     private Connection dc;
     private final List<Team> data = new ArrayList<>();
     HBox tile = null;
+    @FXML
+    private TextField teamSearch;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadLeagueData();
-        for (int i = 0; i < data.size(); i++) {
-            //data.get(i).print();
-
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("teamCard.fxml"));
-                tile = fxmlLoader.load();
-                TeamCardController teamCard = fxmlLoader.getController();
-
-                teamCard.setData(data.get(i));
-                teamListCont.getChildren().add(tile);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        loadCards();
+//        for (int i = 0; i < data.size(); i++) {
+//            //data.get(i).print();
+//
+//            try {
+//                FXMLLoader fxmlLoader = new FXMLLoader();
+//                fxmlLoader.setLocation(getClass().getResource("teamCard.fxml"));
+//                tile = fxmlLoader.load();
+//                TeamCardController teamCard = fxmlLoader.getController();
+//                teamCard.setData(data.get(i));
+//                teamListCont.getChildren().add(tile);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
 //        try {
 //            tile = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tileL.fxml")));
 //            this.teamListCont.getChildren().add(tile);
@@ -80,6 +83,48 @@ public class LeagueController implements Initializable {
 //        table.setItems(data);
     }
 
+    @FXML
+    private void search(){
+        teamSearch.setOnKeyReleased(keyEvent -> {
+            if(teamSearch.getText().equals("")){
+                loadLeagueData();
+            }
+            else{
+                data.clear();
+                teamListCont.getChildren().clear();
+                try{
+                    Connection conn = DatabaseConnection.getStatsConnection();
+                    String sql = "SELECT team_name, league_position, matches_played, wins, draws,losses, goals_scored, goals_conceded, goal_difference, clean_sheets FROM teams WHERE team_name like '%"+teamSearch.getText()+"%' ORDER BY league_position ASC";
+                    ResultSet rs = conn.createStatement().executeQuery(sql);
+                    while(rs.next()){
+                        this.data.add(new Team(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4),
+                                rs.getInt(5), rs.getInt(6), rs.getInt(7),
+                                rs.getInt(8), rs.getInt(9), rs.getInt(10)));
+                    }
+                    loadCards();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    public void loadCards(){
+        for (int i = 0; i < data.size(); i++) {
+            //data.get(i).print();
+
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("teamCard.fxml"));
+                tile = fxmlLoader.load();
+                TeamCardController teamCard = fxmlLoader.getController();
+                teamCard.setData(data.get(i));
+                teamListCont.getChildren().add(tile);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public void loadLeagueData() {
         try {
             Connection conn = DatabaseConnection.getStatsConnection();

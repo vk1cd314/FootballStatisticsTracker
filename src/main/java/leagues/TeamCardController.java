@@ -32,7 +32,7 @@ public class TeamCardController implements Initializable {
 
     public TeamCardController(){
         //this.team = inTeam;
-        System.out.println("el chodu");
+        //System.out.println("el chodu");
         //leaguePosition.setText(String.valueOf(this.team.getPosition()));
         //teamName.setText(this.team.getName());
         //matches.setText(String.valueOf(this.team.getMatchesPlayed()));
@@ -42,7 +42,7 @@ public class TeamCardController implements Initializable {
     }
     public void setData(Team inTeam){
         this.team = inTeam;
-        System.out.println(team.getName()+" "+team.getWins());
+        //System.out.println(team.getName()+" "+team.getWins());
 
         leaguePosition.setText(String.valueOf(inTeam.getPosition()));
         teamName.setText(inTeam.getName());
