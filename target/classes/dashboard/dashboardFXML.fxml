@@ -15,69 +15,69 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" />
             <HBox prefHeight="100.0" prefWidth="200.0" />
-            <HBox onMouseClicked="#showDashboard" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+            <HBox alignment="CENTER" onMouseClicked="#showDashboard" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../dashboard-f.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dashboard1" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" text="Dashboard">
+                  <Label fx:id="dashboard1" alignment="CENTER" prefHeight="33.0" prefWidth="167.0" text="Dashboard">
                      <font>
                         <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
                      </font>
                   </Label>
                </children></HBox>
-            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../star%20(1).png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dashboard11" alignment="CENTER" prefHeight="33.0" prefWidth="157.0" text="Favourites">
+                  <Label fx:id="dashboard11" alignment="CENTER" prefHeight="33.0" prefWidth="166.0" text="Favourites">
                      <font>
                         <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../users.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dashboard111" alignment="CENTER" prefHeight="33.0" prefWidth="84.0" text="Teams">
+                  <Label fx:id="dashboard111" alignment="CENTER" prefHeight="33.0" prefWidth="164.0" text="Teams">
                      <font>
                         <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../users.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dashboard1111" alignment="CENTER" prefHeight="33.0" prefWidth="133.0" text="My Teams">
+                  <Label fx:id="dashboard1111" alignment="CENTER" prefHeight="33.0" prefWidth="160.0" text="My Teams">
                      <font>
                         <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox onMouseClicked="#showLeague" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
+            <HBox alignment="CENTER" onMouseClicked="#showLeague" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../shield-half.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dashboard11111" alignment="CENTER" prefHeight="33.0" prefWidth="114.0" text="Leagues">
+                  <Label fx:id="dashboard11111" alignment="CENTER" prefHeight="33.0" prefWidth="158.0" text="Leagues">
                      <font>
                         <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
                      </font>
@@ -90,7 +90,7 @@
             <Image url="@../user%20(1).png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="-2.0" layoutY="154.0" prefHeight="36.0" prefWidth="253.0" text="Generic Username">
+      <Label alignment="CENTER" layoutX="-2.0" layoutY="154.0" prefHeight="36.0" prefWidth="247.0" text="Generic Username">
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="19.0" />
          </font>
