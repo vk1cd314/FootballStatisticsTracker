@@ -12,3 +12,8 @@
 .dashboard-items:hover{
     -fx-background-color: #6e3c00;
 }
+.tile {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+    -fx-background-radius: 50px;
+    /*-fx-background-color: transparent;*/
+}
