@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import players.PlayerListController;
 
 import java.io.IOException;
 import java.util.Date;
@@ -110,6 +111,10 @@ public class DashboardController {
         //}
         LeagueController leagueController = new LeagueController();
         leagueController.leagueStart(this.borderPane);
+    }
+    public void showPlayers(){
+        PlayerListController playerListController = new PlayerListController();
+        playerListController.playerViewStart(this.borderPane);
     }
 
     //public void setTime() {

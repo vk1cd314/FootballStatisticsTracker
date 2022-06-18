@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.LeagueController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="players.PlayerListController">
    <children>
-      <TextField fx:id="teamSearch" layoutX="180.0" layoutY="12.0" onKeyReleased="#search" prefHeight="28.0" prefWidth="434.0" promptText="Search Teams" />
-      <Label layoutX="15.0" layoutY="9.0" text="League Teams">
+      <TextField fx:id="playerSearch" layoutX="180.0" layoutY="12.0" onKeyReleased="#search" prefHeight="28.0" prefWidth="434.0" promptText="Search Players" />
+      <Label layoutX="15.0" layoutY="9.0" text="Players">
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="22.0" />
          </font>
@@ -23,7 +23,8 @@
       </Button>
       <ScrollPane layoutY="54.0" prefHeight="642.0" prefWidth="807.0">
          <content>
-            <VBox fx:id="teamListCont" prefHeight="627.0" prefWidth="809.0" />
-         </content></ScrollPane>
+            <VBox fx:id="playerListCont" prefHeight="627.0" prefWidth="809.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

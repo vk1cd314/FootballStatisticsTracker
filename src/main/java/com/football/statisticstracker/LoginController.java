@@ -45,6 +45,7 @@ public class LoginController implements Initializable {
 
     public void login(ActionEvent event) {
         try {
+
             if (this.loginModel.isLogin(this.loginUsername.getText(), this.loginPassword.getText(), this.choice.getValue().toString())) {
                 quit();
                 switch (this.choice.getValue().toString()) {
