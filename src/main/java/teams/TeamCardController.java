@@ -1,4 +1,4 @@
-package leagues;
+package teams;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,8 +53,11 @@ public class TeamCardController implements Initializable {
         points.setText(String.valueOf(inTeam.getPoints()));
     }
     public void showTeamData(){
+        System.out.println(team.name);
         TeamViewController teamViewController = new TeamViewController();
-        teamViewController.teamViewStart(this.borderPane, this.team);
+        //teamViewController.load(team);
+        teamViewController.teamViewStart();
+
     }
     @Override
     public void initialize(URL url, ResourceBundle rb){

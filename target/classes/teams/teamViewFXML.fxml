@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teams.TeamViewController">
    <children>
       <Label fx:id="teamName" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="306.0" text="Team Name" />
@@ -46,5 +45,6 @@
             </AnchorPane>
          </children>
       </VBox>
+      <Button layoutX="617.0" layoutY="14.0" mnemonicParsing="false" text="delete" />
    </children>
 </AnchorPane>

@@ -1,26 +1,18 @@
 package leagues;
 
-import dashboard.DashboardController;
 import database.DatabaseConnection;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import teams.Team;
+import teams.TeamCardController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +21,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LeagueController implements Initializable {
@@ -83,9 +74,6 @@ public class LeagueController implements Initializable {
         });
     }
     public void loadCards(){
-        //BorderPane bp = this.borderPane1;
-        System.out.println(borderPane1);
-        if(this.borderPane1==null) System.out.println("Hi noki?");
         for (int i = 0; i < data.size(); i++) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();

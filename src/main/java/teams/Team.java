@@ -5,17 +5,17 @@ import players.Player;
 import java.util.ArrayList;
 
 public class Team {
-    String name;
-    int position;
-    int matchesPlayed;
-    int wins;
-    int draws;
-    int losses;
-    int goalsScored;
-    int goalsConceded;
-    int goalDiff;
-    int cleanSheet;
-    int points;
+    public String name;
+    public int position;
+    public int matchesPlayed;
+    public int wins;
+    public int draws;
+    public int losses;
+    public int goalsScored;
+    public int goalsConceded;
+    public int goalDiff;
+    public int cleanSheet;
+    public int points;
     ArrayList<Player> players = new ArrayList<>();
 
     public Team(String name, int position, int mp, int w, int d, int l, int gs, int gc, int gd, int cs) {
