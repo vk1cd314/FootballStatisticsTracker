@@ -102,14 +102,8 @@ public class DashboardController {
     }
 
     public void showLeague() {
-        //quit();
-        //Parent root = null;
-        //try {
-        //    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lea")))
-        //} catch (IOException e) {
-        //    e.printStackTrace();
-        //}
         LeagueController leagueController = new LeagueController();
+        System.out.println(borderPane);
         leagueController.leagueStart(this.borderPane);
     }
     public void showPlayers(){

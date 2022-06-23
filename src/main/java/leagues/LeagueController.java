@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -34,6 +35,8 @@ import java.util.ResourceBundle;
 public class LeagueController implements Initializable {
 //hagu
     @FXML
+    private AnchorPane anchor;
+    @FXML
     private VBox teamListCont;
     @FXML
     private Button cross;
@@ -43,44 +46,14 @@ public class LeagueController implements Initializable {
     @FXML
     private TextField teamSearch;
 
+
+    BorderPane borderPane1;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadLeagueData();
         loadCards();
-//        for (int i = 0; i < data.size(); i++) {
-//            //data.get(i).print();
 //
-//            try {
-//                FXMLLoader fxmlLoader = new FXMLLoader();
-//                fxmlLoader.setLocation(getClass().getResource("teamCard.fxml"));
-//                tile = fxmlLoader.load();
-//                TeamCardController teamCard = fxmlLoader.getController();
-//                teamCard.setData(data.get(i));
-//                teamListCont.getChildren().add(tile);
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        try {
-//            tile = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tileL.fxml")));
-//            this.teamListCont.getChildren().add(tile);
-////            tile = new FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile2.fxml")));
-////            this.teamListCont.getChildren().add(tile);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        this.team_name_col.setCellValueFactory(new PropertyValueFactory<>("team_name"));
-//        this.league_position_col.setCellValueFactory(new PropertyValueFactory<>("league_position"));
-//        this.matches_played_col.setCellValueFactory(new PropertyValueFactory<>("matches_played"));
-//        this.wins_col.setCellValueFactory(new PropertyValueFactory<>("wins"));
-//        this.draws_col.setCellValueFactory(new PropertyValueFactory<>("draws"));
-//        this.losses_col.setCellValueFactory(new PropertyValueFactory<>("losses"));
-//        this.goals_scored_col.setCellValueFactory(new PropertyValueFactory<>("goals_scored"));
-//        this.goals_conceded_col.setCellValueFactory(new PropertyValueFactory<>("goals_conceded"));
-//        this.goal_difference_col.setCellValueFactory(new PropertyValueFactory<>("goal_difference"));
-//        this.clean_sheets_col.setCellValueFactory(new PropertyValueFactory<>("clean_sheets"));
-//        table.setItems(data);
     }
 
     @FXML
@@ -110,15 +83,16 @@ public class LeagueController implements Initializable {
         });
     }
     public void loadCards(){
+        //BorderPane bp = this.borderPane1;
+        System.out.println(borderPane1);
+        if(this.borderPane1==null) System.out.println("Hi noki?");
         for (int i = 0; i < data.size(); i++) {
-            //data.get(i).print();
-
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("teamCard.fxml"));
                 tile = fxmlLoader.load();
                 TeamCardController teamCard = fxmlLoader.getController();
-                teamCard.setData(data.get(i));
+                teamCard.setData(data.get(i), this.borderPane1);
                 teamListCont.getChildren().add(tile);
 
             } catch (IOException e) {
@@ -140,36 +114,12 @@ public class LeagueController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        try {
-//            tile = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("teamCard.fxml")));
-//            this.teamListCont.getChildren().add(tile);
-////            tile = new FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile2.fxml")));
-////            this.teamListCont.getChildren().add(tile);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        //System.out.println(data.size());
-        //data.forEach(LeagueData::printLeague);
     }
 
     public void leagueStart(BorderPane borderPane) {
-        //Parent root = null;
-        //try {
-        //    //Stage stage = new Stage();
-        //    //FXMLLoader loader = new FXMLLoader();
-        //    //loader.setLocation(getClass().getResource("leagueFXML.fxml"));
-        //    //Parent root = loader.load();
-        //    //Scene scene = new Scene(root);
-        //    //stage.getIcons().add(new Image("football_transparent.png"));
-        //    //stage.setResizable(false);
-        //    //stage.setTitle("LeagueView");
-        //    //stage.setScene(scene);
-        //    //stage.show();
-        //    root = FXMLLoader.load(getClass().getResource("leagueFXML.fxml"));
-        //} catch (IOException e) {
-        //    e.printStackTrace();
-        //}
-        //borderPane.setCenter(root);
+        this.borderPane1 = borderPane;
+        if(this.borderPane1 == null) System.out.println("huh?");
+        System.out.println(borderPane1+"hagu"+borderPane);
         try {
             //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
             FXMLLoader root = new FXMLLoader(getClass().getResource("leagueFXML.fxml"));
@@ -182,7 +132,5 @@ public class LeagueController implements Initializable {
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
-        //DashboardController dashboardController = new DashboardController();
-        //dashboardController.dashboardStart();
     }
 }
