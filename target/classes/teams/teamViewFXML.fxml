@@ -10,7 +10,7 @@
    <children>
       <Label fx:id="teamName" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="306.0" text="Team Name" />
       <Button fx:id="cross" layoutX="742.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" text="Close" />
-      <Button layoutX="687.0" layoutY="14.0" mnemonicParsing="false" text="Edit" />
+      <Button layoutX="687.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#editTeam" text="Edit" />
       <VBox layoutY="69.0" prefHeight="625.0" prefWidth="814.0">
          <children>
             <AnchorPane prefHeight="636.0" prefWidth="804.0">

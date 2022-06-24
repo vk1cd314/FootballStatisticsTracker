@@ -63,6 +63,7 @@ public class TeamCardController implements Initializable {
         teamViewModel.show(team);
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
         //leaguePosition.setText("baal");

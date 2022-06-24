@@ -71,7 +71,7 @@ public class TeamViewController implements Initializable {
 
     private final List<Player> data = new ArrayList<>();
 
-    //Team team;
+    Team team;
     @Override
     public void initialize(URL url, ResourceBundle rb){
 //        if(team == null) System.out.print("eh?");
@@ -79,9 +79,10 @@ public class TeamViewController implements Initializable {
     }
 
     public void load(Team team){
+        this.team = team;
         if(team==null) System.out.println("team is null when passed into load");
         loadPlayerData(team);
-        loadCards();
+        //loadCards();
         //if(this.team == null) System.out.println("team is null when called inside load why");
         System.out.println(team.name);
         System.out.println(team.goalDiff);
@@ -127,7 +128,15 @@ public class TeamViewController implements Initializable {
             }
         }
     }
-
+    public void editTeam(){
+        try {
+            quit();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        TeamEdit teamEdit = new TeamEdit();
+        teamEdit.show(team);
+    }
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
