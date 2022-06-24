@@ -1,5 +1,6 @@
 package teams;
 
+import database.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -7,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -14,9 +16,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import players.Player;
+import players.PlayerCardController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TeamViewController implements Initializable {
@@ -58,6 +67,10 @@ public class TeamViewController implements Initializable {
     @FXML
     private Label cleanSheets;
 
+    HBox tile = null;
+
+    private final List<Player> data = new ArrayList<>();
+
     //Team team;
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -67,38 +80,54 @@ public class TeamViewController implements Initializable {
 
     public void load(Team team){
         if(team==null) System.out.println("team is null when passed into load");
+        loadPlayerData(team);
+        loadCards();
         //if(this.team == null) System.out.println("team is null when called inside load why");
         System.out.println(team.name);
         System.out.println(team.goalDiff);
-//        teamName.setText(team.name);
-//        leaguePosition.setText(String.valueOf(team.position));
-//        matchesPlayed.setText(String.valueOf(team.matchesPlayed));
-//        wins.setText(String.valueOf(team.wins));
-//        draws.setText(String.valueOf(team.draws));
-//        losses.setText(String.valueOf(team.losses));
-//        cleanSheets.setText(String.valueOf(team.cleanSheet));
-//        goalsScored.setText(String.valueOf(team.goalsScored));
-//        goalsConc.setText(String.valueOf(team.goalsConceded));
-//        goalDiff.setText(String.valueOf(team.goalsConceded));
+        teamName.setText(team.name);
+        leaguePosition.setText(String.valueOf(team.position));
+        matchesPlayed.setText(String.valueOf(team.matchesPlayed));
+        wins.setText(String.valueOf(team.wins));
+        draws.setText(String.valueOf(team.draws));
+        losses.setText(String.valueOf(team.losses));
+        cleanSheets.setText(String.valueOf(team.cleanSheet));
+        goalsScored.setText(String.valueOf(team.goalsScored));
+        goalsConc.setText(String.valueOf(team.goalsConceded));
+        goalDiff.setText(String.valueOf(team.goalsConceded));
+        points.setText(String.valueOf(team.points));
     }
-    public void teamViewStart(){
-//        this.team = team;
-//        if(this.team == null) System.out.println("team is null when passed");
-        try{
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("teamViewFXML.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
-            teamName.setText("pls");
-        }catch (IOException e){
+
+    public void loadPlayerData(Team team){
+        try {
+            Connection conn = DatabaseConnection.getStatsConnection();
+            assert conn != null;
+            ResultSet rs = conn.createStatement().executeQuery("SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE (Current_Club LIKE  '%"+team.common_name+"%') ORDER BY position ASC;");
+            while (rs.next()) {
+                this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13)));
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        //load(team);
     }
+
+    public void loadCards(){
+        System.out.println(data.size());
+        for(int i=0; i<data.size(); i++){
+            try{
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("playerCard.fxml"));
+                tile = fxmlLoader.load();
+                PlayerCardController playerCard = fxmlLoader.getController();
+                playerCard.setData(data.get(i));
+                System.out.println(data.get(i).name);
+                playerListContainer.getChildren().add(tile);
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();

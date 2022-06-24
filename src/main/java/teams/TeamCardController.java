@@ -1,13 +1,18 @@
 package teams;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import teams.Team;
 import teams.TeamViewController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -54,9 +59,8 @@ public class TeamCardController implements Initializable {
     }
     public void showTeamData(){
         System.out.println(team.name);
-        TeamViewController teamViewController = new TeamViewController();
-        //teamViewController.load(team);
-        teamViewController.teamViewStart();
+        TeamViewModel teamViewModel = new TeamViewModel();
+        teamViewModel.show(team);
 
     }
     @Override

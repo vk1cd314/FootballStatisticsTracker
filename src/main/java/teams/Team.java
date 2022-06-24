@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Team {
     public String name;
+    public String common_name;
     public int position;
     public int matchesPlayed;
     public int wins;
@@ -18,8 +19,9 @@ public class Team {
     public int points;
     ArrayList<Player> players = new ArrayList<>();
 
-    public Team(String name, int position, int mp, int w, int d, int l, int gs, int gc, int gd, int cs) {
+    public Team(String name, int position, int mp, int w, int d, int l, int gs, int gc, int gd, int cs, String common_name) {
         this.name = name;
+        this.common_name = common_name;
         this.position = position;
         this.matchesPlayed = mp;
         this.wins = w;

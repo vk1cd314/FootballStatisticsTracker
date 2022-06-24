@@ -59,12 +59,12 @@ public class LeagueController implements Initializable {
             else{
                 try{
                     Connection conn = DatabaseConnection.getStatsConnection();
-                    String sql = "SELECT team_name, league_position, matches_played, wins, draws,losses, goals_scored, goals_conceded, goal_difference, clean_sheets FROM teams WHERE team_name like '%"+teamSearch.getText()+"%' ORDER BY league_position ASC";
+                    String sql = "SELECT team_name, league_position, matches_played, wins, draws,losses, goals_scored, goals_conceded, goal_difference, clean_sheets, common_name FROM teams WHERE team_name like '%"+teamSearch.getText()+"%' ORDER BY league_position ASC";
                     ResultSet rs = conn.createStatement().executeQuery(sql);
                     while(rs.next()){
                         this.data.add(new Team(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4),
                                 rs.getInt(5), rs.getInt(6), rs.getInt(7),
-                                rs.getInt(8), rs.getInt(9), rs.getInt(10)));
+                                rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getString(11)));
                     }
                     loadCards();
                 }catch (SQLException e) {
@@ -93,11 +93,11 @@ public class LeagueController implements Initializable {
             Connection conn = DatabaseConnection.getStatsConnection();
             assert conn != null;
             ResultSet rs = conn.createStatement().executeQuery("SELECT team_name, league_position, matches_played, wins, draws," +
-                    "losses, goals_scored, goals_conceded, goal_difference, clean_sheets FROM teams ORDER BY league_position ASC;");
+                    "losses, goals_scored, goals_conceded, goal_difference, clean_sheets, common_name FROM teams ORDER BY league_position ASC;");
             while (rs.next()) {
                 this.data.add(new Team(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4),
                         rs.getInt(5), rs.getInt(6), rs.getInt(7),
-                        rs.getInt(8), rs.getInt(9), rs.getInt(10)));
+                        rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getString(11)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,8 +106,6 @@ public class LeagueController implements Initializable {
 
     public void leagueStart(BorderPane borderPane) {
         this.borderPane1 = borderPane;
-        if(this.borderPane1 == null) System.out.println("huh?");
-        System.out.println(borderPane1+"hagu"+borderPane);
         try {
             //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
             FXMLLoader root = new FXMLLoader(getClass().getResource("leagueFXML.fxml"));
