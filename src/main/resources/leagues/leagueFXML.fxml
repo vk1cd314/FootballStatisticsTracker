@@ -25,5 +25,6 @@
          <content>
             <VBox fx:id="teamListCont" prefHeight="627.0" prefWidth="809.0" />
          </content></ScrollPane>
+      <Button fx:id="addMatch" layoutX="633.0" layoutY="14.0" mnemonicParsing="false" onAction="#showAddMatch" text="Add Match" />
    </children>
 </AnchorPane>

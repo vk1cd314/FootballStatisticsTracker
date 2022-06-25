@@ -45,6 +45,6 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Button layoutX="617.0" layoutY="14.0" mnemonicParsing="false" text="delete" />
+      <Button layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#deleteTeam" text="delete" />
    </children>
 </AnchorPane>

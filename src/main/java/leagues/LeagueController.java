@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class LeagueController implements Initializable {
-//hagu
+
     @FXML
     private AnchorPane anchor;
     @FXML
@@ -36,6 +36,8 @@ public class LeagueController implements Initializable {
     HBox tile = null;
     @FXML
     private TextField teamSearch;
+    @FXML
+    private Button addMatch;
 
 
     BorderPane borderPane1;
@@ -67,6 +69,7 @@ public class LeagueController implements Initializable {
                                 rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getString(11)));
                     }
                     loadCards();
+                    conn.close();
                 }catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -99,6 +102,7 @@ public class LeagueController implements Initializable {
                         rs.getInt(5), rs.getInt(6), rs.getInt(7),
                         rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getString(11)));
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -114,7 +118,10 @@ public class LeagueController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    public void showAddMatch(){
+        Match match = new Match();
+        match.show();
+    }
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
