@@ -61,6 +61,7 @@ public class PlayerListController implements Initializable {
                         this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13)));
                     }
                     loadCards();
+                    conn.close();
                 }catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -89,6 +90,7 @@ public class PlayerListController implements Initializable {
             while (rs.next()) {
                 this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13)));
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -65,17 +65,6 @@ public class TeamEditController {
     public void change(){
         try {
             Connection con = DatabaseConnection.getStatsConnection();
-//            con.createStatement().executeUpdate("UPDATE teams SET team_name = " + teamNamebox.getText() +
-//                    "  , league_position = " + positionBox.getText() +
-//                    " , matches_played = " +matchesPldbox.getText()+
-//                    " , wins = " + winsBox.getText() +
-//                    " , draws =" + drawsBox.getText() +
-//                    " , losses = " + lossesBox.getText() +
-//                    " , goals_scored = " + goalsForBox.getText() +
-//                    " , goals_conceded = " + goalsAgainstBox.getText()+
-//                    " , goal_difference = " + goalDiffBox.getText()+
-//                    " , clean_sheets = " +cleanSheetsBox.getText()+
-//                    " WHERE team_name = " +team.name+ "  ;");
             String stmt  = "UPDATE teams SET team_name = '" + teamNamebox.getText() +
                     "'  , league_position = '" + positionBox.getText() +
                     "' , matches_played = '" +matchesPldbox.getText()+
@@ -89,6 +78,7 @@ public class TeamEditController {
                     "' WHERE team_name = '" +team.name+ "'  ;";
             PreparedStatement prep = con.prepareStatement(stmt);
             prep.executeUpdate();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,6 +88,7 @@ public class TeamEditController {
             e.printStackTrace();
         }
     }
+
     public void quit() throws IOException {
         Stage stage = (Stage) this.cancelButton.getScene().getWindow();
         stage.close();

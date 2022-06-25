@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import players.PlayerListController;
+import teams.TeamAddController;
 
 import java.io.IOException;
 import java.util.Date;
@@ -103,14 +104,17 @@ public class DashboardController {
 
     public void showLeague() {
         LeagueController leagueController = new LeagueController();
-        System.out.println(borderPane);
+        //System.out.println(borderPane);
         leagueController.leagueStart(this.borderPane);
     }
     public void showPlayers(){
         PlayerListController playerListController = new PlayerListController();
         playerListController.playerViewStart(this.borderPane);
     }
-
+    public void showTeamAdd(){
+        TeamAddController teamAddController = new TeamAddController();
+        teamAddController.teamAddStart(this.borderPane);
+    }
     //public void setTime() {
     //    long millis = System.currentTimeMillis();
     //    Date date = new Date(millis);

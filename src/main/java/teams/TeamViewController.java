@@ -22,6 +22,7 @@ import players.PlayerCardController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -136,6 +137,21 @@ public class TeamViewController implements Initializable {
         }
         TeamEdit teamEdit = new TeamEdit();
         teamEdit.show(team);
+    }
+    public void deleteTeam(){
+        try {
+            Connection con = DatabaseConnection.getStatsConnection();
+            String stmt  = "DELETE FROM teams WHERE team_name = '"+team.name+"';";
+            PreparedStatement prep = con.prepareStatement(stmt);
+            prep.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try{
+            quit();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
