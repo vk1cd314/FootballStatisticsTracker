@@ -83,8 +83,8 @@ public class TeamViewController implements Initializable {
         this.team = team;
         if(team==null) System.out.println("team is null when passed into load");
         loadPlayerData(team);
-        //loadCards();
-        //if(this.team == null) System.out.println("team is null when called inside load why");
+//        loadCards();
+//        if(this.team == null) System.out.println("team is null when called inside load why");
         System.out.println(team.name);
         System.out.println(team.goalDiff);
         teamName.setText(team.name);

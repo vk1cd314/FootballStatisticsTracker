@@ -99,6 +99,11 @@
                      </font>
                   </Label>
                </children></HBox>
+            <Label onMouseClicked="#showLeagueAdd" prefHeight="47.0" prefWidth="243.0" text="Add league">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
          </children></VBox>
       <Label alignment="CENTER" layoutX="14.0" layoutY="110.0" prefHeight="36.0" prefWidth="247.0" text="Generic Username">
          <font>

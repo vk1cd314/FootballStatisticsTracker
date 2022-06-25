@@ -1,5 +1,6 @@
 package dashboard;
 
+import leagues.LeagueAddController;
 import leagues.LeagueController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import players.PlayerListController;
+import teams.TeamAdd;
 import teams.TeamAddController;
 
 import java.io.IOException;
@@ -112,8 +114,15 @@ public class DashboardController {
         playerListController.playerViewStart(this.borderPane);
     }
     public void showTeamAdd(){
-        TeamAddController teamAddController = new TeamAddController();
-        teamAddController.teamAddStart(this.borderPane);
+//        TeamAddController teamAddController = new TeamAddController();
+//        teamAddController.teamAddStart(this.borderPane);
+//        teamAddController.load();
+        TeamAdd teamAdd = new TeamAdd();
+        teamAdd.show(this.borderPane);
+    }
+    public void showLeagueAdd(){
+        LeagueAddController leagueAddController = new LeagueAddController();
+        leagueAddController.show(this.borderPane);
     }
     //public void setTime() {
     //    long millis = System.currentTimeMillis();

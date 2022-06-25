@@ -7,11 +7,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.MatchController">
    <children>
       <Label layoutX="8.0" layoutY="6.0" prefHeight="36.0" prefWidth="154.0" text="Add Match" />
-      <Button fx:id="cross" layoutX="732.0" layoutY="12.0" mnemonicParsing="false" text="exit" />
+      <Button fx:id="cross" layoutX="732.0" layoutY="12.0" mnemonicParsing="false" onAction="#quit" text="exit" />
       <ScrollPane layoutY="48.0" prefHeight="645.0" prefWidth="807.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="646.0" prefWidth="807.0">
@@ -22,12 +21,13 @@
                   <ComboBox fx:id="awayteamCombobox" layoutX="492.0" layoutY="52.0" prefHeight="36.0" prefWidth="301.0" promptText="Choose Away Team" />
                   <Label layoutX="364.0" layoutY="137.0" prefHeight="36.0" prefWidth="79.0" text="   Goals" textAlignment="CENTER" />
                   <TextField fx:id="homeGoalsbox" layoutX="91.0" layoutY="143.0" />
-                  <TextField fx:id="awayGoalsbox1" layoutX="521.0" layoutY="143.0" />
-                  <Button fx:id="addMatchButton" layoutX="360.0" layoutY="239.0" mnemonicParsing="false" text="Add Match" />
+                  <TextField fx:id="awayGoalsbox" layoutX="521.0" layoutY="143.0" />
+                  <Button fx:id="addMatchButton" layoutX="360.0" layoutY="323.0" mnemonicParsing="false" onAction="#addMatch" text="Add Match" />
+                  <Label fx:id="errorLabel" layoutX="356.0" layoutY="271.0" prefHeight="36.0" prefWidth="95.0" />
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="clearButton" layoutX="646.0" layoutY="12.0" mnemonicParsing="false" text="clear" />
+      <Button fx:id="clearButton" layoutX="646.0" layoutY="12.0" mnemonicParsing="false" onAction="#clear" text="clear" />
    </children>
 </AnchorPane>
