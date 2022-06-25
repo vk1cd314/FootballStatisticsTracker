@@ -45,6 +45,7 @@ public class TeamAddController {
     ArrayList<String> leagueList = new ArrayList<>();
 
     public void load(){
+        leagueList.clear();
         try
         {
             Connection con = DatabaseConnection.getStatsConnection();
@@ -63,6 +64,7 @@ public class TeamAddController {
         commonNameField.clear();
         teamNameField.clear();
         leagueComboBox.setValue("");
+        leagueComboBox.setPromptText("Select League");
     }
 
     @FXML

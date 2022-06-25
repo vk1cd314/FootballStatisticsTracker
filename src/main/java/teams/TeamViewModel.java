@@ -21,7 +21,7 @@ public class TeamViewModel {
             stage.show();
             teamViewController = loader.getController();
             teamViewController.load(team);
-            //teamName.setText("pls");
+//            teamViewController.loadCards();
         }catch (IOException e){
             e.printStackTrace();
         }

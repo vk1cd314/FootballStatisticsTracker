@@ -23,7 +23,7 @@ public class LeagueAddController implements Initializable {
     private TextField countryNameField;
 
     @FXML
-    private Label errorPromt;
+    private Label errorPrompt;
 
     @FXML
     private TextField leagueNameField;
@@ -60,7 +60,7 @@ public class LeagueAddController implements Initializable {
             }
         }
         else {
-            errorPromt.setText("Please enter valid data");
+            errorPrompt.setText("Please enter valid data");
         }
     }
     @FXML

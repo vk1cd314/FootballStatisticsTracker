@@ -15,6 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import players.PlayerAdd;
+import players.PlayerAddController;
 import players.PlayerListController;
 import teams.TeamAdd;
 import teams.TeamAddController;
@@ -123,6 +125,10 @@ public class DashboardController {
     public void showLeagueAdd(){
         LeagueAddController leagueAddController = new LeagueAddController();
         leagueAddController.show(this.borderPane);
+    }
+    public void showPlayerAdd(){
+        PlayerAdd playerAdd = new PlayerAdd();
+        playerAdd.show(this.borderPane);
     }
     //public void setTime() {
     //    long millis = System.currentTimeMillis();

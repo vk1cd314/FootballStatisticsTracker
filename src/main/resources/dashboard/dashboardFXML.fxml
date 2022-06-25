@@ -99,11 +99,24 @@
                      </font>
                   </Label>
                </children></HBox>
-            <Label onMouseClicked="#showLeagueAdd" prefHeight="47.0" prefWidth="243.0" text="Add league">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
+            <HBox onMouseClicked="#showLeagueAdd" prefHeight="55.0" prefWidth="253.0">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="243.0" text="Add league">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox onMouseClicked="#showPlayerAdd" prefHeight="49.0" prefWidth="253.0">
+               <children>
+                  <Label onMousePressed="#showPlayerAdd" prefHeight="47.0" prefWidth="243.0" text="Add player">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children></VBox>
       <Label alignment="CENTER" layoutX="14.0" layoutY="110.0" prefHeight="36.0" prefWidth="247.0" text="Generic Username">
          <font>
