@@ -1,34 +1,27 @@
 package dashboard;
 
 import com.football.statisticstracker.Admin;
-import com.football.statisticstracker.User;
-import com.football.statisticstracker.UserController;
 import com.football.statisticstracker.UserModel;
-import javafx.beans.property.SimpleStringProperty;
+import database.DatabaseConnection;
+import javafx.scene.image.ImageView;
 import leagues.LeagueAddController;
 import leagues.LeagueController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import players.PlayerAdd;
-import players.PlayerAddController;
-import players.PlayerList;
 import players.PlayerListController;
 import teams.TeamAdd;
-import teams.TeamAddController;
 
 import java.io.IOException;
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class DashboardController {
@@ -39,6 +32,9 @@ public class DashboardController {
 
     @FXML
     public BorderPane borderPane;
+
+    @FXML
+    ImageView profilePicture;
 
     public void initialize() {
         Parent root = null;
@@ -107,6 +103,20 @@ public class DashboardController {
         username.setText(userName);
     }
 
+    public void changeProfilePicture(String userName) throws SQLException {
+        Connection con = DatabaseConnection.getConnection();
+        String sql = "SELECT pfpURL FROM loginInfo WHERE Username = ?";
+        PreparedStatement ps =  con.prepareStatement(sql);
+        ps.setString(1, userName);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String currentFileURL = rs.getString(1);
+            System.out.println(currentFileURL);
+            Image image = new Image(currentFileURL);
+            profilePicture.setImage(image);
+        }
+    }
+
     public void quit() {
         //assert this.cross != null;
         //if (this.cross == null) System.out.println("Cross Cringe");
@@ -126,10 +136,8 @@ public class DashboardController {
         leagueController.leagueStart(this.borderPane);
     }
     public void showPlayers(){
-//        PlayerListController playerListController = new PlayerListController();
-//        playerListController.playerViewStart(this.borderPane);
-        PlayerList playerList = new PlayerList();
-        playerList.show(this.borderPane);
+        PlayerListController playerListController = new PlayerListController();
+        playerListController.playerViewStart(this.borderPane);
     }
     public void showTeamAdd(){
 //        TeamAddController teamAddController = new TeamAddController();
@@ -171,6 +179,17 @@ public class DashboardController {
         //    adminCredentials.o = newValue;
         //    changeUsername(adminCredentials.name);
         //});
+        userModel.userController.fileLocation.addListener((observable, oldValue, newValue) -> {
+            System.out.println("StringProperty changed from " + oldValue + " to " + newValue);
+            //username = new SimpleStringProperty(newValue);
+            //System.out.println(username + " baaallllalalllll ");
+            //adminCredentials.name = newValue;
+            try {
+                changeProfilePicture(adminCredentials.name);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     //public void setTime() {
     //    long millis = System.currentTimeMillis();

@@ -36,11 +36,12 @@ public class DashboardModel {
             stage.setTitle("Dashboard");
             stage.setScene(scene);
             stage.show();
+            dashboardController.adminCredentials = admin;
+            //System.out.println(admin.name);
+            dashboardController.changeUsername(admin.name);
+            dashboardController.changeProfilePicture(admin.name);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        dashboardController.adminCredentials = admin;
-        //System.out.println(admin.name);
-        dashboardController.changeUsername(admin.name);
     }
 }

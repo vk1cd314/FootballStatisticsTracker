@@ -16,7 +16,7 @@
             <HBox prefHeight="48.0" prefWidth="253.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="122.0" fitWidth="107.0" onMouseClicked="#showUserInfo" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profilePicture" fitHeight="122.0" fitWidth="107.0" onMouseClicked="#showUserInfo" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../user%20(1).png" />
                      </image>
