@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -18,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class TeamAddController {
     @FXML
@@ -74,20 +72,26 @@ public class TeamAddController {
     }
     public void addTeam(){
         if(teamNameField != null && teamNameField.getText() != "" && commonNameField.getText() != "" && leagueComboBox != null) {
-            String insert = "INSERT INTO teams(team_name, common_name, league, matches_played, wins, draws, losses, goals_scored, goals_conceded, goal_difference, clean_sheets)" +
-                    "VALUES (?, ?, ?, '0', '0', '0', '0', '0', '0', '0', '0');";
-            try {
-                Connection con = DatabaseConnection.getStatsConnection();
-                PreparedStatement stmt = con.prepareStatement(insert);
-                stmt.setString(1, teamNameField.getText());
-                stmt.setString(2, commonNameField.getText());
-                stmt.setString(3, leagueComboBox.getValue());
-                stmt.execute();
-                progressLabel.setText("Success!");
-                clear();
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setTitle("Confirm Changes");
+            a.setContentText("Are you sure you want to add this team?");
+            Optional<ButtonType> result = a.showAndWait();
+            if(result.get() == ButtonType.OK) {
+                String insert = "INSERT INTO teams(team_name, common_name, league, matches_played, wins, draws, losses, goals_scored, goals_conceded, goal_difference, clean_sheets)" +
+                        "VALUES (?, ?, ?, '0', '0', '0', '0', '0', '0', '0', '0');";
+                try {
+                    Connection con = DatabaseConnection.getStatsConnection();
+                    PreparedStatement stmt = con.prepareStatement(insert);
+                    stmt.setString(1, teamNameField.getText());
+                    stmt.setString(2, commonNameField.getText());
+                    stmt.setString(3, leagueComboBox.getValue());
+                    stmt.execute();
+                    progressLabel.setText("Success!");
+                    clear();
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
         else{

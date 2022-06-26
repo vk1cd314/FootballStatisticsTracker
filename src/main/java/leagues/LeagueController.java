@@ -76,7 +76,7 @@ public class LeagueController implements Initializable {
                     Connection conn = DatabaseConnection.getStatsConnection();
                     String sql = "SELECT team_name, league, matches_played, wins, draws,losses, goals_scored, goals_conceded, goal_difference, clean_sheets, common_name FROM teams WHERE (team_name like '%"+teamSearch.getText()+"%'"+ filterLeague +") ORDER BY points DESC";
                     ResultSet rs = conn.createStatement().executeQuery(sql);
-                    int i = 0;
+                    int i = 1;
                     while(rs.next()){
                         this.data.add(new Team(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
                                 rs.getInt(5), rs.getInt(6), rs.getInt(7),
@@ -164,10 +164,12 @@ public class LeagueController implements Initializable {
     }
     public void clear(){
         teamSearch.clear();
-        leagueComboBox.setValue(null);
+        leagueLabel.setText("All Teams");
         leagueComboBox.setPromptText("Select League");
         filterLeague = "";
         filterLeagueLoad = "";
+        loadLeagueData();
+        loadCards();
     }
     public void reload(){
         //filter();
@@ -175,9 +177,12 @@ public class LeagueController implements Initializable {
         loadCards();
     }
     public void showAddMatch(){
-        Match match = new Match();
-        match.show();
-        reload();
+        if(leagueComboBox != null) {
+            Match match = new Match();
+            match.show(leagueComboBox.getValue());
+        }
+        loadLeagueData();
+        loadCards();
     }
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
