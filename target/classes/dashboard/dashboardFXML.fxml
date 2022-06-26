@@ -24,7 +24,7 @@
                </children></HBox>
             <HBox alignment="CENTER" onMouseClicked="#showUserInfo" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
-                  <Label alignment="CENTER" onMouseClicked="#showUserInfo" prefHeight="36.0" prefWidth="247.0" text="Generic Username">
+                  <Label fx:id="username" alignment="CENTER" onMouseClicked="#showUserInfo" prefHeight="36.0" prefWidth="247.0" text="Generic Username">
                      <font>
                         <Font name="Meslo LG M Regular Nerd Font Complete" size="19.0" />
                      </font>

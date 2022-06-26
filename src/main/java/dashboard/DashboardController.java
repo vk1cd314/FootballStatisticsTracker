@@ -1,7 +1,9 @@
 package dashboard;
 
+import com.football.statisticstracker.Admin;
 import com.football.statisticstracker.User;
 import com.football.statisticstracker.UserController;
+import com.football.statisticstracker.UserModel;
 import leagues.LeagueAddController;
 import leagues.LeagueController;
 import javafx.fxml.FXML;
@@ -28,8 +30,10 @@ import java.util.Date;
 import java.util.Objects;
 
 public class DashboardController {
-    private static double xShift = 0;
-    private static double yShift = 0;
+    Admin adminCredentials;
+
+    @FXML
+    public Label username;
 
     @FXML
     public BorderPane borderPane;
@@ -53,36 +57,38 @@ public class DashboardController {
         //this.tilesContainer.getChildren().add(tiles2);
     }
 
-    public void dashboardStart() {
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("dashboardFXML.fxml"));
-            Parent root = loader.load();
-            root.setOnMousePressed((MouseEvent event) -> {
-                xShift = event.getSceneX();
-                yShift = event.getSceneY();
-            });
-            root.setOnMouseDragged((MouseEvent event) -> {
-                stage.setX(event.getScreenX() - xShift);
-                stage.setY(event.getScreenY() - yShift);
-            });
-            Scene scene = new Scene(root, Color.TRANSPARENT);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.getIcons().add(new Image("football_transparent.png"));
-            stage.setResizable(false);
-            stage.setTitle("Dashboard");
-            stage.setScene(scene);
-            stage.show();
-            //this.dashboard.setText("NO");
-            //dashboardHbox();
-            //setTime();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
+    //public void dashboardStart(Admin admin) {
+        //try {
+        //    Stage stage = new Stage();
+        //    FXMLLoader loader = new FXMLLoader();
+        //    loader.setLocation(getClass().getResource("dashboardFXML.fxml"));
+        //    Parent root = loader.load();
+        //    root.setOnMousePressed((MouseEvent event) -> {
+        //        xShift = event.getSceneX();
+        //        yShift = event.getSceneY();
+        //    });
+        //    root.setOnMouseDragged((MouseEvent event) -> {
+        //        stage.setX(event.getScreenX() - xShift);
+        //        stage.setY(event.getScreenY() - yShift);
+        //    });
+        //    Scene scene = new Scene(root, Color.TRANSPARENT);
+        //    stage.initStyle(StageStyle.UNDECORATED);
+        //    stage.getIcons().add(new Image("football_transparent.png"));
+        //    stage.setResizable(false);
+        //    stage.setTitle("Dashboard");
+        //    stage.setScene(scene);
+        //    stage.show();
+        //    //this.dashboard.setText("NO");
+        //    //dashboardHbox();
+        //    //setTime();
+        //} catch (Exception exception) {
+        //    exception.printStackTrace();
+        //}
+        //adminCredentials = admin;
+        //username.setText(admin.name);
+    //}
 
-    public void dashboardHbox() throws IOException {
+    //public void dashboardHbox() throws IOException {
         //Parent root = FXMLLoader.load(getClass().getResource("dashboardHboxFXML.fxml"));
         //assert this.borderPane == null;
         //assert this.borderPane != null;
@@ -93,6 +99,10 @@ public class DashboardController {
         //else System.out.println("Cross Also Cringe");
         //this.borderPane = new BorderPane(root);
         //this.borderPane.setCenter(root);
+    //}
+
+    public void changeUsername(String userName) {
+        username.setText(userName);
     }
 
     public void quit() {
@@ -134,8 +144,10 @@ public class DashboardController {
     }
 
     public void showUserInfo() {
-        UserController userController = new UserController();
-        userController.show(this.borderPane);
+        //UserController userController = new UserController(adminCredentials);
+        //userController.show(this.borderPane);
+        UserModel userModel = new UserModel();
+        userModel.show(this.borderPane, adminCredentials);
     }
     //public void setTime() {
     //    long millis = System.currentTimeMillis();

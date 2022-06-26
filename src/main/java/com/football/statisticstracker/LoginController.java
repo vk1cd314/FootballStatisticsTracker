@@ -1,6 +1,7 @@
 package com.football.statisticstracker;
 
 import dashboard.DashboardController;
+import dashboard.DashboardModel;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,8 +63,12 @@ public class LoginController implements Initializable {
     }
 
     public void adminLogin() throws IOException {
-        DashboardController dashboardController = new DashboardController();
-        dashboardController.dashboardStart();
+        //DashboardController dashboardController = new DashboardController();
+        Admin adminCredentials = new Admin(loginUsername.getText(), loginPassword.getText());
+        //dashboardController.dashboardStart(adminCredentials);
+        //dashboardController.changeUsername(adminCredentials.name);
+        DashboardModel dashboardModel = new DashboardModel();
+        dashboardModel.start(adminCredentials);
     }
 
     public void signUp() {
