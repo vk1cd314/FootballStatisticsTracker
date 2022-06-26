@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import players.PlayerAdd;
+import players.PlayerList;
 import players.PlayerListController;
 import teams.TeamAdd;
 
@@ -136,8 +137,8 @@ public class DashboardController {
         leagueController.leagueStart(this.borderPane);
     }
     public void showPlayers(){
-        PlayerListController playerListController = new PlayerListController();
-        playerListController.playerViewStart(this.borderPane);
+        PlayerList playerList = new PlayerList();
+        playerList.show(borderPane);
     }
     public void showTeamAdd(){
 //        TeamAddController teamAddController = new TeamAddController();
