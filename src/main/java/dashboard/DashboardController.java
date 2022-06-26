@@ -1,5 +1,7 @@
 package dashboard;
 
+import com.football.statisticstracker.User;
+import com.football.statisticstracker.UserController;
 import leagues.LeagueAddController;
 import leagues.LeagueController;
 import javafx.fxml.FXML;
@@ -129,6 +131,11 @@ public class DashboardController {
     public void showPlayerAdd(){
         PlayerAdd playerAdd = new PlayerAdd();
         playerAdd.show(this.borderPane);
+    }
+
+    public void showUserInfo() {
+        UserController userController = new UserController();
+        userController.show(this.borderPane);
     }
     //public void setTime() {
     //    long millis = System.currentTimeMillis();

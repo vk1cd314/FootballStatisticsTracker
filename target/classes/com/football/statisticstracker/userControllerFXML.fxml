@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.football.statisticstracker.UserControllerFXML"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.football.statisticstracker.UserController">
+   <children>
+      <ImageView fitHeight="190.0" fitWidth="220.0" layoutX="306.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../user%20(1).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="162.0" layoutY="304.0" prefHeight="29.0" prefWidth="127.0" text="Current Username" />
+      <Label layoutX="162.0" layoutY="340.0" prefHeight="29.0" prefWidth="127.0" text="Current Password" />
+      <Label layoutX="329.0" layoutY="305.0" prefHeight="29.0" prefWidth="87.0" text="Username" />
+      <Label layoutX="329.0" layoutY="339.0" prefHeight="29.0" prefWidth="87.0" text="Password" />
+      <Button layoutX="462.0" layoutY="309.0" mnemonicParsing="false" text="Change Username" />
+      <Button layoutX="463.0" layoutY="343.0" mnemonicParsing="false" text="Change Passowrd" />
+      <Button layoutX="319.0" layoutY="265.0" mnemonicParsing="false" text="Change Profile Picture" />
+      <Label layoutX="318.0" layoutY="398.0" prefHeight="38.0" prefWidth="95.0" text="Type of User:" />
+      <Label layoutX="444.0" layoutY="407.0" prefHeight="24.0" prefWidth="51.0" text="Admin" />
+      <Button fx:id="cross" layoutX="742.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" text="Bye" />
+   </children>
 </AnchorPane>
