@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -21,10 +23,29 @@
             <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
          </font>
       </Button>
-      <ScrollPane layoutY="54.0" prefHeight="642.0" prefWidth="807.0">
+      <ScrollPane layoutY="96.0" prefHeight="598.0" prefWidth="697.0">
          <content>
-            <VBox fx:id="playerListCont" prefHeight="627.0" prefWidth="809.0" />
+            <VBox fx:id="playerListCont" prefHeight="598.0" prefWidth="693.0" />
          </content>
       </ScrollPane>
+      <VBox layoutX="697.0" layoutY="96.0" prefHeight="598.0" prefWidth="113.0">
+         <children>
+            <Label prefHeight="52.0" prefWidth="111.0" text="Search Filters" />
+            <Label prefHeight="31.0" prefWidth="108.0" text="Position" />
+            <ComboBox fx:id="positionFilter" prefHeight="24.0" prefWidth="107.0" promptText="Select Position" />
+            <Label prefHeight="27.0" prefWidth="111.0" text="League" />
+            <ComboBox fx:id="leagueFilter" prefHeight="24.0" prefWidth="108.0" promptText="Select League" />
+            <Label prefHeight="33.0" prefWidth="113.0" text="Teams" />
+            <ComboBox fx:id="teamFilter" prefHeight="24.0" prefWidth="109.0" promptText="Select Team" />
+            <Label prefHeight="41.0" prefWidth="110.0" text="Nationality" />
+            <ComboBox fx:id="nationFilter" prefHeight="24.0" prefWidth="110.0" promptText="Select Nation" />
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <Button mnemonicParsing="false" onAction="#loadFilters" prefHeight="24.0" prefWidth="108.0" text="Clear Filters" />
+         </children>
+      </VBox>
+      <Label layoutX="15.0" layoutY="63.0" prefHeight="33.0" prefWidth="113.0" text="Player Name" />
+      <Label layoutX="212.0" layoutY="63.0" prefHeight="33.0" prefWidth="137.0" text="Team Name" />
+      <Label layoutX="389.0" layoutY="64.0" prefHeight="31.0" prefWidth="107.0" text="Position" />
+      <Label layoutX="540.0" layoutY="65.0" prefHeight="31.0" prefWidth="137.0" text="Nationality" />
    </children>
 </AnchorPane>
