@@ -1,6 +1,8 @@
 package com.football.statisticstracker;
 
 import database.DatabaseConnection;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -33,8 +35,8 @@ public class UserController {
     @FXML
     ImageView profilePicture;
     Admin adminCredentials;
-    File file = null;
-
+    //File file = null;
+    public StringProperty fileLocation = new SimpleStringProperty("");
 
     public void setUserData(Admin admin) {
         adminCredentials = admin;
@@ -62,7 +64,9 @@ public class UserController {
                 stmt.setString(2, adminCredentials.name);
                 stmt.execute();
                 conn.close();
-                file = selectedFile;
+                //file = selectedFile;
+                fileLocation = new SimpleStringProperty(selectedFile.toURI().toString());
+                System.out.println(fileLocation.toString());
                 informationUpdate.setTextFill(Color.GREEN);
                 informationUpdate.setText("Profile Picture Updated");
             } catch(SQLException e) {

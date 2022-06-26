@@ -191,6 +191,13 @@ public class DashboardController {
         //    adminCredentials.o = newValue;
         //    changeUsername(adminCredentials.name);
         //});
+        userModel.userController.fileLocation.addListener((observable, oldValue, newValue) -> {
+            System.out.println("StringProperty changed from " + oldValue + " to " + newValue);
+            //username = new SimpleStringProperty(newValue);
+            //System.out.println(username + " baaallllalalllll ");
+            //adminCredentials.name = newValue;
+            changeUsername(adminCredentials.name);
+        });
     }
     //public void setTime() {
     //    long millis = System.currentTimeMillis();
