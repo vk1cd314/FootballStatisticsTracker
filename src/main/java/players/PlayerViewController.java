@@ -1,11 +1,15 @@
 package players;
 
+import com.football.statisticstracker.Admin;
 import database.DatabaseConnection;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -54,7 +58,15 @@ public class PlayerViewController {
     @FXML
     private Label yellowLabel;
 
+    @FXML
+    private Button edit;
+
+    @FXML
+    private Button delete;
+
     Player player;
+
+    Admin adminCredentials;
 
     public void load(Player player){
         this.player = player;
@@ -70,6 +82,24 @@ public class PlayerViewController {
         cleanSheetLabel.setText(String.valueOf(player.clean_sheets));
         redLabel.setText(String.valueOf(player.red_cards));
         yellowLabel.setText(String.valueOf(player.yellow_cards));
+        if (!adminCredentials.isAdmin) {
+            edit.setStyle("-fx-background-color: TRANSPARENT; ");
+            delete.setStyle("-fx-background-color: TRANSPARENT; ");
+            edit.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            delete.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            edit.setTextFill(Color.TRANSPARENT);
+            delete.setTextFill(Color.TRANSPARENT);
+        }
     }
     public void deletePlayer(){
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);

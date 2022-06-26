@@ -1,5 +1,6 @@
 package players;
 
+import com.football.statisticstracker.Admin;
 import database.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -53,6 +54,11 @@ public class PlayerListController implements Initializable {
     String teamFilterString = "";
     ArrayList<String> teamList = new ArrayList<>();
     boolean filtered = false;
+    Admin adminCredentials;
+
+    public void setAdminCredentials(Admin admin) {
+        adminCredentials = admin;
+    }
 
     private final List<Player> data = new ArrayList<>();
 
@@ -221,8 +227,9 @@ public class PlayerListController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("playerCard.fxml"));
                 tile = fxmlLoader.load();
-                PlayerCardController playerCard = fxmlLoader.getController();
-                playerCard.setData(data.get(i));
+                PlayerCardController playerCardController = fxmlLoader.getController();
+                playerCardController.setData(data.get(i));
+                playerCardController.adminCredentials = adminCredentials;
                 playerListCont.getChildren().add(tile);
             } catch (IOException e){
                 e.printStackTrace();

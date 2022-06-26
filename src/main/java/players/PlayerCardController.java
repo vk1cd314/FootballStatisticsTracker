@@ -1,5 +1,6 @@
 package players;
 
+import com.football.statisticstracker.Admin;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -22,6 +23,8 @@ public class PlayerCardController implements Initializable {
 
     public Player player;
 
+    public Admin adminCredentials;
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
 
@@ -35,6 +38,6 @@ public class PlayerCardController implements Initializable {
     }
     public void showPlayerData(){
         PlayerView playerView = new PlayerView();
-        playerView.show(this.player);
+        playerView.show(this.player, adminCredentials);
     }
 }

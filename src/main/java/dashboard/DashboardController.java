@@ -141,7 +141,7 @@ public class DashboardController {
     }
     public void showPlayers(){
         PlayerList playerList = new PlayerList();
-        playerList.show(borderPane);
+        playerList.show(borderPane, adminCredentials);
     }
     public void showTeamAdd(){
 //        TeamAddController teamAddController = new TeamAddController();
