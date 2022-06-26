@@ -149,6 +149,7 @@ public class LeagueController implements Initializable {
             e.printStackTrace();
         }
     }
+
     public void filter(){
         filterLeagueLoad = "WHERE league = ";
         filterLeague = "AND league = ";
