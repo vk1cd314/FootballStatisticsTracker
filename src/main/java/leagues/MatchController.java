@@ -43,12 +43,13 @@ public class MatchController {
     private Label errorLabel;
 
     ArrayList<String> teamList = new ArrayList<>();
+    String league;
 
-    public void load(){
+    public void load(String league){
         try
         {
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT team_name FROM teams;";
+            String sql = "SELECT team_name FROM teams WHERE league = '"+league+"';";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while(rs.next()){
                 this.teamList.add(rs.getString(1));

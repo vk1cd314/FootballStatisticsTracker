@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Match {
     MatchController matchController = new MatchController();;
-    public void show(){
+    public void show(String league){
         try{
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
@@ -20,7 +20,7 @@ public class Match {
             stage.setScene(scene);
             stage.show();
             matchController = loader.getController();
-            matchController.load();
+            matchController.load(league);
         }catch (IOException e){
             e.printStackTrace();
         }
