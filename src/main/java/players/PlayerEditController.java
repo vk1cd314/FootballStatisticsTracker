@@ -66,6 +66,9 @@ public class PlayerEditController {
     @FXML
     private TextField yellowField;
 
+    String filterByTeam = "";
+    String filterByLeague = "";
+
     Player player;
     ArrayList<String> clubList = new ArrayList<>();
     ArrayList<String> leagueList = new ArrayList<>();
@@ -132,16 +135,13 @@ public class PlayerEditController {
             yellowField.clear();
         }
     }
-    public void filter(){
-
-    }
     public void load(Player player){
         this.player = player;
         leagueList.clear();
         clubList.clear();
         try{
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT league_name FROM leagues;";
+            String sql = "SELECT league_name FROM leagues"+filterByTeam+";";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while(rs.next()){
                 this.leagueList.add(rs.getString(1));
@@ -154,7 +154,7 @@ public class PlayerEditController {
         leagueComboBox.setValue(player.league);
         try{
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT team_name FROM teams;";
+            String sql = "SELECT team_name FROM teams"+filterByLeague+";";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while(rs.next()){
                 this.clubList.add(rs.getString(1));
