@@ -5,11 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -20,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PlayerAddController implements Initializable {
@@ -96,24 +93,30 @@ public class PlayerAddController implements Initializable {
         }
         public void addPlayer(){
                 if(nameTextField != null && nameTextField.getText() != "" && nationalityTextField != null && nationalityTextField.getText() != "" && positionComboBox != null && leagueComboBox != null && teamComboBox != null){
-                        String insert = "INSERT INTO players(full_name, position, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall)"+
-                                "VALUES(?,?,?,?,?,?,?,0,0,0,0,0,0)";
-                        try{
-                             Connection con = DatabaseConnection.getStatsConnection();
-                             PreparedStatement stmt = con.prepareStatement(insert);
-                             stmt.setString(1, nameTextField.getText());
-                             stmt.setString(2, positionComboBox.getValue().toString());
-                             stmt.setString(3, ageTextBox.getText());
-                             stmt.setString(4, birthDatePicker.getValue().toString());
-                             stmt.setString(5, leagueComboBox.getValue());
-                             stmt.setString(5, teamComboBox.getValue());
-                             stmt.setString(6, nationalityTextField.getText());
-                             stmt.execute();
-                             errLabel.setText("Success");
-                             clear();
-                             con.close();
-                        }catch (SQLException e){
-                                e.printStackTrace();
+                        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                        a.setTitle("Confirm Changes");
+                        a.setContentText("Are you sure you want to add this player?");
+                        Optional<ButtonType> result = a.showAndWait();
+                        if(result.get() == ButtonType.OK) {
+                                String insert = "INSERT INTO players(full_name, position, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall)" +
+                                        "VALUES(?,?,?,?,?,?,?,0,0,0,0,0,0)";
+                                try {
+                                        Connection con = DatabaseConnection.getStatsConnection();
+                                        PreparedStatement stmt = con.prepareStatement(insert);
+                                        stmt.setString(1, nameTextField.getText());
+                                        stmt.setString(2, positionComboBox.getValue().toString());
+                                        stmt.setString(3, ageTextBox.getText());
+                                        stmt.setString(4, birthDatePicker.getValue().toString());
+                                        stmt.setString(5, leagueComboBox.getValue());
+                                        stmt.setString(5, teamComboBox.getValue());
+                                        stmt.setString(6, nationalityTextField.getText());
+                                        stmt.execute();
+                                        errLabel.setText("Success");
+                                        clear();
+                                        con.close();
+                                } catch (SQLException e) {
+                                        e.printStackTrace();
+                                }
                         }
                 }
         }
