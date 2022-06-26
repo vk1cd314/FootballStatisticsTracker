@@ -82,6 +82,7 @@ public class PlayerViewController {
                 String stmt = "DELETE FROM players WHERE full_name = '" + player.name + "';";
                 PreparedStatement prep = con.prepareStatement(stmt);
                 prep.executeUpdate();
+                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

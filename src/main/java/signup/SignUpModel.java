@@ -27,6 +27,7 @@ public class SignUpModel {
             pr = this.connection.prepareStatement(sql);
             pr.setString(1, name);
             rs = pr.executeQuery();
+            connection.close();
             if (rs.next()) return true;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -71,6 +71,7 @@ public class UserController {
                 System.out.println("Halo world" + fileLocation.getValue());
                 informationUpdate.setTextFill(Color.GREEN);
                 informationUpdate.setText("Profile Picture Updated");
+                conn.close();
             } catch(SQLException e) {
                 e.printStackTrace();
             }
@@ -88,10 +89,13 @@ public class UserController {
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             String currentFileURL = rs.getString(1);
-            System.out.println(currentFileURL);
-            Image image = new Image(currentFileURL);
-            profilePicture.setImage(image);
+            //System.out.println("I am a barbie girl"+currentFileURL);
+            if(!currentFileURL.equals(new String("noki"))) {
+                Image image = new Image(currentFileURL);
+                profilePicture.setImage(image);
+            }
         }
+        con.close();
     }
 
     public void loadData() throws SQLException {
