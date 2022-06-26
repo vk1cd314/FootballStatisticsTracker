@@ -18,8 +18,10 @@ public class UserController {
     @FXML
     Button cross;
     @FXML
+    public
     TextField username;
     @FXML
+    public
     TextField password;
     @FXML
     Label informationUpdate;

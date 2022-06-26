@@ -4,6 +4,7 @@ import com.football.statisticstracker.Admin;
 import com.football.statisticstracker.User;
 import com.football.statisticstracker.UserController;
 import com.football.statisticstracker.UserModel;
+import javafx.beans.property.SimpleStringProperty;
 import leagues.LeagueAddController;
 import leagues.LeagueController;
 import javafx.fxml.FXML;
@@ -148,6 +149,25 @@ public class DashboardController {
         //userController.show(this.borderPane);
         UserModel userModel = new UserModel();
         userModel.show(this.borderPane, adminCredentials);
+        //userModel.username.addListener((observable, oldValue, newValue) -> {
+        //    System.out.println("baal textfield changed from " + oldValue + " to " + newValue);
+        //    adminCredentials.name = newValue.toString();
+        //    changeUsername(adminCredentials.name);
+        //});
+        userModel.userController.username.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("textfield changed from " + oldValue + " to " + newValue);
+            //username = new SimpleStringProperty(newValue);
+            //System.out.println(username + " baaallllalalllll ");
+            adminCredentials.name = newValue;
+            changeUsername(adminCredentials.name);
+        });
+        //userModel.userController.password.textProperty().addListener((observable, oldValue, newValue) -> {
+        //    System.out.println("textfield changed from " + oldValue + " to " + newValue);
+        //    //password = new SimpleStringProperty(newValue);
+        //    //System.out.println(password + " baaallllalalllll pass");
+        //    adminCredentials.o = newValue;
+        //    changeUsername(adminCredentials.name);
+        //});
     }
     //public void setTime() {
     //    long millis = System.currentTimeMillis();
