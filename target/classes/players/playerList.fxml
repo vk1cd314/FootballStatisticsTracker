@@ -40,7 +40,7 @@
             <Label prefHeight="41.0" prefWidth="110.0" text="Nationality" />
             <ComboBox fx:id="nationFilter" onAction="#filter" prefHeight="24.0" prefWidth="110.0" promptText="Select Nation" />
             <HBox prefHeight="100.0" prefWidth="200.0" />
-            <Button mnemonicParsing="false" onAction="#clear" prefHeight="24.0" prefWidth="108.0" text="Clear Filters" />
+            <Button mnemonicParsing="false" onAction="#loadFilters" prefHeight="24.0" prefWidth="108.0" text="Clear Filters" />
          </children>
       </VBox>
       <Label layoutX="15.0" layoutY="63.0" prefHeight="33.0" prefWidth="113.0" text="Player Name" />

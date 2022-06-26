@@ -52,6 +52,7 @@ public class PlayerListController implements Initializable {
     Set<String> nationList = new HashSet<String>();
     String teamFilterString = "";
     ArrayList<String> teamList = new ArrayList<>();
+    boolean filtered = false;
 
     private final List<Player> data = new ArrayList<>();
 
@@ -76,6 +77,9 @@ public class PlayerListController implements Initializable {
         nationFilterString = "";
         teamFilterString = "";
         leagueFilterString = "";
+        filtered = false;
+        playerSearch.setText("");
+        playerListCont.getChildren().clear();
         loadPlayerData();
         loadCards();
     }
@@ -101,7 +105,7 @@ public class PlayerListController implements Initializable {
         leagueFilter.setItems(FXCollections.observableArrayList(leagueList));
         try{
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT team_name FROM teams ORDER BY team_name ASC;";
+            String sql = "SELECT common_name FROM teams ORDER BY common_name ASC;";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while(rs.next()){
                 this.teamList.add(rs.getString(1));
@@ -125,6 +129,7 @@ public class PlayerListController implements Initializable {
         nationFilter.setItems(FXCollections.observableArrayList(nationList));
     }
     public void filter(){
+        filtered = true;
         if(positionFilter.getValue() != null && positionFilter.getValue().toString() != ""){
             positionFilterString = "AND position = '"+positionFilter.getValue().toString()+"'";
         }
@@ -137,7 +142,10 @@ public class PlayerListController implements Initializable {
         if(teamFilter.getValue() != null && teamFilter.getValue() != ""){
             teamFilterString = "AND Current_Club = '"+teamFilter.getValue()+"'";
         }
-
+        loadPlayerData();
+        System.out.println(leagueFilterString);
+        playerListCont.getChildren().clear();
+        loadCards();
     }
 
     @FXML
@@ -152,7 +160,7 @@ public class PlayerListController implements Initializable {
             else{
                 try{
                     Connection conn = DatabaseConnection.getStatsConnection();
-                    String sql = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE (full_name LIKE '%"+playerSearch.getText()+"%' "+leagueFilterString+" "+teamFilterString+" "+positionFilterString+" "+nationFilterString+") ORDER BY Current_Club ASC;";
+                    String sql = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE ( full_name LIKE '%"+playerSearch.getText()+"%'"+teamFilterString+" "+leagueFilterString+" "+positionFilterString+" "+nationFilterString+") ORDER BY Current_Club ASC;";
                     ResultSet rs = conn.createStatement().executeQuery(sql);
                     while(rs.next()){
                         this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13)));
@@ -176,11 +184,27 @@ public class PlayerListController implements Initializable {
 //            e.printStackTrace();
 //        }
 //    }
+
     public void loadPlayerData(){
+        data.clear();
         try {
             Connection conn = DatabaseConnection.getStatsConnection();
             assert conn != null;
-            ResultSet rs = conn.createStatement().executeQuery("SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY Current_Club ASC;");
+            String Komal = ""+leagueFilterString+""+teamFilterString+""+nationFilterString+""+positionFilterString+"";
+            System.out.println(Komal);
+            String NoWhere = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY Current_Club ASC;";
+            ResultSet rs;
+            if(filtered == true) {
+                String filt = new String(Komal.substring(3));
+                String Where = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE( "+filt+" ) ORDER BY Current_Club ASC;";
+                System.out.println(filt);
+                rs = conn.createStatement().executeQuery(Where);
+                System.out.println(Where);
+            }
+            else {
+                rs = conn.createStatement().executeQuery(NoWhere);
+                System.out.println(NoWhere);
+            }
             while (rs.next()) {
                 this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13)));
             }
