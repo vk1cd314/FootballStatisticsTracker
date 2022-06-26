@@ -57,6 +57,7 @@ public class PlayerViewController {
         this.player = player;
         nameLabel.setText(player.name);
         birthdayLabel.setText(player.birthday);
+        ageLabel.setText(String.valueOf(player.age));
         clubLabel.setText(player.club);
         positionLabel.setText(player.position);
         nationLabel.setText(player.nationality);
@@ -81,6 +82,15 @@ public class PlayerViewController {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+    public void editPlayer(){
+        try {
+            quit();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        PlayerEdit playerEdit = new PlayerEdit();
+        playerEdit.show(this.player);
     }
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
