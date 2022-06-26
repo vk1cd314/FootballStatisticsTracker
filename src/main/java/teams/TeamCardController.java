@@ -58,7 +58,7 @@ public class TeamCardController implements Initializable {
         points.setText(String.valueOf(inTeam.getPoints()));
     }
     public void showTeamData(){
-        System.out.println(team.name);
+        //System.out.println(team.name);
         TeamViewModel teamViewModel = new TeamViewModel();
         teamViewModel.show(team);
 
