@@ -69,7 +69,7 @@ public class PlayerListController implements Initializable {
         stage.close();
     }
     public void clear(){
-        loadFilters();
+        filtered = false;
         nationList.clear();
         teamList.clear();
         leagueList.clear();
@@ -77,9 +77,9 @@ public class PlayerListController implements Initializable {
         nationFilterString = "";
         teamFilterString = "";
         leagueFilterString = "";
-        filtered = false;
         playerSearch.setText("");
         playerListCont.getChildren().clear();
+        System.out.println(filtered);
         loadPlayerData();
         loadCards();
     }
@@ -130,16 +130,16 @@ public class PlayerListController implements Initializable {
     }
     public void filter(){
         filtered = true;
-        if(positionFilter.getValue() != null && positionFilter.getValue().toString() != ""){
+        if(positionFilter.getValue() != null && !positionFilter.getValue().toString().equals("") ){
             positionFilterString = "AND position = '"+positionFilter.getValue().toString()+"'";
         }
-        if(leagueFilter.getValue() != null && leagueFilter.getValue() != ""){
+        if(leagueFilter.getValue() != null && !leagueFilter.getValue().equals("")){
             leagueFilterString = "AND league = '"+leagueFilter.getValue()+"'";
         }
-        if(nationFilter.getValue() != null && nationFilter.getValue() != ""){
+        if(nationFilter.getValue() != null && !nationFilter.getValue().equals("")){
             nationFilterString = "AND nationality = '"+nationFilter.getValue()+"'";
         }
-        if(teamFilter.getValue() != null && teamFilter.getValue() != ""){
+        if(teamFilter.getValue() != null && !teamFilter.getValue().equals("")){
             teamFilterString = "AND Current_Club = '"+teamFilter.getValue()+"'";
         }
         loadPlayerData();
@@ -192,9 +192,9 @@ public class PlayerListController implements Initializable {
             assert conn != null;
             String Komal = ""+leagueFilterString+""+teamFilterString+""+nationFilterString+""+positionFilterString+"";
             System.out.println(Komal);
-            String NoWhere = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY Current_Club ASC;";
-            ResultSet rs;
-            if(filtered == true) {
+            ResultSet rs = null;
+            System.out.println(filtered);
+            if(filtered) {
                 String filt = new String(Komal.substring(3));
                 String Where = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE( "+filt+" ) ORDER BY Current_Club ASC;";
                 System.out.println(filt);
@@ -202,6 +202,7 @@ public class PlayerListController implements Initializable {
                 System.out.println(Where);
             }
             else {
+                String NoWhere = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY Current_Club ASC;";
                 rs = conn.createStatement().executeQuery(NoWhere);
                 System.out.println(NoWhere);
             }
