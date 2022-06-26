@@ -108,8 +108,8 @@ public class PlayerAddController implements Initializable {
                                         stmt.setString(3, ageTextBox.getText());
                                         stmt.setString(4, birthDatePicker.getValue().toString());
                                         stmt.setString(5, leagueComboBox.getValue());
-                                        stmt.setString(5, teamComboBox.getValue());
-                                        stmt.setString(6, nationalityTextField.getText());
+                                        stmt.setString(6, teamComboBox.getValue());
+                                        stmt.setString(7, nationalityTextField.getText());
                                         stmt.execute();
                                         errLabel.setText("Success");
                                         clear();

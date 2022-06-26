@@ -32,15 +32,15 @@
          <children>
             <Label prefHeight="52.0" prefWidth="111.0" text="Search Filters" />
             <Label prefHeight="31.0" prefWidth="108.0" text="Position" />
-            <ComboBox fx:id="positionFilter" prefHeight="24.0" prefWidth="107.0" promptText="Select Position" />
+            <ComboBox fx:id="positionFilter" onAction="#filter" prefHeight="24.0" prefWidth="107.0" promptText="Select Position" />
             <Label prefHeight="27.0" prefWidth="111.0" text="League" />
-            <ComboBox fx:id="leagueFilter" prefHeight="24.0" prefWidth="108.0" promptText="Select League" />
+            <ComboBox fx:id="leagueFilter" onAction="#filter" prefHeight="24.0" prefWidth="108.0" promptText="Select League" />
             <Label prefHeight="33.0" prefWidth="113.0" text="Teams" />
-            <ComboBox fx:id="teamFilter" prefHeight="24.0" prefWidth="109.0" promptText="Select Team" />
+            <ComboBox fx:id="teamFilter" onAction="#filter" prefHeight="24.0" prefWidth="109.0" promptText="Select Team" />
             <Label prefHeight="41.0" prefWidth="110.0" text="Nationality" />
-            <ComboBox fx:id="nationFilter" prefHeight="24.0" prefWidth="110.0" promptText="Select Nation" />
+            <ComboBox fx:id="nationFilter" onAction="#filter" prefHeight="24.0" prefWidth="110.0" promptText="Select Nation" />
             <HBox prefHeight="100.0" prefWidth="200.0" />
-            <Button mnemonicParsing="false" onAction="#loadFilters" prefHeight="24.0" prefWidth="108.0" text="Clear Filters" />
+            <Button mnemonicParsing="false" onAction="#clear" prefHeight="24.0" prefWidth="108.0" text="Clear Filters" />
          </children>
       </VBox>
       <Label layoutX="15.0" layoutY="63.0" prefHeight="33.0" prefWidth="113.0" text="Player Name" />

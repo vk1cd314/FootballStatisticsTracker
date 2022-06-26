@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import players.PlayerAdd;
 import players.PlayerAddController;
+import players.PlayerList;
 import players.PlayerListController;
 import teams.TeamAdd;
 import teams.TeamAddController;
@@ -125,8 +126,10 @@ public class DashboardController {
         leagueController.leagueStart(this.borderPane);
     }
     public void showPlayers(){
-        PlayerListController playerListController = new PlayerListController();
-        playerListController.playerViewStart(this.borderPane);
+//        PlayerListController playerListController = new PlayerListController();
+//        playerListController.playerViewStart(this.borderPane);
+        PlayerList playerList = new PlayerList();
+        playerList.show(this.borderPane);
     }
     public void showTeamAdd(){
 //        TeamAddController teamAddController = new TeamAddController();

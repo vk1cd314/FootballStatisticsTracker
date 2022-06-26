@@ -67,6 +67,18 @@ public class PlayerListController implements Initializable {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
     }
+    public void clear(){
+        loadFilters();
+        nationList.clear();
+        teamList.clear();
+        leagueList.clear();
+        positionFilterString = "";
+        nationFilterString = "";
+        teamFilterString = "";
+        leagueFilterString = "";
+        loadPlayerData();
+        loadCards();
+    }
     public void loadFilters(){
         positionFilter.setValue(null);
         leagueFilter.setValue(null);
@@ -77,7 +89,7 @@ public class PlayerListController implements Initializable {
         teamList.clear();
         try{
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT league_name FROM leagues;";
+            String sql = "SELECT league_name FROM leagues ORDER BY league_name ASC;";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while(rs.next()){
                 this.leagueList.add(rs.getString(1));
@@ -89,7 +101,7 @@ public class PlayerListController implements Initializable {
         leagueFilter.setItems(FXCollections.observableArrayList(leagueList));
         try{
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT team_name FROM teams;";
+            String sql = "SELECT team_name FROM teams ORDER BY team_name ASC;";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while(rs.next()){
                 this.teamList.add(rs.getString(1));
@@ -101,7 +113,7 @@ public class PlayerListController implements Initializable {
         teamFilter.setItems(FXCollections.observableArrayList(teamList));
         try{
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT nationality FROM players;";
+            String sql = "SELECT nationality FROM players ORDER BY nationality ASC;";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while(rs.next()){
                 this.nationList.add(rs.getString(1));
@@ -112,6 +124,22 @@ public class PlayerListController implements Initializable {
         }
         nationFilter.setItems(FXCollections.observableArrayList(nationList));
     }
+    public void filter(){
+        if(positionFilter.getValue() != null && positionFilter.getValue().toString() != ""){
+            positionFilterString = "AND position = '"+positionFilter.getValue().toString()+"'";
+        }
+        if(leagueFilter.getValue() != null && leagueFilter.getValue() != ""){
+            leagueFilterString = "AND league = '"+leagueFilter.getValue()+"'";
+        }
+        if(nationFilter.getValue() != null && nationFilter.getValue() != ""){
+            nationFilterString = "AND nationality = '"+nationFilter.getValue()+"'";
+        }
+        if(teamFilter.getValue() != null && teamFilter.getValue() != ""){
+            teamFilterString = "AND Current_Club = '"+teamFilter.getValue()+"'";
+        }
+
+    }
+
     @FXML
     void search() {
         playerSearch.setOnKeyReleased(keyEvent -> {
@@ -140,14 +168,14 @@ public class PlayerListController implements Initializable {
 
 
 
-    public void playerViewStart(BorderPane borderPane){
-        try{
-            FXMLLoader root = new FXMLLoader(getClass().getResource("playerList.fxml"));
-            borderPane.setCenter(root.load());
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
+//    public void playerViewStart(BorderPane borderPane){
+//        try{
+//            FXMLLoader root = new FXMLLoader(getClass().getResource("playerList.fxml"));
+//            borderPane.setCenter(root.load());
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+//    }
     public void loadPlayerData(){
         try {
             Connection conn = DatabaseConnection.getStatsConnection();
@@ -162,6 +190,7 @@ public class PlayerListController implements Initializable {
         }
     }
     public void loadCards(){
+        playerListCont.getChildren().clear();
         for(int i=0; i<data.size(); i++){
             try{
                 FXMLLoader fxmlLoader = new FXMLLoader();
