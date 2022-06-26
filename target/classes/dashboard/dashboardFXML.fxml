@@ -44,20 +44,6 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
-               <children>
-                  <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../star%20(1).png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="dashboard11" alignment="CENTER" prefHeight="33.0" prefWidth="166.0" text="Favourites">
-                     <font>
-                        <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
             <HBox alignment="CENTER" onMouseClicked="#showPlayers" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -65,7 +51,7 @@
                         <Image url="@../users.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dashboard111" alignment="CENTER" prefHeight="33.0" prefWidth="164.0" text="Teams">
+                  <Label fx:id="dashboard111" alignment="CENTER" prefHeight="33.0" prefWidth="164.0" text="Player">
                      <font>
                         <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
                      </font>
@@ -86,7 +72,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" onMouseClicked="#showTeamAdd" prefHeight="55.0" prefWidth="253.0">
+            <HBox alignment="CENTER" onMouseClicked="#showTeamAdd" prefHeight="55.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -100,7 +86,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" onMouseClicked="#showLeagueAdd" prefHeight="49.0" prefWidth="253.0">
+            <HBox alignment="CENTER" onMouseClicked="#showLeagueAdd" prefHeight="49.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -114,7 +100,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" onMouseClicked="#showPlayerAdd" prefHeight="48.0" prefWidth="253.0">
+            <HBox alignment="CENTER" onMouseClicked="#showPlayerAdd" prefHeight="48.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -128,14 +114,6 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="49.0" prefWidth="253.0">
-               <children>
-                  <Label fx:id="dashboard1111" alignment="CENTER" prefHeight="33.0" prefWidth="160.0" text="My Teams">
-                     <font>
-                        <Font name="Meslo LG M Regular Nerd Font Complete" size="23.0" />
-                     </font>
-                  </Label>
-               </children></HBox>
          </children></VBox>
       <BorderPane fx:id="borderPane" layoutX="253.0" layoutY="-3.0" prefHeight="701.0" prefWidth="807.0" />
    </children>
