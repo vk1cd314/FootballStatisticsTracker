@@ -17,7 +17,7 @@ public class DatabaseConnection {
         }
         return null;
     }
-    public static Connection getStatsConnection() throws SQLException{
+    public static Connection getStatsConnection() throws SQLException {
         try{
             Class.forName("org.sqlite.JDBC");
             return DriverManager.getConnection(StatsConn);

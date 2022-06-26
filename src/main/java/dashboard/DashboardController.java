@@ -4,7 +4,9 @@ import com.football.statisticstracker.Admin;
 import com.football.statisticstracker.User;
 import com.football.statisticstracker.UserController;
 import com.football.statisticstracker.UserModel;
+import database.DatabaseConnection;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.image.ImageView;
 import leagues.LeagueAddController;
 import leagues.LeagueController;
 import javafx.fxml.FXML;
@@ -27,6 +29,10 @@ import teams.TeamAdd;
 import teams.TeamAddController;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Objects;
 
@@ -38,6 +44,9 @@ public class DashboardController {
 
     @FXML
     public BorderPane borderPane;
+
+    @FXML
+    ImageView profilePicture;
 
     public void initialize() {
         Parent root = null;
@@ -104,6 +113,20 @@ public class DashboardController {
 
     public void changeUsername(String userName) {
         username.setText(userName);
+    }
+
+    public void changeProfilePicture(String userName) throws SQLException {
+        Connection con = DatabaseConnection.getConnection();
+        String sql = "SELECT pfpURL FROM loginInfo WHERE Username = ?";
+        PreparedStatement ps =  con.prepareStatement(sql);
+        ps.setString(1, userName);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String currentFileURL = rs.getString(1);
+            System.out.println(currentFileURL);
+            Image image = new Image(currentFileURL);
+            profilePicture.setImage(image);
+        }
     }
 
     public void quit() {

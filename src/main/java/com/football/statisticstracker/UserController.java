@@ -4,13 +4,18 @@ import database.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -25,7 +30,11 @@ public class UserController {
     TextField password;
     @FXML
     Label informationUpdate;
+    @FXML
+    ImageView profilePicture;
     Admin adminCredentials;
+    File file = null;
+
 
     public void setUserData(Admin admin) {
         adminCredentials = admin;
@@ -39,12 +48,51 @@ public class UserController {
     //    }
     //}
 
-    //void
+    public void changeProfilePicture() {
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            profilePicture.setImage(image);
+            String updateProfilePicture = "UPDATE loginInfo SET pfpURL = ? WHERE Username = ?";
+            try {
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(updateProfilePicture);
+                stmt.setString(1, selectedFile.toURI().toString());
+                stmt.setString(2, adminCredentials.name);
+                stmt.execute();
+                conn.close();
+                file = selectedFile;
+                informationUpdate.setTextFill(Color.GREEN);
+                informationUpdate.setText("Profile Picture Updated");
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            informationUpdate.setTextFill(Color.RED);
+            informationUpdate.setText("Profile Picture Not Updated");
+        }
+    }
 
-    public void loadData() {
+    public void setProfilePicture(String userName) throws SQLException {
+        Connection con = DatabaseConnection.getConnection();
+        String sql = "SELECT pfpURL FROM loginInfo WHERE Username = ?";
+        PreparedStatement ps =  con.prepareStatement(sql);
+        ps.setString(1, userName);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String currentFileURL = rs.getString(1);
+            System.out.println(currentFileURL);
+            Image image = new Image(currentFileURL);
+            profilePicture.setImage(image);
+        }
+    }
+
+    public void loadData() throws SQLException {
         //username.setText(adminCredentials.name);
         changeUsername(adminCredentials.name);
         changePassword(adminCredentials.password);
+        setProfilePicture(adminCredentials.name);
         //password.setText("********");
     }
 

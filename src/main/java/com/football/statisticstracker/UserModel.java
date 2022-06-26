@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class UserModel {
     public UserController userController;
@@ -41,6 +42,8 @@ public class UserModel {
             //});
         }catch (IOException e){
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
