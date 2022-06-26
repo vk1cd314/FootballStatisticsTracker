@@ -65,8 +65,10 @@ public class UserController {
                 stmt.execute();
                 conn.close();
                 //file = selectedFile;
-                fileLocation = new SimpleStringProperty(selectedFile.toURI().toString());
-                System.out.println(fileLocation.toString());
+                //fileLocation = new SimpleStringProperty(selectedFile.toURI().toString());
+                //fileLocation.getValue();
+                fileLocation.setValue(selectedFile.toURI().toString());
+                System.out.println("Halo world" + fileLocation.getValue());
                 informationUpdate.setTextFill(Color.GREEN);
                 informationUpdate.setText("Profile Picture Updated");
             } catch(SQLException e) {

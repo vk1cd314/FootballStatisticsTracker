@@ -1,39 +1,27 @@
 package dashboard;
 
 import com.football.statisticstracker.Admin;
-import com.football.statisticstracker.User;
-import com.football.statisticstracker.UserController;
 import com.football.statisticstracker.UserModel;
 import database.DatabaseConnection;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.ImageView;
 import leagues.LeagueAddController;
 import leagues.LeagueController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import players.PlayerAdd;
-import players.PlayerAddController;
 import players.PlayerListController;
 import teams.TeamAdd;
-import teams.TeamAddController;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Objects;
 
 public class DashboardController {
@@ -196,7 +184,11 @@ public class DashboardController {
             //username = new SimpleStringProperty(newValue);
             //System.out.println(username + " baaallllalalllll ");
             //adminCredentials.name = newValue;
-            changeUsername(adminCredentials.name);
+            try {
+                changeProfilePicture(adminCredentials.name);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
     //public void setTime() {
