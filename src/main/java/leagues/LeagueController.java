@@ -1,5 +1,6 @@
 package leagues;
 
+import com.football.statisticstracker.Admin;
 import database.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class LeagueController implements Initializable {
+public class LeagueController {
 
     @FXML
     private AnchorPane anchor;
@@ -54,13 +55,14 @@ public class LeagueController implements Initializable {
     String filterLeagueLoad = "";
 
     BorderPane borderPane1;
+    Admin adminCredentials;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadLeagueData();
-        loadLeagues();
-        loadCards();
-    }
+    //@Override
+    //public void initialize(URL url, ResourceBundle resourceBundle) {
+    //    loadLeagueData();
+    //    loadLeagues();
+    //    loadCards();
+    //}
 
     @FXML
     private void search(){
@@ -112,10 +114,11 @@ public class LeagueController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("teamCard.fxml"));
                 tile = fxmlLoader.load();
-                TeamCardController teamCard = fxmlLoader.getController();
-                teamCard.setData(data.get(i), this.borderPane1);
+                TeamCardController teamCardController = fxmlLoader.getController();
+                teamCardController.adminCredentials = adminCredentials;
+                System.out.println("In leagueController " + adminCredentials.name + " " + adminCredentials.password);
+                teamCardController.setData(data.get(i), this.borderPane1);
                 teamListCont.getChildren().add(tile);
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -141,14 +144,16 @@ public class LeagueController implements Initializable {
         }
     }
 
-    public void leagueStart(BorderPane borderPane) {
-        try {
-            //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
-            FXMLLoader root = new FXMLLoader(getClass().getResource("leagueFXML.fxml"));
-            borderPane.setCenter(root.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void leagueStart(BorderPane borderPane, Admin admin) {
+        //adminCredentials = admin;
+        //System.out.println(adminCredentials.name + " " + adminCredentials.password);
+        //try {
+        //    //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
+        //    FXMLLoader root = new FXMLLoader(getClass().getResource("leagueFXML.fxml"));
+        //    borderPane.setCenter(root.load());
+        //} catch (IOException e) {
+        //    e.printStackTrace();
+        //}
     }
 
     public void filter(){

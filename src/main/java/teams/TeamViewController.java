@@ -1,6 +1,9 @@
 package teams;
 
+import com.football.statisticstracker.Admin;
 import database.DatabaseConnection;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import players.Player;
@@ -32,7 +36,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class TeamViewController implements Initializable {
+public class TeamViewController {
     @FXML
     private Button cross;
 
@@ -71,16 +75,21 @@ public class TeamViewController implements Initializable {
     @FXML
     private Label cleanSheets;
 
+    @FXML
+    private Button edit;
+    @FXML
+    private Button delete;
+    Admin adminCredentials;
     HBox tile = null;
 
     private final List<Player> data = new ArrayList<>();
 
     Team team;
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
-//        if(team == null) System.out.print("eh?");
-//        load();
-    }
+//    @Override
+//    public void initialize(URL url, ResourceBundle rb){
+////        if(team == null) System.out.print("eh?");
+////        load();
+//    }
 
     public void load(Team team){
         this.team = team;
@@ -97,6 +106,25 @@ public class TeamViewController implements Initializable {
         goalsConc.setText(String.valueOf(team.goalsConceded));
         goalDiff.setText(String.valueOf(team.goalsConceded));
         points.setText(String.valueOf(team.points));
+        System.out.println("In teamViewController " + adminCredentials.name + " " + adminCredentials.password);
+        if (!adminCredentials.isAdmin) {
+            edit.setStyle("-fx-background-color: TRANSPARENT; ");
+            delete.setStyle("-fx-background-color: TRANSPARENT; ");
+            edit.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            delete.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            edit.setTextFill(Color.TRANSPARENT);
+            delete.setTextFill(Color.TRANSPARENT);
+        }
     }
 
     public void loadPlayerData(Team team){

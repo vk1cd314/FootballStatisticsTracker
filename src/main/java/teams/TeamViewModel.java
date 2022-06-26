@@ -1,5 +1,6 @@
 package teams;
 
+import com.football.statisticstracker.Admin;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class TeamViewModel {
-    public void show(Team team){
+    public void show(Team team, Admin admin){
         teamViewController = new TeamViewController();
         try{
             Stage stage = new Stage();
@@ -20,6 +21,8 @@ public class TeamViewModel {
             stage.setScene(scene);
             stage.show();
             teamViewController = loader.getController();
+            teamViewController.adminCredentials = admin;
+            System.out.println("In teamViewModel " + admin.name + " " + admin.password);
             teamViewController.load(team);
 //            teamViewController.loadCards();
         }catch (IOException e){

@@ -1,5 +1,6 @@
 package teams;
 
+import com.football.statisticstracker.Admin;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TeamCardController implements Initializable {
+public class TeamCardController {
 
     @FXML
     private Label leaguePosition;
@@ -38,6 +39,7 @@ public class TeamCardController implements Initializable {
 
     BorderPane borderPane;
 
+    public Admin adminCredentials;
 
     Team team;
 
@@ -60,17 +62,17 @@ public class TeamCardController implements Initializable {
     public void showTeamData(){
         //System.out.println(team.name);
         TeamViewModel teamViewModel = new TeamViewModel();
-        teamViewModel.show(team);
-
+        System.out.println("In teamCardController " + adminCredentials.name + " " + adminCredentials.password);
+        teamViewModel.show(team, adminCredentials);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
+    //@Override
+    //public void initialize(URL url, ResourceBundle rb){
         //leaguePosition.setText("baal");
 //        teamName.setText(this.team.getName());
 //        matches.setText(String.valueOf(this.team.getMatchesPlayed()));
 //        won.setText(String.valueOf(this.team.getWins()));
 //        lost.setText(String.valueOf(this.team.getLosses()));
 //        points.setText(String.valueOf(this.team.getPoints()));
-    }
+//    }
 }

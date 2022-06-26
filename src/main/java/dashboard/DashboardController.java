@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import leagues.LeagueModel;
 import players.PlayerAdd;
 import players.PlayerList;
 import players.PlayerListController;
@@ -135,9 +136,12 @@ public class DashboardController {
     }
 
     public void showLeague() {
-        LeagueController leagueController = new LeagueController();
-        //System.out.println(borderPane);
-        leagueController.leagueStart(this.borderPane);
+        //LeagueController leagueController = new LeagueController();
+        ////System.out.println(borderPane);
+        //leagueController.leagueStart(this.borderPane, adminCredentials);
+        LeagueModel leagueModel = new LeagueModel();
+        System.out.println("In dash " + adminCredentials.name + " " + adminCredentials.password);
+        leagueModel.show(this.borderPane, adminCredentials);
     }
     public void showPlayers(){
         PlayerList playerList = new PlayerList();
