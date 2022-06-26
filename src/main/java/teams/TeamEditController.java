@@ -2,12 +2,15 @@ package teams;
 
 import database.DatabaseConnection;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Optional;
 
 public class TeamEditController {
 
@@ -63,29 +66,35 @@ public class TeamEditController {
         cleanSheetsBox.setText(String.valueOf(team.cleanSheet));
     }
     public void change(){
-        try {
-            Connection con = DatabaseConnection.getStatsConnection();
-            String stmt  = "UPDATE teams SET team_name = '" + teamNamebox.getText() +
-                    "'  , league_position = '" + positionBox.getText() +
-                    "' , matches_played = '" +matchesPldbox.getText()+
-                    "' , wins = '" + winsBox.getText() +
-                    "' , draws = '" + drawsBox.getText() +
-                    "' , losses = '" + lossesBox.getText() +
-                    "' , goals_scored = '" + goalsForBox.getText() +
-                    "' , goals_conceded = '" + goalsAgainstBox.getText()+
-                    "' , goal_difference = '" + goalDiffBox.getText()+
-                    "' , clean_sheets = '" +cleanSheetsBox.getText()+
-                    "' WHERE team_name = '" +team.name+ "'  ;";
-            PreparedStatement prep = con.prepareStatement(stmt);
-            prep.executeUpdate();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try{
-            quit();
-        }catch (IOException e){
-            e.printStackTrace();
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Confirm Changes");
+        a.setContentText("Are you sure you want to make these changes?");
+        Optional<ButtonType> result = a.showAndWait();
+        if(result.get() == ButtonType.OK) {
+            try {
+                Connection con = DatabaseConnection.getStatsConnection();
+                String stmt = "UPDATE teams SET team_name = '" + teamNamebox.getText() +
+                        "'  , league_position = '" + positionBox.getText() +
+                        "' , matches_played = '" + matchesPldbox.getText() +
+                        "' , wins = '" + winsBox.getText() +
+                        "' , draws = '" + drawsBox.getText() +
+                        "' , losses = '" + lossesBox.getText() +
+                        "' , goals_scored = '" + goalsForBox.getText() +
+                        "' , goals_conceded = '" + goalsAgainstBox.getText() +
+                        "' , goal_difference = '" + goalDiffBox.getText() +
+                        "' , clean_sheets = '" + cleanSheetsBox.getText() +
+                        "' WHERE team_name = '" + team.name + "'  ;";
+                PreparedStatement prep = con.prepareStatement(stmt);
+                prep.executeUpdate();
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                quit();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

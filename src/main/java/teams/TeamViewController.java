@@ -6,7 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.image.Image;
@@ -27,6 +29,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TeamViewController implements Initializable {
@@ -135,18 +138,24 @@ public class TeamViewController implements Initializable {
         teamEdit.show(team);
     }
     public void deleteTeam(){
-        try {
-            Connection con = DatabaseConnection.getStatsConnection();
-            String stmt  = "DELETE FROM teams WHERE team_name = '"+team.name+"';";
-            PreparedStatement prep = con.prepareStatement(stmt);
-            prep.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try{
-            quit();
-        }catch (IOException e){
-            e.printStackTrace();
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Confirm Deletion");
+        a.setContentText("Are you sure you want to delete this team?");
+        Optional<ButtonType> result = a.showAndWait();
+        if(result.get() == ButtonType.OK) {
+            try {
+                Connection con = DatabaseConnection.getStatsConnection();
+                String stmt = "DELETE FROM teams WHERE team_name = '" + team.name + "';";
+                PreparedStatement prep = con.prepareStatement(stmt);
+                prep.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                quit();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
     public void quit() throws IOException {
