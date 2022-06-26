@@ -92,8 +92,7 @@ public class LeagueController implements Initializable {
         });
     }
     public void loadLeagues(){
-        try
-        {
+        try {
             Connection con = DatabaseConnection.getStatsConnection();
             String sql = "SELECT league_name FROM leagues;";
             ResultSet rs = con.createStatement().executeQuery(sql);
@@ -106,7 +105,8 @@ public class LeagueController implements Initializable {
         }
         leagueComboBox.setItems(FXCollections.observableArrayList(leagueList));
     }
-    public void loadCards(){
+    public void loadCards() {
+        teamListCont.getChildren().clear();
         for (int i = 0; i < data.size(); i++) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -122,6 +122,7 @@ public class LeagueController implements Initializable {
         }
     }
     public void loadLeagueData() {
+        data.clear();
         try {
             Connection conn = DatabaseConnection.getStatsConnection();
             assert conn != null;
@@ -154,20 +155,24 @@ public class LeagueController implements Initializable {
         filterLeagueLoad = "WHERE league = ";
         filterLeague = "AND league = ";
         String lg = "'"+leagueComboBox.getValue()+"'";
+        //System.out.println(leagueComboBox.getValue());
         filterLeague += lg;
         filterLeagueLoad += lg;
         leagueLabel.setText(leagueComboBox.getValue());
         loadLeagueData();
+        loadCards();
     }
     public void clear(){
         teamSearch.clear();
-        leagueComboBox.setValue("");
+        leagueComboBox.setValue(null);
         leagueComboBox.setPromptText("Select League");
         filterLeague = "";
         filterLeagueLoad = "";
     }
     public void reload(){
-        loadLeagueData();
+        //filter();
+        //loadLeagueData();
+        loadCards();
     }
     public void showAddMatch(){
         Match match = new Match();
