@@ -50,8 +50,8 @@ public class LoginController implements Initializable {
             if (this.loginModel.isLogin(this.loginUsername.getText(), this.loginPassword.getText(), this.choice.getValue().toString())) {
                 quit();
                 switch (this.choice.getValue().toString()) {
-                    case "Admin" -> adminLogin();
-                    case "User" -> userLogin();
+                    case "Admin" -> adminLogin(true);
+                    case "User" -> adminLogin(false);
                 }
             } else {
                 this.loginStatus.setText("Wrong Credentials");
@@ -62,14 +62,23 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void adminLogin() throws IOException {
+    public void adminLogin(boolean isAdmin) throws IOException {
         //DashboardController dashboardController = new DashboardController();
         Admin adminCredentials = new Admin(loginUsername.getText(), loginPassword.getText());
         //dashboardController.dashboardStart(adminCredentials);
         //dashboardController.changeUsername(adminCredentials.name);
         DashboardModel dashboardModel = new DashboardModel();
+        adminCredentials.isAdmin = isAdmin;
         dashboardModel.start(adminCredentials);
     }
+    //public void userLogin() throws IOException {
+    //    Admin adminCredentials = new Admin(loginUsername.getText(), loginPassword.getText());
+    //    //dashboardController.dashboardStart(adminCredentials);
+    //    //dashboardController.changeUsername(adminCredentials.name);
+    //    DashboardModel dashboardModel = new DashboardModel();
+    //    adminCredentials.isAdmin = false;
+    //    dashboardModel.start(adminCredentials);
+    //}
 
     public void signUp() {
         try {
@@ -119,9 +128,6 @@ public class LoginController implements Initializable {
         stage.show();
     }
 
-    public void userLogin() {
-        System.out.println("In User");
-    }
 
     public void quit() {
         Stage stage = (Stage) this.quitButton.getScene().getWindow();

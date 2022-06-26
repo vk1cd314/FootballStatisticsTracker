@@ -71,6 +71,7 @@ public class UserController {
                 System.out.println("Halo world" + fileLocation.getValue());
                 informationUpdate.setTextFill(Color.GREEN);
                 informationUpdate.setText("Profile Picture Updated");
+                conn.close();
             } catch(SQLException e) {
                 e.printStackTrace();
             }
@@ -92,6 +93,7 @@ public class UserController {
             Image image = new Image(currentFileURL);
             profilePicture.setImage(image);
         }
+        con.close();
     }
 
     public void loadData() throws SQLException {

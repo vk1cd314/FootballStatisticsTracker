@@ -116,6 +116,7 @@ public class DashboardController {
             Image image = new Image(currentFileURL);
             profilePicture.setImage(image);
         }
+        con.close();
     }
 
     public void quit() {

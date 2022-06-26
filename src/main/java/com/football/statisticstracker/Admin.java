@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Admin {
-    public boolean isAdmin = true;
+    public boolean isAdmin;
     public String name, password;
     public Admin(String name, String pass){
         this.name = name;

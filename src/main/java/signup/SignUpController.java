@@ -23,7 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class SignUpController implements Initializable {
+public class SignUpController {
     SignUpModel signUpModel = new SignUpModel();
     private double xShift = 0;
     private double yShift = 0;
@@ -131,8 +131,8 @@ public class SignUpController implements Initializable {
         LoginController.loginStart(new Stage());
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
+    //@Override
+    //public void initialize(URL url, ResourceBundle resourceBundle) {
+    //}
 
 }
