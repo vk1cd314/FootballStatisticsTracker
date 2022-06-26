@@ -89,9 +89,11 @@ public class UserController {
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             String currentFileURL = rs.getString(1);
-            System.out.println(currentFileURL);
-            Image image = new Image(currentFileURL);
-            profilePicture.setImage(image);
+            //System.out.println("I am a barbie girl"+currentFileURL);
+            if(!currentFileURL.equals(new String("noki"))) {
+                Image image = new Image(currentFileURL);
+                profilePicture.setImage(image);
+            }
         }
         con.close();
     }
