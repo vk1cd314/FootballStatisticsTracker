@@ -164,10 +164,12 @@ public class LeagueController implements Initializable {
     }
     public void clear(){
         teamSearch.clear();
-        leagueComboBox.setValue(null);
+        leagueLabel.setText("All Teams");
         leagueComboBox.setPromptText("Select League");
         filterLeague = "";
         filterLeagueLoad = "";
+        loadLeagueData();
+        loadCards();
     }
     public void reload(){
         //filter();
