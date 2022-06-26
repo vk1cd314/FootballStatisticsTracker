@@ -13,8 +13,15 @@
    <children>
       <VBox prefHeight="694.0" prefWidth="253.0" style="-fx-background-color: #8f4f00;">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="48.0" prefWidth="253.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="122.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children></HBox>
             <HBox alignment="CENTER" onMouseClicked="#showDashboard" prefHeight="45.0" prefWidth="253.0" styleClass="dashboard-items" stylesheets="@dashboardStylesheet.css">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
@@ -84,13 +91,34 @@
                   </Label>
                </children>
             </HBox>
+            <HBox onMouseClicked="#showTeamAdd" prefHeight="49.0" prefWidth="253.0">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="243.0" text="Add team">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+               </children></HBox>
+            <HBox onMouseClicked="#showLeagueAdd" prefHeight="55.0" prefWidth="253.0">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="243.0" text="Add league">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox onMouseClicked="#showPlayerAdd" prefHeight="49.0" prefWidth="253.0">
+               <children>
+                  <Label onMousePressed="#showPlayerAdd" prefHeight="47.0" prefWidth="243.0" text="Add player">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children></VBox>
-      <ImageView fitHeight="122.0" fitWidth="107.0" layoutX="76.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../user%20(1).png" />
-         </image>
-      </ImageView>
-      <Label alignment="CENTER" layoutX="-2.0" layoutY="154.0" prefHeight="36.0" prefWidth="247.0" text="Generic Username">
+      <Label alignment="CENTER" layoutX="14.0" layoutY="110.0" prefHeight="36.0" prefWidth="247.0" text="Generic Username">
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="19.0" />
          </font>

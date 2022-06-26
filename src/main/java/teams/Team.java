@@ -5,22 +5,27 @@ import players.Player;
 import java.util.ArrayList;
 
 public class Team {
-    String name;
-    int position;
-    int matchesPlayed;
-    int wins;
-    int draws;
-    int losses;
-    int goalsScored;
-    int goalsConceded;
-    int goalDiff;
-    int cleanSheet;
-    int points;
+    public String name;
+    public String common_name;
+
+    public String league;
+
+    public int position;
+    public int matchesPlayed;
+    public int wins;
+    public int draws;
+    public int losses;
+    public int goalsScored;
+    public int goalsConceded;
+    public int goalDiff;
+    public int cleanSheet;
+    public int points;
     ArrayList<Player> players = new ArrayList<>();
 
-    public Team(String name, int position, int mp, int w, int d, int l, int gs, int gc, int gd, int cs) {
+    public Team(String name, String league, int mp, int w, int d, int l, int gs, int gc, int gd, int cs, String common_name, int position) {
         this.name = name;
-        this.position = position;
+        this.common_name = common_name;
+        this.league = league;
         this.matchesPlayed = mp;
         this.wins = w;
         this.losses = l;
@@ -30,6 +35,7 @@ public class Team {
         this.goalDiff = gd;
         this.cleanSheet = cs;
         this.points = wins * 3 + draws;
+        this.position = position;
     }
 
     public void addPlayer(Player x) {

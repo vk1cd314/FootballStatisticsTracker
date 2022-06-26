@@ -33,4 +33,8 @@ public class PlayerCardController implements Initializable {
         playerPos.setText(player.position);
         teamName.setText(player.club);
     }
+    public void showPlayerData(){
+        PlayerView playerView = new PlayerView();
+        playerView.show(this.player);
+    }
 }
