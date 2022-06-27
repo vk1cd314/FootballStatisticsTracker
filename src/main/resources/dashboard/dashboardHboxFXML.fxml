@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardHboxController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardHboxController">
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="807.0" styleClass="dashboard-back" stylesheets="@dashboardStylesheet.css">
          <children>
@@ -41,7 +41,12 @@
       </AnchorPane>
       <ScrollPane prefHeight="626.0" prefWidth="807.0">
          <content>
-            <HBox fx:id="tilesContainer" prefHeight="728.0" prefWidth="803.0" />
+            <VBox prefHeight="621.0" prefWidth="806.0">
+               <children>
+                  <HBox fx:id="tilesContainer" prefHeight="296.0" prefWidth="806.0" />
+                  <HBox prefHeight="312.0" prefWidth="806.0" />
+               </children>
+            </VBox>
          </content>
       </ScrollPane>
    </children>
