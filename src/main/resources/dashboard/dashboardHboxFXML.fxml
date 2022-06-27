@@ -44,7 +44,7 @@
             <VBox prefHeight="621.0" prefWidth="806.0">
                <children>
                   <HBox fx:id="tilesContainer" prefHeight="296.0" prefWidth="806.0" />
-                  <HBox prefHeight="312.0" prefWidth="806.0" />
+                  <HBox fx:id="tilesContainerPlayer" prefHeight="312.0" prefWidth="806.0" />
                </children>
             </VBox>
          </content>

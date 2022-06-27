@@ -1,12 +1,9 @@
 package dashboard;
 
-import com.football.statisticstracker.TileModel;
 import database.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,7 +16,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class DashboardHboxController {
     @FXML
@@ -27,6 +23,8 @@ public class DashboardHboxController {
     @FXML
     private HBox tilesContainer;
 
+    @FXML
+    private HBox tilesContainerPlayer;
     //Team team;
     ArrayList <Team> teams = new ArrayList<>();
     //incase you want players too
@@ -39,7 +37,7 @@ public class DashboardHboxController {
         //    tile = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tileFXML.fxml")));
         //
         //    this.tilesContainer.getChildren().add(tile);
-        //    //tile2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile2.fxml")));
+        //    //tile2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tilePlayer.fxml")));
         //} catch (IOException e) {
         //    e.printStackTrace();
         //}
@@ -49,15 +47,27 @@ public class DashboardHboxController {
         //System.out.println("Gets Here");
         //this.tilesContainer.getChildren().add(tile2);
         //System.out.println("Gets Here");
-        TileModel tileModel = new TileModel();
+        loadTeamData();
+        loadPlayerData();
+        //TileModel tileModel = new TileModel();
+        for (int i = 0; i < 3; ++i) {
+            TileModel tileModel = new TileModel();
+            tilesContainer.getChildren().add(tileModel.showTeam(teams.get(i)));
+        }
+        System.out.println(players.size());
+        for (int i = 0; i < 3; ++i) {
+            TileModel tileModel = new TileModel();
+            tilesContainerPlayer.getChildren().add(tileModel.showPlayer(players.get(i)));
+        }
         //tileModel.showTeam()
+
     }
 
     public void dashboardStart(BorderPane borderPane) {
         //HBox tile1 = null, tile2  = null;
         //try {
         //    tile1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tileFXML.fxml")));
-        //    tile2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile2.fxml")));
+        //    tile2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tilePlayer.fxml")));
         //} catch (IOException e) {
         //    e.printStackTrace();
         //}
