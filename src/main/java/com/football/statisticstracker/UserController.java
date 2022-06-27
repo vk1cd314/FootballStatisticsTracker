@@ -4,6 +4,8 @@ import database.DatabaseConnection;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -43,12 +45,60 @@ public class UserController {
     ComboBox<String> userComboBox;
     @FXML
     ComboBox<String> deleteUserBox;
+    @FXML
+    Label typeOfUser;
+    @FXML
+    Button makeAdminButton;
+    @FXML
+    Button deleteUserButton;
+    @FXML
+    Label makeAdmin;
+    @FXML
+    Label deleteUser;
     ArrayList<String> users = new ArrayList<>();
     //File file = null;
     public StringProperty fileLocation = new SimpleStringProperty("");
 
     public void setUserData(Admin admin) {
         adminCredentials = admin;
+        if (!adminCredentials.isAdmin) {
+            typeOfUser.setText("User");
+            userComboBox.setStyle("-fx-background-color: TRANSPARENT; ");
+            userComboBox.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            userComboBox.setDisable(true);
+            deleteUserBox.setStyle("-fx-background-color: TRANSPARENT; ");
+            deleteUserBox.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            deleteUserBox.setDisable(true);
+            makeAdmin.setText("");
+            deleteUser.setText("");
+            makeAdminButton.setStyle("-fx-background-color: TRANSPARENT; ");
+            makeAdminButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            makeAdminButton.setTextFill(Color.TRANSPARENT);
+            deleteUserButton.setStyle("-fx-background-color: TRANSPARENT; ");
+            deleteUserButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            deleteUserButton.setTextFill(Color.TRANSPARENT);
+            //userComboBox.setFill
+        }
     }
     //public void show(BorderPane borderPane) {
     //    try {
@@ -99,7 +149,7 @@ public class UserController {
         while (rs.next()) {
             String currentFileURL = rs.getString(1);
             //System.out.println("I am a barbie girl"+currentFileURL);
-            if(!currentFileURL.equals(new String("noki"))) {
+            if(!currentFileURL.equals(new String("Hello"))) {
                 Image image = new Image(currentFileURL);
                 profilePicture.setImage(image);
             }

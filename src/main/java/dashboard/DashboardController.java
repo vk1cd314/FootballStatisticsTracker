@@ -114,7 +114,7 @@ public class DashboardController {
         while (rs.next()) {
             String currentFileURL = rs.getString(1);
             //System.out.println("noki had a Gigantic dick eyaeyayo"+currentFileURL);
-            if(!currentFileURL.equals(new String("noki"))) {
+            if(!currentFileURL.equals(new String("Hello"))) {
                 Image image = new Image(currentFileURL);
                 profilePicture.setImage(image);
             }
