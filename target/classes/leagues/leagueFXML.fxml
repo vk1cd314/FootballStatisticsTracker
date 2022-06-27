@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.LeagueController">
    <children>
-      <TextField fx:id="teamSearch" layoutX="180.0" layoutY="12.0" onKeyReleased="#search" prefHeight="28.0" prefWidth="434.0" promptText="Search Teams" />
+      <TextField fx:id="teamSearch" layoutX="180.0" layoutY="12.0" onKeyReleased="#search" prefHeight="28.0" prefWidth="434.0" promptText="Search Teams" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
       <Label fx:id="leagueLabel" layoutX="4.0" layoutY="15.0" prefHeight="54.0" prefWidth="165.0" text="All Teams">
          <font>
             <Font name="Meslo LG M Regular Nerd Font Complete" size="22.0" />
@@ -26,16 +26,33 @@
          <content>
             <VBox fx:id="teamListCont" prefHeight="629.0" prefWidth="809.0" />
          </content></ScrollPane>
-      <Button fx:id="addMatch" layoutX="705.0" layoutY="48.0" mnemonicParsing="false" onAction="#showAddMatch" text="Add Match" />
-      <ComboBox fx:id="leagueComboBox" layoutX="180.0" layoutY="48.0" onAction="#filter" prefHeight="24.0" prefWidth="434.0" promptText="Select League" />
-      <Button layoutX="629.0" layoutY="48.0" mnemonicParsing="false" onAction="#reload" text="refresh" />
-      <Button layoutX="629.0" layoutY="14.0" mnemonicParsing="false" onAction="#clear" text="clear" />
-      <Label layoutX="4.0" layoutY="80.0" prefHeight="36.0" prefWidth="58.0" text="Position" />
-      <Label layoutX="113.0" layoutY="86.0" prefHeight="24.0" prefWidth="112.0" text="Team Name" />
-      <Label layoutX="311.0" layoutY="78.0" prefHeight="36.0" prefWidth="65.0" text="matches" />
-      <Label layoutX="375.0" layoutY="82.0" prefHeight="28.0" prefWidth="58.0" text="won" />
-      <Label layoutX="482.0" layoutY="82.0" prefHeight="28.0" prefWidth="58.0" text="lost" />
-      <Label layoutX="424.0" layoutY="82.0" prefHeight="28.0" prefWidth="58.0" text="drawn" />
-      <Label layoutX="520.0" layoutY="84.0" prefHeight="24.0" prefWidth="65.0" text="points" />
+      <Button fx:id="addMatch" layoutX="705.0" layoutY="48.0" mnemonicParsing="false" onAction="#showAddMatch" style="-fx-background-color: #2a81b0;" stylesheets="@teamCardStyleSheet.css" text="Add Match" />
+      <ComboBox fx:id="leagueComboBox" layoutX="180.0" layoutY="48.0" onAction="#filter" prefHeight="24.0" prefWidth="434.0" promptText="Select League" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
+      <Button layoutX="629.0" layoutY="48.0" mnemonicParsing="false" onAction="#reload" style="-fx-background-color: #cc8a0e;" stylesheets="@teamCardStyleSheet.css" text="refresh" />
+      <Button layoutX="629.0" layoutY="14.0" mnemonicParsing="false" onAction="#clear" style="-fx-background-color: #32ba4b;" stylesheets="@teamCardStyleSheet.css" text="clear" />
+      <Label alignment="CENTER" layoutX="4.0" layoutY="80.0" prefHeight="36.0" prefWidth="74.0" text="Position">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Label>
+      <Label alignment="CENTER" layoutX="126.0" layoutY="86.0" prefHeight="24.0" prefWidth="112.0" text="Team Name">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Label>
+      <Label layoutX="326.0" layoutY="79.0" prefHeight="36.0" prefWidth="65.0" text="Matches">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Label>
+      <Label alignment="CENTER" layoutX="403.0" layoutY="84.0" prefHeight="28.0" prefWidth="58.0" text="Won">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Label>
+      <Label alignment="CENTER" layoutX="478.0" layoutY="85.0" prefHeight="28.0" prefWidth="58.0" text="Lost">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Label>
+      <Label alignment="CENTER" layoutX="547.0" layoutY="86.0" prefHeight="24.0" prefWidth="65.0" text="Points">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Label>
    </children>
 </AnchorPane>

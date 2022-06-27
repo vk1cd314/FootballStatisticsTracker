@@ -9,33 +9,33 @@
 <AnchorPane prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teams.TeamViewController">
    <children>
       <Label fx:id="teamName" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="306.0" text="Team Name" />
-      <Button fx:id="cross" layoutX="742.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" text="Close" />
-      <Button fx:id="edit" layoutX="687.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#editTeam" text="Edit" />
+      <Button fx:id="cross" layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: #ad4b4b;" stylesheets="@teamViewStyleSheet.css" text="Exit" />
+      <Button fx:id="edit" layoutX="691.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#editTeam" style="-fx-background-color: #4b9aad;" stylesheets="@teamViewStyleSheet.css" text="Edit" />
       <VBox layoutY="69.0" prefHeight="625.0" prefWidth="814.0">
          <children>
             <AnchorPane prefHeight="636.0" prefWidth="804.0">
                <children>
-                  <Label layoutX="14.0" layoutY="6.0" prefHeight="52.0" prefWidth="116.0" text="League Position" />
-                  <Label fx:id="leaguePosition" layoutX="130.0" layoutY="5.0" prefHeight="55.0" prefWidth="100.0" text="pos" />
-                  <Label layoutX="244.0" layoutY="6.0" prefHeight="53.0" prefWidth="94.0" text="Points" />
-                  <Label fx:id="points" layoutX="353.0" layoutY="7.0" prefHeight="52.0" prefWidth="99.0" text="pts" />
-                  <Label layoutX="487.0" layoutY="7.0" prefHeight="50.0" prefWidth="74.0" text="Played" />
-                  <Label fx:id="matchesPlayed" layoutX="604.0" layoutY="14.0" prefHeight="37.0" prefWidth="105.0" text="pld" />
-                  <Label layoutX="14.0" layoutY="64.0" prefHeight="53.0" prefWidth="84.0" text="Wins" />
-                  <Label layoutX="244.0" layoutY="64.0" prefHeight="53.0" prefWidth="84.0" text="Draws" />
-                  <Label layoutX="487.0" layoutY="125.0" prefHeight="53.0" prefWidth="84.0" text="Goal Diff" />
-                  <Label layoutX="487.0" layoutY="64.0" prefHeight="53.0" prefWidth="84.0" text="Losses" />
-                  <Label layoutX="238.0" layoutY="125.0" prefHeight="53.0" prefWidth="114.0" text="Goal Conceeded" />
-                  <Label layoutX="14.0" layoutY="125.0" prefHeight="53.0" prefWidth="84.0" text="Goal Scored" />
-                  <Label layoutX="14.0" layoutY="179.0" prefHeight="45.0" prefWidth="97.0" text="Clean Sheets" />
-                  <Label fx:id="wins" layoutX="130.0" layoutY="68.0" prefHeight="45.0" prefWidth="54.0" text="wns" />
-                  <Label fx:id="draws" layoutX="352.0" layoutY="68.0" prefHeight="45.0" prefWidth="85.0" text="drs" />
-                  <Label fx:id="losses" layoutX="595.0" layoutY="68.0" prefHeight="45.0" prefWidth="71.0" text="ls" />
-                  <Label fx:id="goalsScored" layoutX="129.0" layoutY="135.0" prefHeight="34.0" prefWidth="82.0" text="Label" />
-                  <Label fx:id="goalsConc" layoutX="353.0" layoutY="133.0" prefHeight="37.0" prefWidth="84.0" text="Label" />
-                  <Label fx:id="goalDiff" layoutX="582.0" layoutY="130.0" prefHeight="45.0" prefWidth="68.0" text="Label" />
-                  <Label fx:id="cleanSheets" layoutX="130.0" layoutY="179.0" prefHeight="45.0" prefWidth="79.0" text="Label" />
-                  <Label layoutX="14.0" layoutY="221.0" prefHeight="52.0" prefWidth="170.0" text="Players" />
+                  <Label layoutX="14.0" layoutY="6.0" prefHeight="52.0" prefWidth="116.0" text="League Position:" />
+                  <Label fx:id="leaguePosition" alignment="CENTER" layoutX="130.0" layoutY="16.0" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #e3e1e1;" text="pos" />
+                  <Label layoutX="244.0" layoutY="6.0" prefHeight="53.0" prefWidth="94.0" text="Points:" />
+                  <Label fx:id="points" alignment="CENTER" layoutX="327.0" layoutY="15.0" prefHeight="37.0" prefWidth="99.0" style="-fx-background-color: #e3e1e1;" text="pts" />
+                  <Label layoutX="487.0" layoutY="7.0" prefHeight="50.0" prefWidth="74.0" text="Played:" />
+                  <Label fx:id="matchesPlayed" alignment="CENTER" layoutX="570.0" layoutY="14.0" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: #e3e1e1;" text="pld" />
+                  <Label layoutX="14.0" layoutY="64.0" prefHeight="53.0" prefWidth="84.0" text="Wins:" />
+                  <Label layoutX="244.0" layoutY="64.0" prefHeight="53.0" prefWidth="84.0" text="Draws:" />
+                  <Label layoutX="487.0" layoutY="125.0" prefHeight="53.0" prefWidth="84.0" text="Goal Diff:" />
+                  <Label layoutX="487.0" layoutY="64.0" prefHeight="53.0" prefWidth="84.0" text="Losses:" />
+                  <Label layoutX="238.0" layoutY="125.0" prefHeight="53.0" prefWidth="114.0" text="Goal Conceeded:" />
+                  <Label layoutX="14.0" layoutY="125.0" prefHeight="53.0" prefWidth="84.0" text="Goal Scored:" />
+                  <Label layoutX="14.0" layoutY="179.0" prefHeight="45.0" prefWidth="97.0" text="Clean Sheets:" />
+                  <Label fx:id="wins" alignment="CENTER" layoutX="130.0" layoutY="75.0" prefHeight="34.0" prefWidth="54.0" style="-fx-background-color: #e3e1e1;" text="wns" />
+                  <Label fx:id="draws" alignment="CENTER" layoutX="331.0" layoutY="73.0" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: #e3e1e1;" text="drs" />
+                  <Label fx:id="losses" alignment="CENTER" layoutX="576.0" layoutY="74.0" prefHeight="37.0" prefWidth="71.0" style="-fx-background-color: #e3e1e1;" text="ls" />
+                  <Label fx:id="goalsScored" alignment="CENTER" layoutX="129.0" layoutY="135.0" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: #e3e1e1;" text="Label" />
+                  <Label fx:id="goalsConc" alignment="CENTER" layoutX="357.0" layoutY="133.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #e3e1e1;" text="Label" />
+                  <Label fx:id="goalDiff" alignment="CENTER" layoutX="572.0" layoutY="138.0" prefHeight="34.0" prefWidth="68.0" style="-fx-background-color: #e3e1e1;" text="Label" />
+                  <Label fx:id="cleanSheets" alignment="CENTER" layoutX="130.0" layoutY="185.0" prefHeight="37.0" prefWidth="79.0" style="-fx-background-color: #e3e1e1;" text="Label" />
+                  <Label layoutX="14.0" layoutY="221.0" prefHeight="52.0" prefWidth="170.0" text="Players:" />
                   <ScrollPane layoutX="14.0" layoutY="270.0" prefHeight="342.0" prefWidth="790.0">
                      <content>
                         <VBox fx:id="playerListContainer" prefHeight="339.0" prefWidth="791.0" />
@@ -45,6 +45,6 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Button fx:id="delete" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#deleteTeam" text="delete" />
+      <Button fx:id="delete" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#deleteTeam" style="-fx-background-color: #ad4b4b;" stylesheets="@teamViewStyleSheet.css" text="delete" />
    </children>
 </AnchorPane>

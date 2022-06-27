@@ -4,9 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -22,16 +19,6 @@
                </font>
             </Label>
             <Separator layoutX="149.0" layoutY="12.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="21.0" />
-            <TextField layoutX="170.0" layoutY="23.0" prefHeight="30.0" prefWidth="377.0" promptText="Search" style="-fx-background-radius: 30;">
-               <font>
-                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
-               </font>
-            </TextField>
-            <ImageView fitHeight="51.0" fitWidth="38.0" layoutX="552.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../search.png" />
-               </image>
-            </ImageView>
             <Button fx:id="cross" alignment="CENTER" layoutX="757.0" layoutY="-3.0" minWidth="51.0" mnemonicParsing="false" onAction="#quit" prefHeight="36.0" prefWidth="51.0" styleClass="quit" stylesheets="@dashboardStylesheet.css" text="X" textAlignment="CENTER">
                <font>
                   <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />

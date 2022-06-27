@@ -17,17 +17,17 @@
       <Label layoutX="161.0" layoutY="121.0" prefHeight="24.0" prefWidth="95.0" text="Goals against" />
       <Label layoutX="357.0" layoutY="121.0" prefHeight="24.0" prefWidth="111.0" text="Goals difference" />
       <Label layoutX="14.0" layoutY="176.0" prefHeight="24.0" prefWidth="95.0" text="Clean Sheets" />
-      <TextField fx:id="teamNamebox" layoutX="117.0" layoutY="30.0" prefHeight="24.0" prefWidth="225.0" />
-      <Button fx:id="commitButton" layoutX="235.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#change" text="Commit Changes" />
-      <Button fx:id="cancelButton" layoutX="269.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#quit" text="Cancel" />
-      <TextField fx:id="positionBox" layoutX="473.0" layoutY="30.0" prefHeight="24.0" prefWidth="111.0" />
-      <TextField fx:id="goalDiffBox" layoutX="473.0" layoutY="121.0" prefHeight="24.0" prefWidth="111.0" />
-      <TextField fx:id="goalsForBox" layoutX="92.0" layoutY="121.0" prefHeight="24.0" prefWidth="63.0" />
-      <TextField fx:id="matchesPldbox" layoutX="78.0" layoutY="76.0" prefHeight="24.0" prefWidth="63.0" />
-      <TextField fx:id="winsBox" layoutX="198.0" layoutY="76.0" prefHeight="24.0" prefWidth="63.0" />
-      <TextField fx:id="drawsBox" layoutX="326.0" layoutY="76.0" prefHeight="24.0" prefWidth="63.0" />
-      <TextField fx:id="goalsAgainstBox" layoutX="273.0" layoutY="121.0" prefHeight="24.0" prefWidth="63.0" />
-      <TextField fx:id="cleanSheetsBox" layoutX="110.0" layoutY="176.0" prefHeight="24.0" prefWidth="63.0" />
-      <TextField fx:id="lossesBox" layoutX="473.0" layoutY="76.0" prefHeight="24.0" prefWidth="111.0" />
+      <TextField fx:id="teamNamebox" layoutX="117.0" layoutY="30.0" prefHeight="24.0" prefWidth="225.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <Button fx:id="commitButton" layoutX="232.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#change" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: #4b9aad;" stylesheets="@teamViewStyleSheet.css" text="Commit Changes" />
+      <Button fx:id="cancelButton" layoutX="269.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="24.0" prefWidth="69.0" style="-fx-background-color: #a35143;" stylesheets="@teamViewStyleSheet.css" text="Cancel" />
+      <TextField fx:id="goalDiffBox" layoutX="473.0" layoutY="121.0" prefHeight="24.0" prefWidth="111.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <TextField fx:id="goalsForBox" layoutX="92.0" layoutY="121.0" prefHeight="24.0" prefWidth="63.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <TextField fx:id="matchesPldbox" layoutX="78.0" layoutY="76.0" prefHeight="24.0" prefWidth="63.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <TextField fx:id="winsBox" layoutX="198.0" layoutY="76.0" prefHeight="24.0" prefWidth="63.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <TextField fx:id="drawsBox" layoutX="326.0" layoutY="76.0" prefHeight="24.0" prefWidth="63.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <TextField fx:id="goalsAgainstBox" layoutX="273.0" layoutY="121.0" prefHeight="24.0" prefWidth="63.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <TextField fx:id="cleanSheetsBox" layoutX="110.0" layoutY="176.0" prefHeight="24.0" prefWidth="63.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <TextField fx:id="lossesBox" layoutX="473.0" layoutY="76.0" prefHeight="24.0" prefWidth="111.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
+      <Label fx:id="positionBox" layoutX="478.0" layoutY="30.0" prefHeight="24.0" prefWidth="101.0" />
    </children>
 </AnchorPane>

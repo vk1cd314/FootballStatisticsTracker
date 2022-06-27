@@ -3,13 +3,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showTeamData" prefHeight="62.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teams.TeamCardController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showTeamData" prefHeight="62.0" prefWidth="805.0" style="-fx-background-color: #d7d7d9;" styleClass="big" stylesheets="@teamCardStyleSheet.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teams.TeamCardController">
    <children>
-      <Label fx:id="leaguePosition" contentDisplay="CENTER" prefHeight="62.0" prefWidth="39.0" text="pos" />
-      <Label fx:id="teamName" contentDisplay="CENTER" prefHeight="74.0" prefWidth="313.0" text="team Name" />
-      <Label fx:id="matches" prefHeight="63.0" prefWidth="67.0" text="matches" />
-      <Label fx:id="won" prefHeight="63.0" prefWidth="69.0" text="Won" />
-      <Label fx:id="lost" prefHeight="63.0" prefWidth="69.0" text="lost" />
-      <Label fx:id="points" prefHeight="63.0" prefWidth="69.0" text="points" />
+      <Label fx:id="leaguePosition" alignment="CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="49.0" text="pos" />
+      <Label fx:id="teamName" alignment="CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="282.0" text="team Name" />
+      <Label fx:id="matches" alignment="CENTER" prefHeight="62.0" prefWidth="74.0" text="matches" />
+      <Label fx:id="won" alignment="CENTER" prefHeight="63.0" prefWidth="69.0" text="Won" />
+      <Label fx:id="lost" alignment="CENTER" prefHeight="63.0" prefWidth="69.0" text="lost" />
+      <Label fx:id="points" alignment="CENTER" prefHeight="63.0" prefWidth="69.0" text="points" />
    </children>
 </HBox>
