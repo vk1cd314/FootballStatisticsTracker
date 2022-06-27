@@ -43,7 +43,7 @@ public class DashboardController {
         //HBox tiles = null, tiles2 = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
-            //tiles = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile1.fxml")));
+            //tiles = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tileFXML.fxml")));
             //tiles2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tile2.fxml")));
         } catch (IOException e) {
             e.printStackTrace();

@@ -30,7 +30,9 @@ public class DashboardModel {
                 stage.setY(event.getScreenY() - yShift);
             });
             Scene scene = new Scene(root, Color.TRANSPARENT);
-            stage.initStyle(StageStyle.UNDECORATED);
+            //stage.initStyle(StageStyle.UNDECORATED);
+            scene.setFill(Color.TRANSPARENT);
+            stage.initStyle(StageStyle.TRANSPARENT);
             stage.getIcons().add(new Image("football_transparent.png"));
             stage.setResizable(false);
             stage.setTitle("Dashboard");

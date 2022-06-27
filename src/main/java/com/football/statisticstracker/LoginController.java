@@ -121,6 +121,8 @@ public class LoginController implements Initializable {
             stage.setY(event.getScreenY() - yShift);
         });
         stage.initStyle(StageStyle.UNDECORATED);
+        //scene.setFill(Color.TRANSPARENT);
+        //stage.initStyle(StageStyle.TRANSPARENT);
         stage.getIcons().add(new Image("football_transparent.png"));
         stage.setResizable(false);
         stage.setTitle("Login");
