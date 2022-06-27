@@ -149,6 +149,11 @@ public class TeamEditController {
                         "' WHERE team_name = '" + team.name + "'  ;";
                 PreparedStatement prep = con.prepareStatement(stmt);
                 prep.executeUpdate();
+                stmt = "UPDATE players SET Current_Club = ? WHERE Current_Club = ?";
+                prep = con.prepareStatement(stmt);
+                prep.setString(1, teamNamebox.getText());
+                prep.setString(2, team.name);
+                prep.execute();
                 con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
