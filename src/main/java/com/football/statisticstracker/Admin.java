@@ -28,7 +28,7 @@ public class Admin {
         }
     }
     public void deleteUser(String name){
-        String delete = "DELETE FROM loginInfo WHERE Usename = ?";
+        String delete = "DELETE FROM loginInfo WHERE Username = ?";
         try{
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(delete);
