@@ -88,6 +88,7 @@ public class LeagueAddController implements Initializable {
 
     public void deleteLeague() {
         if (leagueComboBox.getValue() != null && !leagueComboBox.getValue().equals("")) {
+            String leagueNm = leagueComboBox.getValue();
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setTitle("Delete League");
             a.setContentText("Are you sure you want to delete this league");
@@ -97,14 +98,54 @@ public class LeagueAddController implements Initializable {
                 try {
                     Connection con = DatabaseConnection.getStatsConnection();
                     PreparedStatement stmt = con.prepareStatement(delete);
-                    stmt.setString(1, leagueComboBox.getValue());
+                    stmt.setString(1, leagueNm);
                     stmt.execute();
                     con.close();
-                    loadBox();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
+            else{
+                loadBox();
+                return;
+            }
+            String delete = "DELETE FROM teams WHERE league = ?";
+            Alert a1 = new Alert(Alert.AlertType.CONFIRMATION);
+            a1.setTitle("Delete Teams In League");
+            a1.setContentText("Do you sure you want to delete all teams associated with this league");
+            Optional<ButtonType> rslt = a.showAndWait();
+            if (rslt.get() == ButtonType.OK) {
+                try {
+                    Connection con = DatabaseConnection.getStatsConnection();
+                    PreparedStatement stmt = con.prepareStatement(delete);
+                    stmt.setString(1, leagueNm);
+                    stmt.execute();
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                loadBox();
+                return;
+            }
+
+            delete = "DELETE FROM players WHERE league = ?";
+            Alert a2 = new Alert(Alert.AlertType.CONFIRMATION);
+            a2.setTitle("Delete Players In League");
+            a2.setContentText("Do you want to delete all players associated with this league");
+            Optional<ButtonType> rslt1 = a.showAndWait();
+            if (rslt1.get() == ButtonType.OK) {
+                try {
+                    Connection con = DatabaseConnection.getStatsConnection();
+                    PreparedStatement stmt = con.prepareStatement(delete);
+                    stmt.setString(1, leagueNm);
+                    stmt.execute();
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            loadBox();
         }
     }
 

@@ -135,6 +135,12 @@ public class MatchController {
                 query.setInt(9, awayPoints);
                 query.setString(10, awayteamCombobox.getValue());
                 query.execute();
+                String st = "UPDATE players SET appearances_overall = appearances_overall + 1  WHERE Current_Club = ?";
+                PreparedStatement q = con.prepareStatement(st);
+                q.setString(1, homeTeamCombobox.getValue());
+                q.execute();
+                q.setString(1, awayteamCombobox.getValue());
+                q.execute();
                 con.close();
 
             } catch (SQLException e) {

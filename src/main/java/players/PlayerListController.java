@@ -52,7 +52,7 @@ public class PlayerListController implements Initializable {
     String nationFilterString = "";
     Set<String> nationList = new TreeSet<String>();
     String teamFilterString = "";
-    ArrayList<String> teamList = new ArrayList<>();
+    Set<String> teamList = new TreeSet<>();
     boolean filtered = false;
     Admin adminCredentials;
 
@@ -121,7 +121,7 @@ public class PlayerListController implements Initializable {
         leagueFilter.setItems(FXCollections.observableArrayList(leagueList));
         try {
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT common_name FROM teams ORDER BY common_name ASC;";
+            String sql = "SELECT Current_Club FROM players ORDER BY Current_Club ASC;";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while (rs.next()) {
                 this.teamList.add(rs.getString(1));
