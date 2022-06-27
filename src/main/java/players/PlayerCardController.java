@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PlayerCardController implements Initializable {
+public class PlayerCardController {
     @FXML
     private Label playerCountry;
 
@@ -25,10 +25,10 @@ public class PlayerCardController implements Initializable {
 
     public Admin adminCredentials;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
-
-    }
+    //@Override
+    //public void initialize(URL url, ResourceBundle rb){
+    //
+    //}
     public void setData(Player player){
         this.player = player;
         playerCountry.setText(player.nationality);

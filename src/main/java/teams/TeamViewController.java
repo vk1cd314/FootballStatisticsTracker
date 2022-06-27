@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import players.Player;
 import players.PlayerCardController;
+import players.PlayerCardModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -82,7 +83,7 @@ public class TeamViewController {
     Admin adminCredentials;
     HBox tile = null;
 
-    private final List<Player> data = new ArrayList<>();
+    List<Player> players = new ArrayList<>();
 
     Team team;
 //    @Override
@@ -94,7 +95,8 @@ public class TeamViewController {
     public void load(Team team){
         this.team = team;
         loadPlayerData(team);
-//        loadCards();
+        loadCards();
+        team.print();
         teamName.setText(team.name);
         leaguePosition.setText(String.valueOf(team.position));
         matchesPlayed.setText(String.valueOf(team.matchesPlayed));
@@ -104,7 +106,7 @@ public class TeamViewController {
         cleanSheets.setText(String.valueOf(team.cleanSheet));
         goalsScored.setText(String.valueOf(team.goalsScored));
         goalsConc.setText(String.valueOf(team.goalsConceded));
-        goalDiff.setText(String.valueOf(team.goalsConceded));
+        goalDiff.setText(String.valueOf(team.goalDiff));
         points.setText(String.valueOf(team.points));
         System.out.println("In teamViewController " + adminCredentials.name + " " + adminCredentials.password);
         if (!adminCredentials.isAdmin) {
@@ -131,29 +133,41 @@ public class TeamViewController {
         try {
             Connection conn = DatabaseConnection.getStatsConnection();
             assert conn != null;
-            ResultSet rs = conn.createStatement().executeQuery("SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE (Current_Club LIKE  '%"+team.common_name+"%') ORDER BY position ASC;");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT position, full_name, age, birthday," +
+                    " league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, " +
+                    "clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players" +
+                    " WHERE (Current_Club LIKE  '%"+team.common_name+"%') ORDER BY position ASC;");
+            System.out.println(rs);
             while (rs.next()) {
-                this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13)));
+                System.out.println(rs.getString(1));
+                this.players.add(new Player(rs.getString(1), rs.getString(2),
+                        rs.getInt(3),rs.getString(4),rs.getString(5),
+                        rs.getString(6),rs.getString(7),rs.getInt(8),
+                        rs.getInt(9),rs.getInt(10),rs.getInt(11),
+                        rs.getInt(12),rs.getInt(13)));
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void loadCards(){
-        System.out.println(data.size());
-        for(int i=0; i<data.size(); i++){
-            try{
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("playerCard.fxml"));
-                tile = fxmlLoader.load();
-                PlayerCardController playerCard = fxmlLoader.getController();
-                playerCard.setData(data.get(i));
-                System.out.println(data.get(i).name);
-                playerListContainer.getChildren().add(tile);
-            } catch (IOException e){
-                e.printStackTrace();
-            }
+        System.out.println(players.size());
+        for(int i=0; i<players.size(); i++){
+            //try{
+            //    FXMLLoader fxmlLoader = new FXMLLoader();
+            //    fxmlLoader.setLocation(getClass().getResource("playerCard.fxml"));
+            //    tile = fxmlLoader.load();
+            //    PlayerCardController playerCard = fxmlLoader.getController();
+            //    playerCard.setData(players.get(i));
+            //    System.out.println(players.get(i).name);
+            //    playerListContainer.getChildren().add(tile);
+            //} catch (IOException e){
+            //    e.printStackTrace();
+            //}
+            PlayerCardModel playerCardModel = new PlayerCardModel();
+            playerListContainer.getChildren().add(playerCardModel.show(players.get(i)));
         }
     }
     public void editTeam(){

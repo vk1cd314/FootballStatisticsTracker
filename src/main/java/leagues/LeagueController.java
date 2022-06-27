@@ -3,6 +3,8 @@ package leagues;
 import com.football.statisticstracker.Admin;
 import database.DatabaseConnection;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import teams.Team;
 import teams.TeamCardController;
@@ -76,7 +79,9 @@ public class LeagueController {
             else{
                 try{
                     Connection conn = DatabaseConnection.getStatsConnection();
-                    String sql = "SELECT team_name, league, matches_played, wins, draws,losses, goals_scored, goals_conceded, goal_difference, clean_sheets, common_name FROM teams WHERE (team_name like '%"+teamSearch.getText()+"%'"+ filterLeague +") ORDER BY points DESC";
+                    String sql = "SELECT team_name, league, matches_played, wins, " +
+                            "draws,losses, goals_scored, goals_conceded, goal_difference, " +
+                            "clean_sheets, common_name FROM teams WHERE (team_name like '%"+teamSearch.getText()+"%'"+ filterLeague +") ORDER BY points DESC";
                     ResultSet rs = conn.createStatement().executeQuery(sql);
                     int i = 1;
                     while(rs.next()){
@@ -142,9 +147,19 @@ public class LeagueController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        if (!adminCredentials.isAdmin) {
+            addMatch.setStyle("-fx-background-color: TRANSPARENT; ");
+            addMatch.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    System.out.println("Do nothing");
+                }
+            });
+            addMatch.setTextFill(Color.TRANSPARENT);
+        }
     }
 
-    public void leagueStart(BorderPane borderPane, Admin admin) {
+    //public void leagueStart(BorderPane borderPane, Admin admin) {
         //adminCredentials = admin;
         //System.out.println(adminCredentials.name + " " + adminCredentials.password);
         //try {
@@ -154,7 +169,7 @@ public class LeagueController {
         //} catch (IOException e) {
         //    e.printStackTrace();
         //}
-    }
+    //}
 
     public void filter(){
         filterLeagueLoad = "WHERE league = ";
