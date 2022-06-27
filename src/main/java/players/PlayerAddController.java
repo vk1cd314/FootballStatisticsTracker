@@ -1,13 +1,17 @@
 package players;
 
 import database.DatabaseConnection;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +22,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
 public class PlayerAddController implements Initializable {
         @FXML
@@ -45,7 +50,7 @@ public class PlayerAddController implements Initializable {
         private ComboBox<String> teamComboBox;
 
         @FXML
-        private TextField ageTextBox;
+        private TextField ageTextBox ;
 
         ArrayList<String> teamList = new ArrayList<>();
         ArrayList<String> leagueList = new ArrayList<>();
@@ -54,6 +59,16 @@ public class PlayerAddController implements Initializable {
                 load();
         }
         public void load(){
+                ageTextBox.textProperty().addListener(new ChangeListener<String>() {
+                        @Override
+                        public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                            String newValue) {
+                                if (!newValue.matches("\\d*")) {
+                                        ageTextBox.setText(newValue.replaceAll("[^\\d]", ""));
+                                }
+                        }
+                });
+
                 positionComboBox.setItems(FXCollections.observableArrayList(Positions.values()));
                 leagueList.clear();
                 teamList.clear();
