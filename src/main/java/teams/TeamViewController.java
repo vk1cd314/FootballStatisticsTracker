@@ -131,7 +131,7 @@ public class TeamViewController {
             ResultSet rs = conn.createStatement().executeQuery("SELECT position, full_name, age, birthday," +
                     " league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, " +
                     "clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players" +
-                    " WHERE (Current_Club LIKE  '%" + team.common_name + "%' OR Current_Club LIKE '%"+team.name+"%') ORDER BY position ASC;");
+                    " WHERE (Current_Club = '" + team.common_name + "' OR Current_Club = '"+team.name+"') ORDER BY position ASC;");
             System.out.println(rs);
             while (rs.next()) {
                 System.out.println(rs.getString(1));
@@ -176,12 +176,29 @@ public class TeamViewController {
                 String stmt = "DELETE FROM teams WHERE team_name = '" + team.name + "';";
                 PreparedStatement prep = con.prepareStatement(stmt);
                 prep.executeUpdate();
+                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             try {
                 quit();
             } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        String delete = "DELETE FROM players WHERE (Current_Club LIKE '%"+team.name+"%' OR Current_Club LIKE '"+team.common_name+"')";
+        Alert a2 = new Alert(Alert.AlertType.CONFIRMATION);
+        a2.setTitle("Delete Players In League");
+        a2.setContentText("Do you want to delete all players associated with this Team");
+        Optional<ButtonType> rslt1 = a2.showAndWait();
+        if (rslt1.get() == ButtonType.OK) {
+            try {
+                Connection con = DatabaseConnection.getStatsConnection();
+                PreparedStatement stmt = con.prepareStatement(delete);
+                //stmt.setString(1, team.name);
+                stmt.execute();
+                con.close();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }

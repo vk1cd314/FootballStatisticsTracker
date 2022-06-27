@@ -116,7 +116,9 @@ public class PlayerAddController implements Initializable {
             a.setContentText("Are you sure you want to add this player?");
             Optional<ButtonType> result = a.showAndWait();
             if (result.get() == ButtonType.OK) {
-                String insert = "INSERT INTO players(full_name, position, age, birthday_GMT, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall)" +
+                String insert = "INSERT INTO players(full_name, position, age, birthday_GMT," +
+                        " league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall," +
+                        " clean_sheets_overall, red_cards_overall, yellow_cards_overall)" +
                         "VALUES(?,?,?,?,?,?,?,0,0,0,0,0,0)";
                 try {
                     Connection con = DatabaseConnection.getStatsConnection();
