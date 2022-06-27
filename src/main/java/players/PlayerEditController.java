@@ -1,6 +1,8 @@
 package players;
 
 import database.DatabaseConnection;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -163,6 +165,69 @@ public class PlayerEditController {
         }catch(SQLException e){
             e.printStackTrace();
         }
+        ageField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    ageField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        goalsField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    goalsField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        assBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    assBox.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        appField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    appField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        cleanSheetBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    cleanSheetBox.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        yellowField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    yellowField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        redField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    redField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
         clubComboBox.setItems(FXCollections.observableArrayList(clubList));
         clubComboBox.setValue(player.club);
         nameField.setText(player.name);

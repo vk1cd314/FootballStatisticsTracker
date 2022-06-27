@@ -1,16 +1,17 @@
 package teams;
 
 import database.DatabaseConnection;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.Optional;
+import java.util.function.UnaryOperator;
 
 public class TeamEditController {
 
@@ -54,13 +55,76 @@ public class TeamEditController {
 
     public void load(Team inTeam){
         this.team = inTeam;
+        winsBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    winsBox.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        lossesBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    lossesBox.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        drawsBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    drawsBox.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        goalsForBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    goalsForBox.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        goalsAgainstBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    goalsAgainstBox.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        cleanSheetsBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    cleanSheetsBox.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        UnaryOperator<TextFormatter.Change> integerFilter = change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("-?([1-9][0-9]*)?")) {
+                return change;
+            }
+            return null;
+        };
+
+        goalDiffBox.setTextFormatter( new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
         teamNamebox.setText(team.name);
         positionBox.setText(String.valueOf(team.position));
         matchesPldbox.setText(String.valueOf(team.matchesPlayed));
         winsBox.setText(String.valueOf(team.wins));
         lossesBox.setText(String.valueOf(team.losses));
         drawsBox.setText(String.valueOf(team.draws));
-        goalDiffBox.setText(String.valueOf(team.goalDiff));
+        goalDiffBox.setText(String.valueOf(team.goalsScored - team.goalsConceded));
         goalsForBox.setText(String.valueOf(team.goalsScored));
         goalsAgainstBox.setText(String.valueOf(team.goalsConceded));
         cleanSheetsBox.setText(String.valueOf(team.cleanSheet));
