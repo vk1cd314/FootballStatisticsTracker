@@ -4,6 +4,7 @@ import com.football.statisticstracker.Admin;
 import com.football.statisticstracker.UserModel;
 import database.DatabaseConnection;
 import javafx.scene.image.ImageView;
+import leagues.LeagueAdd;
 import leagues.LeagueAddController;
 import leagues.LeagueController;
 import javafx.fxml.FXML;
@@ -155,8 +156,10 @@ public class DashboardController {
         teamAdd.show(this.borderPane);
     }
     public void showLeagueAdd(){
-        LeagueAddController leagueAddController = new LeagueAddController();
-        leagueAddController.show(this.borderPane);
+//        LeagueAddController leagueAddController = new LeagueAddController();
+//        leagueAddController.show(this.borderPane);
+        LeagueAdd leagueAdd = new LeagueAdd();
+        leagueAdd.show(this.borderPane);
     }
     public void showPlayerAdd(){
         PlayerAdd playerAdd = new PlayerAdd();

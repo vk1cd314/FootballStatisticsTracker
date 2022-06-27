@@ -177,7 +177,7 @@ public class UserController {
             while(rs.next()){
                 users.add(rs.getString(1));
             }
-
+            conn.close();
         } catch(SQLException e) {
             e.printStackTrace();
         }

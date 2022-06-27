@@ -20,7 +20,6 @@
       <TextField fx:id="teamNamebox" layoutX="117.0" layoutY="30.0" prefHeight="24.0" prefWidth="225.0" />
       <Button fx:id="commitButton" layoutX="235.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#change" text="Commit Changes" />
       <Button fx:id="cancelButton" layoutX="269.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#quit" text="Cancel" />
-      <TextField fx:id="positionBox" layoutX="473.0" layoutY="30.0" prefHeight="24.0" prefWidth="111.0" />
       <TextField fx:id="goalDiffBox" layoutX="473.0" layoutY="121.0" prefHeight="24.0" prefWidth="111.0" />
       <TextField fx:id="goalsForBox" layoutX="92.0" layoutY="121.0" prefHeight="24.0" prefWidth="63.0" />
       <TextField fx:id="matchesPldbox" layoutX="78.0" layoutY="76.0" prefHeight="24.0" prefWidth="63.0" />
@@ -29,5 +28,6 @@
       <TextField fx:id="goalsAgainstBox" layoutX="273.0" layoutY="121.0" prefHeight="24.0" prefWidth="63.0" />
       <TextField fx:id="cleanSheetsBox" layoutX="110.0" layoutY="176.0" prefHeight="24.0" prefWidth="63.0" />
       <TextField fx:id="lossesBox" layoutX="473.0" layoutY="76.0" prefHeight="24.0" prefWidth="111.0" />
+      <Label fx:id="positionBox" layoutX="478.0" layoutY="30.0" prefHeight="24.0" prefWidth="101.0" />
    </children>
 </AnchorPane>

@@ -43,7 +43,7 @@ public class TeamEditController {
     private TextField matchesPldbox;
 
     @FXML
-    private TextField positionBox;
+    private Label positionBox;
 
     @FXML
     private TextField teamNamebox;
@@ -138,7 +138,6 @@ public class TeamEditController {
             try {
                 Connection con = DatabaseConnection.getStatsConnection();
                 String stmt = "UPDATE teams SET team_name = '" + teamNamebox.getText() +
-                        "'  , league_position = '" + positionBox.getText() +
                         "' , matches_played = '" + matchesPldbox.getText() +
                         "' , wins = '" + winsBox.getText() +
                         "' , draws = '" + drawsBox.getText() +

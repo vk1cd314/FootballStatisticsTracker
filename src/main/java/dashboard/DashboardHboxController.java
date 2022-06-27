@@ -110,7 +110,7 @@ public class DashboardHboxController {
     public void loadPlayerData(){
         try{
             Connection con = DatabaseConnection.getStatsConnection();
-            String get = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY goals_overall ASC;";
+            String get = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY goals_overall DESC;";
             ResultSet rs = con.createStatement().executeQuery(get);
             //how many you want 0 indexed
             int i = 0;
