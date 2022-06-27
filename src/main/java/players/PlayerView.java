@@ -11,8 +11,9 @@ import java.io.IOException;
 
 public class PlayerView {
     PlayerViewController playerViewController;
-    public void show(Player player, Admin admin){
-        try{
+
+    public void show(Player player, Admin admin) {
+        try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("playerView.fxml"));
@@ -24,7 +25,7 @@ public class PlayerView {
             playerViewController = loader.getController();
             playerViewController.adminCredentials = admin;
             playerViewController.load(player);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

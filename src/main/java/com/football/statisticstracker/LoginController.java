@@ -63,45 +63,15 @@ public class LoginController implements Initializable {
     }
 
     public void adminLogin(boolean isAdmin) throws IOException {
-        //DashboardController dashboardController = new DashboardController();
         Admin adminCredentials = new Admin(loginUsername.getText(), loginPassword.getText());
-        //dashboardController.dashboardStart(adminCredentials);
-        //dashboardController.changeUsername(adminCredentials.name);
         DashboardModel dashboardModel = new DashboardModel();
         adminCredentials.isAdmin = isAdmin;
         dashboardModel.start(adminCredentials);
     }
-    //public void userLogin() throws IOException {
-    //    Admin adminCredentials = new Admin(loginUsername.getText(), loginPassword.getText());
-    //    //dashboardController.dashboardStart(adminCredentials);
-    //    //dashboardController.changeUsername(adminCredentials.name);
-    //    DashboardModel dashboardModel = new DashboardModel();
-    //    adminCredentials.isAdmin = false;
-    //    dashboardModel.start(adminCredentials);
-    //}
 
     public void signUp() {
         try {
             quit();
-            //Stage stage = new Stage();
-            //FXMLLoader loader = new FXMLLoader();
-            //loader.setLocation(getClass().getResource("signUp.fxml"));
-            //Parent root = loader.load();
-            //root.setOnMousePressed((MouseEvent event) -> {
-            //    xShift = event.getSceneX();
-            //    yShift = event.getSceneY();
-            //});
-            //root.setOnMouseDragged((MouseEvent event) -> {
-            //    stage.setX(event.getScreenX() - xShift);
-            //    stage.setY(event.getScreenY() - yShift);
-            //});
-            //Scene scene = new Scene(root);
-            //stage.initStyle(StageStyle.UNDECORATED);
-            //stage.getIcons().add(new Image("football_transparent.png"));
-            //stage.setResizable(false);
-            //stage.setTitle("Sign Up");
-            //stage.setScene(scene);
-            //stage.show();
             SignUpController signUpController = new SignUpController();
             signUpController.realSignup();
         } catch (Exception e) {
@@ -121,8 +91,6 @@ public class LoginController implements Initializable {
             stage.setY(event.getScreenY() - yShift);
         });
         stage.initStyle(StageStyle.UNDECORATED);
-        //scene.setFill(Color.TRANSPARENT);
-        //stage.initStyle(StageStyle.TRANSPARENT);
         stage.getIcons().add(new Image("football_transparent.png"));
         stage.setResizable(false);
         stage.setTitle("Login");

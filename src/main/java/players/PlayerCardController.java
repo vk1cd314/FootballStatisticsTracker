@@ -25,18 +25,15 @@ public class PlayerCardController {
 
     public Admin adminCredentials;
 
-    //@Override
-    //public void initialize(URL url, ResourceBundle rb){
-    //
-    //}
-    public void setData(Player player){
+    public void setData(Player player) {
         this.player = player;
         playerCountry.setText(player.nationality);
         playerName.setText(player.name);
         playerPos.setText(player.position);
         teamName.setText(player.club);
     }
-    public void showPlayerData(){
+
+    public void showPlayerData() {
         PlayerView playerView = new PlayerView();
         playerView.show(this.player, adminCredentials);
     }

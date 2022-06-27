@@ -13,6 +13,7 @@ public class TilePlayerController {
 
     @FXML
     Label country;
+
     public void updatePlayer(Player player) {
         playerName.setText(player.name);
         goals.setText("Goals: " + String.valueOf(player.goals_scored));

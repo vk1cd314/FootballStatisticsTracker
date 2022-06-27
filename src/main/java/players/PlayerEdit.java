@@ -9,8 +9,9 @@ import java.io.IOException;
 
 public class PlayerEdit {
     PlayerEditController playerEditController = new PlayerEditController();
-    public void show(Player player){
-        try{
+
+    public void show(Player player) {
+        try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("PlayerEditFXML.fxml"));
@@ -21,7 +22,7 @@ public class PlayerEdit {
             stage.show();
             playerEditController = loader.getController();
             playerEditController.load(player);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

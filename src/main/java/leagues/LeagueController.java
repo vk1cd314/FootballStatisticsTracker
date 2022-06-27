@@ -60,31 +60,23 @@ public class LeagueController {
     BorderPane borderPane1;
     Admin adminCredentials;
 
-    //@Override
-    //public void initialize(URL url, ResourceBundle resourceBundle) {
-    //    loadLeagueData();
-    //    loadLeagues();
-    //    loadCards();
-    //}
-
     @FXML
-    private void search(){
+    private void search() {
         teamSearch.setOnKeyReleased(keyEvent -> {
             data.clear();
             teamListCont.getChildren().clear();
-            if(teamSearch.getText().equals("")){
+            if (teamSearch.getText().equals("")) {
                 loadLeagueData();
                 loadCards();
-            }
-            else{
-                try{
+            } else {
+                try {
                     Connection conn = DatabaseConnection.getStatsConnection();
                     String sql = "SELECT team_name, league, matches_played, wins, " +
                             "draws,losses, goals_scored, goals_conceded, goal_difference, " +
-                            "clean_sheets, common_name FROM teams WHERE (team_name like '%"+teamSearch.getText()+"%'"+ filterLeague +") ORDER BY points DESC";
+                            "clean_sheets, common_name FROM teams WHERE (team_name like '%" + teamSearch.getText() + "%'" + filterLeague + ") ORDER BY points DESC";
                     ResultSet rs = conn.createStatement().executeQuery(sql);
                     int i = 1;
-                    while(rs.next()){
+                    while (rs.next()) {
                         this.data.add(new Team(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
                                 rs.getInt(5), rs.getInt(6), rs.getInt(7),
                                 rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getString(11), i));
@@ -92,26 +84,28 @@ public class LeagueController {
                     }
                     loadCards();
                     conn.close();
-                }catch (SQLException e) {
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
-    public void loadLeagues(){
+
+    public void loadLeagues() {
         try {
             Connection con = DatabaseConnection.getStatsConnection();
             String sql = "SELECT league_name FROM leagues;";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 this.leagueList.add(rs.getString(1));
             }
             con.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         leagueComboBox.setItems(FXCollections.observableArrayList(leagueList));
     }
+
     public void loadCards() {
         teamListCont.getChildren().clear();
         for (int i = 0; i < data.size(); i++) {
@@ -129,13 +123,14 @@ public class LeagueController {
             }
         }
     }
+
     public void loadLeagueData() {
         data.clear();
         try {
             Connection conn = DatabaseConnection.getStatsConnection();
             assert conn != null;
             ResultSet rs = conn.createStatement().executeQuery("SELECT team_name, league, matches_played, wins, draws," +
-                    "losses, goals_scored, goals_conceded, goal_difference, clean_sheets, common_name FROM teams "+filterLeagueLoad+" ORDER BY points DESC;");
+                    "losses, goals_scored, goals_conceded, goal_difference, clean_sheets, common_name FROM teams " + filterLeagueLoad + " ORDER BY points DESC;");
             int i = 1;
             while (rs.next()) {
                 this.data.add(new Team(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
@@ -159,22 +154,10 @@ public class LeagueController {
         }
     }
 
-    //public void leagueStart(BorderPane borderPane, Admin admin) {
-        //adminCredentials = admin;
-        //System.out.println(adminCredentials.name + " " + adminCredentials.password);
-        //try {
-        //    //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
-        //    FXMLLoader root = new FXMLLoader(getClass().getResource("leagueFXML.fxml"));
-        //    borderPane.setCenter(root.load());
-        //} catch (IOException e) {
-        //    e.printStackTrace();
-        //}
-    //}
-
-    public void filter(){
+    public void filter() {
         filterLeagueLoad = "WHERE league = ";
         filterLeague = "AND league = ";
-        String lg = "'"+leagueComboBox.getValue()+"'";
+        String lg = "'" + leagueComboBox.getValue() + "'";
         //System.out.println(leagueComboBox.getValue());
         filterLeague += lg;
         filterLeagueLoad += lg;
@@ -182,7 +165,8 @@ public class LeagueController {
         loadLeagueData();
         loadCards();
     }
-    public void clear(){
+
+    public void clear() {
         teamSearch.clear();
         leagueLabel.setText("All Teams");
         leagueComboBox.setPromptText("Select League");
@@ -191,19 +175,20 @@ public class LeagueController {
         loadLeagueData();
         loadCards();
     }
-    public void reload(){
-        //filter();
-        //loadLeagueData();
+
+    public void reload() {
         loadCards();
     }
-    public void showAddMatch(){
-        if(leagueComboBox != null) {
+
+    public void showAddMatch() {
+        if (leagueComboBox != null) {
             Match match = new Match();
             match.show(leagueComboBox.getValue());
         }
         loadLeagueData();
         loadCards();
     }
+
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();

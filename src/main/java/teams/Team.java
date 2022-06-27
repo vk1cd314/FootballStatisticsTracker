@@ -89,7 +89,8 @@ public class Team {
     public int getPoints() {
         return points;
     }
-    public void print(){
-        System.out.println(name+" "+position+" "+points+" "+wins);
+
+    public void print() {
+        System.out.println(name + " " + position + " " + points + " " + wins);
     }
 }

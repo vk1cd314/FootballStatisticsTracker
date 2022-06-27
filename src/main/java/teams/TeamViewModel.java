@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class TeamViewModel {
-    public void show(Team team, Admin admin){
+    public void show(Team team, Admin admin) {
         teamViewController = new TeamViewController();
-        try{
+        try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("teamViewFXML.fxml"));
@@ -24,11 +24,11 @@ public class TeamViewModel {
             teamViewController.adminCredentials = admin;
             System.out.println("In teamViewModel " + admin.name + " " + admin.password);
             teamViewController.load(team);
-//            teamViewController.loadCards();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     TeamViewController teamViewController;
 
 }

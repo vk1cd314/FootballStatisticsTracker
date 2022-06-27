@@ -18,8 +18,6 @@ public class TileModel {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("tileFXML.fxml"));
             Object tile = fxmlLoader.load();
-            //this.tilesContainer.getChildren().add(tile);
-            //tile2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tilePlayer.fxml")));
             tileTeamController = fxmlLoader.getController();
             tileTeamController.updateTeam(team);
             return (VBox) tile;
@@ -28,14 +26,13 @@ public class TileModel {
         }
         return null;
     }
+
     public VBox showPlayer(Player player) {
         try {
             System.out.println("Got here");
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("tilePlayer.fxml"));
             Object tile = fxmlLoader.load();
-            //this.tilesContainer.getChildren().add(tile);
-            //tile2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("tilePlayer.fxml")));
             tilePlayerController = fxmlLoader.getController();
             tilePlayerController.updatePlayer(player);
             return (VBox) tile;

@@ -86,13 +86,8 @@ public class TeamViewController {
     List<Player> players = new ArrayList<>();
 
     Team team;
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb){
-////        if(team == null) System.out.print("eh?");
-////        load();
-//    }
 
-    public void load(Team team){
+    public void load(Team team) {
         this.team = team;
         loadPlayerData(team);
         loadCards();
@@ -129,22 +124,22 @@ public class TeamViewController {
         }
     }
 
-    public void loadPlayerData(Team team){
+    public void loadPlayerData(Team team) {
         try {
             Connection conn = DatabaseConnection.getStatsConnection();
             assert conn != null;
             ResultSet rs = conn.createStatement().executeQuery("SELECT position, full_name, age, birthday," +
                     " league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, " +
                     "clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players" +
-                    " WHERE (Current_Club LIKE  '%"+team.common_name+"%') ORDER BY position ASC;");
+                    " WHERE (Current_Club LIKE  '%" + team.common_name + "%') ORDER BY position ASC;");
             System.out.println(rs);
             while (rs.next()) {
                 System.out.println(rs.getString(1));
                 this.players.add(new Player(rs.getString(1), rs.getString(2),
-                        rs.getInt(3),rs.getString(4),rs.getString(5),
-                        rs.getString(6),rs.getString(7),rs.getInt(8),
-                        rs.getInt(9),rs.getInt(10),rs.getInt(11),
-                        rs.getInt(12),rs.getInt(13)));
+                        rs.getInt(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getInt(8),
+                        rs.getInt(9), rs.getInt(10), rs.getInt(11),
+                        rs.getInt(12), rs.getInt(13)));
             }
             conn.close();
         } catch (SQLException e) {
@@ -152,39 +147,30 @@ public class TeamViewController {
         }
     }
 
-    public void loadCards(){
+    public void loadCards() {
         System.out.println(players.size());
-        for(int i=0; i<players.size(); i++){
-            //try{
-            //    FXMLLoader fxmlLoader = new FXMLLoader();
-            //    fxmlLoader.setLocation(getClass().getResource("playerCard.fxml"));
-            //    tile = fxmlLoader.load();
-            //    PlayerCardController playerCard = fxmlLoader.getController();
-            //    playerCard.setData(players.get(i));
-            //    System.out.println(players.get(i).name);
-            //    playerListContainer.getChildren().add(tile);
-            //} catch (IOException e){
-            //    e.printStackTrace();
-            //}
+        for (int i = 0; i < players.size(); i++) {
             PlayerCardModel playerCardModel = new PlayerCardModel();
             playerListContainer.getChildren().add(playerCardModel.show(players.get(i)));
         }
     }
-    public void editTeam(){
+
+    public void editTeam() {
         try {
             quit();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         TeamEdit teamEdit = new TeamEdit();
         teamEdit.show(team);
     }
-    public void deleteTeam(){
+
+    public void deleteTeam() {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Confirm Deletion");
         a.setContentText("Are you sure you want to delete this team?");
         Optional<ButtonType> result = a.showAndWait();
-        if(result.get() == ButtonType.OK) {
+        if (result.get() == ButtonType.OK) {
             try {
                 Connection con = DatabaseConnection.getStatsConnection();
                 String stmt = "DELETE FROM teams WHERE team_name = '" + team.name + "';";
@@ -200,6 +186,7 @@ public class TeamViewController {
             }
         }
     }
+
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();

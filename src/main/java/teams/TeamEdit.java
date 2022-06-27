@@ -9,9 +9,10 @@ import java.io.IOException;
 
 public class TeamEdit {
     TeamEditController teamEditController;
-    public void show(Team team){
+
+    public void show(Team team) {
         teamEditController = new TeamEditController();
-        try{
+        try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("teamEditFXML.fxml"));
@@ -22,8 +23,7 @@ public class TeamEdit {
             stage.show();
             teamEditController = loader.getController();
             teamEditController.load(team);
-            //teamName.setText("pls");
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

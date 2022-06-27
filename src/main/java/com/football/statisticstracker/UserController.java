@@ -97,17 +97,8 @@ public class UserController {
                 }
             });
             deleteUserButton.setTextFill(Color.TRANSPARENT);
-            //userComboBox.setFill
         }
     }
-    //public void show(BorderPane borderPane) {
-    //    try {
-    //        FXMLLoader root = new FXMLLoader(getClass().getResource("userControllerFXML.fxml"));
-    //        borderPane.setCenter(root.load());
-    //    }catch (IOException e){
-    //        e.printStackTrace();
-    //    }
-    //}
 
     public void changeProfilePicture() {
         FileChooser fileChooser = new FileChooser();
@@ -123,15 +114,12 @@ public class UserController {
                 stmt.setString(2, adminCredentials.name);
                 stmt.execute();
                 conn.close();
-                //file = selectedFile;
-                //fileLocation = new SimpleStringProperty(selectedFile.toURI().toString());
-                //fileLocation.getValue();
                 fileLocation.setValue(selectedFile.toURI().toString());
                 System.out.println("Halo world" + fileLocation.getValue());
                 informationUpdate.setTextFill(Color.GREEN);
                 informationUpdate.setText("Profile Picture Updated");
                 conn.close();
-            } catch(SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         } else {
@@ -143,13 +131,12 @@ public class UserController {
     public void setProfilePicture(String userName) throws SQLException {
         Connection con = DatabaseConnection.getConnection();
         String sql = "SELECT pfpURL FROM loginInfo WHERE Username = ?";
-        PreparedStatement ps =  con.prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, userName);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             String currentFileURL = rs.getString(1);
-            //System.out.println("I am a barbie girl"+currentFileURL);
-            if(!currentFileURL.equals(new String("Hello"))) {
+            if (!currentFileURL.equals(new String("Hello"))) {
                 Image image = new Image(currentFileURL);
                 profilePicture.setImage(image);
             }
@@ -158,36 +145,36 @@ public class UserController {
     }
 
     public void loadData() throws SQLException {
-        //username.setText(adminCredentials.name);
         changeUsername(adminCredentials.name);
         changePassword(adminCredentials.password);
         setProfilePicture(adminCredentials.name);
-        //password.setText("********");
         loadBoxes();
     }
-    void loadBoxes(){
+
+    void loadBoxes() {
         userComboBox.setItems(null);
         deleteUserBox.setItems(null);
         users.clear();
-        try{
+        try {
             String l = "SELECT Username FROM loginInfo WHERE Type = 'User'";
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(l);
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 users.add(rs.getString(1));
             }
             conn.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         userComboBox.setItems(FXCollections.observableArrayList(users));
         deleteUserBox.setItems(FXCollections.observableArrayList(users));
     }
+
     public void changeUsername(String name) {
         username.setText(name);
         String updatename = "UPDATE loginInfo SET Username = ? WHERE Username = ?";
-        try{
+        try {
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(updatename);
             stmt.setString(1, name);
@@ -195,7 +182,7 @@ public class UserController {
             stmt.execute();
             conn.close();
             adminCredentials.name = name;
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -203,7 +190,7 @@ public class UserController {
     public void changePassword(String pass) {
         password.setText(pass);
         String updatepass = "UPDATE loginInfo SET Password = ? WHERE Username = ?";
-        try{
+        try {
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(updatepass);
             stmt.setString(1, pass);
@@ -211,7 +198,7 @@ public class UserController {
             stmt.execute();
             conn.close();
             adminCredentials.password = pass;
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -223,9 +210,7 @@ public class UserController {
         Optional<ButtonType> result = a.showAndWait();
         if (result.get() == ButtonType.OK) {
             changeUsername(username.getText());
-            //adminCredentials.name = username.getText();
             changePassword(password.getText());
-            //adminCredentials.password = password.getText();
             informationUpdate.setTextFill(Color.GREEN);
             informationUpdate.setText("Information Updated");
         } else {
@@ -233,12 +218,13 @@ public class UserController {
             informationUpdate.setText("Information Not Updated");
         }
     }
-    public void deleteUser(){
+
+    public void deleteUser() {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Confirm Changes");
         a.setContentText("Are you sure you want to delete your account?");
         Optional<ButtonType> result = a.showAndWait();
-        if(result.get() == ButtonType.OK) {
+        if (result.get() == ButtonType.OK) {
             String delete = "DELETE FROM loginInfo WHERE Username = ?";
             try {
                 Connection conn = DatabaseConnection.getConnection();
@@ -252,8 +238,9 @@ public class UserController {
             }
         }
     }
+
     public void deleteOtherUser() {
-        if (deleteUserBox.getValue() != null ){
+        if (deleteUserBox.getValue() != null) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setTitle("Confirm Changes");
             a.setContentText("Are you sure you want to delete this user?");
@@ -263,11 +250,11 @@ public class UserController {
                 progressLabel.setText("Success!");
                 loadBoxes();
             }
-            //adminCredentials.deleteUser(deleteUserBox.getValue());
         }
     }
-    public void makeAdmin(){
-        if(userComboBox.getValue()!=null) {
+
+    public void makeAdmin() {
+        if (userComboBox.getValue() != null) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setTitle("Confirm Changes");
             a.setContentText("Are you sure you want to this user an admin?");
@@ -278,6 +265,7 @@ public class UserController {
             loadBoxes();
         }
     }
+
     public void quit() {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();

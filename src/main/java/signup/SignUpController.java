@@ -39,10 +39,6 @@ public class SignUpController {
     @FXML
     private Button backbutton;
 
-    //public SignUpController() {
-    //    initialize();
-    //}
-
     public void realSignup() {
         try {
             Stage stage = new Stage();
@@ -68,32 +64,6 @@ public class SignUpController {
             e.printStackTrace();
         }
     }
-
-    //public void initialize() {
-    //    try {
-    //        Stage stage = new Stage();
-    //        FXMLLoader loader = new FXMLLoader();
-    //        loader.setLocation(getClass().getResource("signUp.fxml"));
-    //        Parent root = loader.load();
-    //        root.setOnMousePressed((MouseEvent event) -> {
-    //            xShift = event.getSceneX();
-    //            yShift = event.getSceneY();
-    //        });
-    //        root.setOnMouseDragged((MouseEvent event) -> {
-    //            stage.setX(event.getScreenX() - xShift);
-    //            stage.setY(event.getScreenY() - yShift);
-    //        });
-    //        Scene scene = new Scene(root);
-    //        stage.initStyle(StageStyle.UNDECORATED);
-    //        stage.getIcons().add(new Image("football_transparent.png"));
-    //        stage.setResizable(false);
-    //        stage.setTitle("Sign Up");
-    //        stage.setScene(scene);
-    //        stage.show();
-    //    } catch (IOException e) {
-    //        e.printStackTrace();
-    //    }
-    //}
 
     public void signUp() {
         if (password.getText().compareTo(password1.getText()) != 0) {
@@ -130,9 +100,5 @@ public class SignUpController {
         stage.close();
         LoginController.loginStart(new Stage());
     }
-
-    //@Override
-    //public void initialize(URL url, ResourceBundle resourceBundle) {
-    //}
 
 }

@@ -43,14 +43,13 @@ public class TeamCardController {
 
     Team team;
 
-    public TeamCardController(){
+    public TeamCardController() {
 
     }
-    public void setData(Team inTeam, BorderPane borderPane){
+
+    public void setData(Team inTeam, BorderPane borderPane) {
         this.team = inTeam;
         this.borderPane = borderPane;
-        //if(borderPane==null) System.out.println("what the fuck");
-        //System.out.println(team.getName()+" "+team.getWins());
 
         leaguePosition.setText(String.valueOf(inTeam.getPosition()));
         teamName.setText(inTeam.getName());
@@ -59,20 +58,12 @@ public class TeamCardController {
         lost.setText(String.valueOf(inTeam.getLosses()));
         points.setText(String.valueOf(inTeam.getPoints()));
     }
-    public void showTeamData(){
-        //System.out.println(team.name);
+
+    public void showTeamData() {
         TeamViewModel teamViewModel = new TeamViewModel();
         System.out.println("In teamCardController " + adminCredentials.name + " " + adminCredentials.password);
         teamViewModel.show(team, adminCredentials);
     }
 
-    //@Override
-    //public void initialize(URL url, ResourceBundle rb){
-        //leaguePosition.setText("baal");
-//        teamName.setText(this.team.getName());
-//        matches.setText(String.valueOf(this.team.getMatchesPlayed()));
-//        won.setText(String.valueOf(this.team.getWins()));
-//        lost.setText(String.valueOf(this.team.getLosses()));
-//        points.setText(String.valueOf(this.team.getPoints()));
-//    }
+
 }
