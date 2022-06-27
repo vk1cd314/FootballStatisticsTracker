@@ -57,6 +57,7 @@ public class LeagueAddController implements Initializable {
                     stmt.setString(1, leagueNameField.getText());
                     stmt.setString(2, countryNameField.getText());
                     stmt.execute();
+                    errorPrompt.setText("Success!");
                     clear();
                     con.close();
                 } catch (SQLException e) {

@@ -50,7 +50,7 @@ public class PlayerListController implements Initializable {
     ArrayList<String> leagueList = new ArrayList<>();
     String positionFilterString = "";
     String nationFilterString = "";
-    Set<String> nationList = new HashSet<String>();
+    Set<String> nationList = new TreeSet<String>();
     String teamFilterString = "";
     ArrayList<String> teamList = new ArrayList<>();
     boolean filtered = false;
@@ -87,8 +87,14 @@ public class PlayerListController implements Initializable {
         teamFilterString = "";
         leagueFilterString = "";
         playerSearch.setText("");
+        leagueFilter.setValue("");
+        teamFilter.setValue("");
+        positionFilter.setValue(null);
+        nationFilter.setValue("");
         playerListCont.getChildren().clear();
         System.out.println(filtered);
+        //filter();
+        filtered = false;
         loadPlayerData();
         loadCards();
     }
@@ -170,7 +176,7 @@ public class PlayerListController implements Initializable {
             } else {
                 try {
                     Connection conn = DatabaseConnection.getStatsConnection();
-                    String sql = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE ( full_name LIKE '%" + playerSearch.getText() + "%'" + teamFilterString + " " + leagueFilterString + " " + positionFilterString + " " + nationFilterString + ") ORDER BY Current_Club ASC;";
+                    String sql = "SELECT position , full_name, age, birthday_GMT, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE ( full_name LIKE '%" + playerSearch.getText() + "%'" + teamFilterString + " " + leagueFilterString + " " + positionFilterString + " " + nationFilterString + ") ORDER BY Current_Club ASC;";
                     ResultSet rs = conn.createStatement().executeQuery(sql);
                     while (rs.next()) {
                         this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12), rs.getInt(13)));
@@ -196,12 +202,12 @@ public class PlayerListController implements Initializable {
             System.out.println(filtered);
             if (filtered) {
                 String filt = new String(Komal.substring(3));
-                String Where = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE( " + filt + " ) ORDER BY Current_Club ASC;";
+                String Where = "SELECT position , full_name, age, birthday_GMT, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE( " + filt + " ) ORDER BY Current_Club ASC;";
                 System.out.println(filt);
                 rs = conn.createStatement().executeQuery(Where);
                 System.out.println(Where);
             } else {
-                String NoWhere = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY Current_Club ASC;";
+                String NoWhere = "SELECT position , full_name, age, birthday_GMT, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY Current_Club ASC;";
                 rs = conn.createStatement().executeQuery(NoWhere);
                 System.out.println(NoWhere);
             }

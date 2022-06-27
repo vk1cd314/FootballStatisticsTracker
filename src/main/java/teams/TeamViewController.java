@@ -131,7 +131,7 @@ public class TeamViewController {
             ResultSet rs = conn.createStatement().executeQuery("SELECT position, full_name, age, birthday," +
                     " league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, " +
                     "clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players" +
-                    " WHERE (Current_Club LIKE  '%" + team.common_name + "%') ORDER BY position ASC;");
+                    " WHERE (Current_Club LIKE  '%" + team.common_name + "%' OR Current_Club LIKE '%"+team.name+"%') ORDER BY position ASC;");
             System.out.println(rs);
             while (rs.next()) {
                 System.out.println(rs.getString(1));

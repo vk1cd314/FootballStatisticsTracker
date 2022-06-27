@@ -167,6 +167,7 @@ public class LeagueController {
     }
 
     public void clear() {
+        leagueComboBox.setValue("");
         teamSearch.clear();
         leagueLabel.setText("All Teams");
         leagueComboBox.setPromptText("Select League");
@@ -177,6 +178,7 @@ public class LeagueController {
     }
 
     public void reload() {
+        loadLeagueData();
         loadCards();
     }
 

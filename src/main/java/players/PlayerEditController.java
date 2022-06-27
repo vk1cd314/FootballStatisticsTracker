@@ -80,18 +80,25 @@ public class PlayerEditController {
             Optional<ButtonType> result = a.showAndWait();
             if (result.get() == ButtonType.OK) {
                 try {
+                    String Bday = "";
+                    if(bdayPicker.getValue()==null){
+                        Bday = player.birthday;
+                    }
+                    else {
+                        Bday = bdayPicker.getValue().toString();
+                    }
                     Connection con = DatabaseConnection.getStatsConnection();
-                    String stmt = "UPDATE teams SET full_name = '" + nameField.getText() +
+                    String stmt = "UPDATE players SET full_name = '" + nameField.getText() +
                             "'  , position = '" + positionComboBox.getValue().toString() +
                             "' , age = '" + ageField.getText() +
-                            "' , birthday = '" + bdayPicker.getValue().toString() +
+                            "' , birthday_GMT = '" + Bday +
                             "' , league  = '" + leagueComboBox.getValue() +
                             "' , Current_Club = '" + clubComboBox.getValue() +
                             "' , goals_overall = '" + goalsField.getText() +
                             "' , nationality = '" + nationalityField.getText() +
                             "' , appearances_overall = '" + appField.getText() +
-                            "' , asssts_overall = '" + assBox.getText() +
-                            "' , clean_sheet_overall = '" + cleanSheetBox.getText() +
+                            "' , assists_overall = '" + assBox.getText() +
+                            "' , clean_sheets_overall = '" + cleanSheetBox.getText() +
                             "' , red_cards_overall = '" + redField.getText() +
                             "' , yellow_cards_overall = '" + yellowField.getText() +
                             "' WHERE full_name = '" + player.name + "'  ;";

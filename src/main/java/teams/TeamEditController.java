@@ -42,8 +42,7 @@ public class TeamEditController {
     @FXML
     private TextField matchesPldbox;
 
-    @FXML
-    private Label positionBox;
+
 
     @FXML
     private TextField teamNamebox;
@@ -119,7 +118,7 @@ public class TeamEditController {
 
         goalDiffBox.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
         teamNamebox.setText(team.name);
-        positionBox.setText(String.valueOf(team.position));
+        //positionBox.setText(String.valueOf(team.position));
         matchesPldbox.setText(String.valueOf(team.matchesPlayed));
         winsBox.setText(String.valueOf(team.wins));
         lossesBox.setText(String.valueOf(team.losses));
