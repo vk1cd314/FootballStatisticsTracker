@@ -3,6 +3,7 @@ package com.football.statisticstracker;
 import database.DatabaseConnection;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -19,6 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class UserController {
@@ -33,8 +35,15 @@ public class UserController {
     @FXML
     Label informationUpdate;
     @FXML
+    Label progressLabel;
+    @FXML
     ImageView profilePicture;
     Admin adminCredentials;
+    @FXML
+    ComboBox<String> userComboBox;
+    @FXML
+    ComboBox<String> deleteUserBox;
+    ArrayList<String> users = new ArrayList<>();
     //File file = null;
     public StringProperty fileLocation = new SimpleStringProperty("");
 
@@ -104,8 +113,27 @@ public class UserController {
         changePassword(adminCredentials.password);
         setProfilePicture(adminCredentials.name);
         //password.setText("********");
+        loadBoxes();
     }
+    void loadBoxes(){
+        userComboBox.setItems(null);
+        deleteUserBox.setItems(null);
+        users.clear();
+        try{
+            String l = "SELECT Username FROM loginInfo WHERE Type = 'User'";
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(l);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                users.add(rs.getString(1));
+            }
 
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        userComboBox.setItems(FXCollections.observableArrayList(users));
+        deleteUserBox.setItems(FXCollections.observableArrayList(users));
+    }
     public void changeUsername(String name) {
         username.setText(name);
         String updatename = "UPDATE loginInfo SET Username = ? WHERE Username = ?";
@@ -155,7 +183,51 @@ public class UserController {
             informationUpdate.setText("Information Not Updated");
         }
     }
-
+    public void deleteUser(){
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Confirm Changes");
+        a.setContentText("Are you sure you want to delete your account?");
+        Optional<ButtonType> result = a.showAndWait();
+        if(result.get() == ButtonType.OK) {
+            String delete = "DELETE FROM loginInfo WHERE Username = ?";
+            try {
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(delete);
+                stmt.setString(1, adminCredentials.name);
+                stmt.execute();
+                conn.close();
+                quit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void deleteOtherUser() {
+        if (deleteUserBox.getValue() != null ){
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setTitle("Confirm Changes");
+            a.setContentText("Are you sure you want to delete this user?");
+            Optional<ButtonType> result = a.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                adminCredentials.deleteUser(deleteUserBox.getValue());
+                progressLabel.setText("Success!");
+                loadBoxes();
+            }
+            //adminCredentials.deleteUser(deleteUserBox.getValue());
+        }
+    }
+    public void makeAdmin(){
+        if(userComboBox.getValue()!=null) {
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setTitle("Confirm Changes");
+            a.setContentText("Are you sure you want to this user an admin?");
+            Optional<ButtonType> result = a.showAndWait();
+            if (result.get() == ButtonType.OK)
+                adminCredentials.makeAdmin(userComboBox.getValue());
+            progressLabel.setText("Success!");
+            loadBoxes();
+        }
+    }
     public void quit() {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
