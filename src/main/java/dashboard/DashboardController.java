@@ -113,7 +113,7 @@ public class DashboardController {
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             String currentFileURL = rs.getString(1);
-            System.out.println("noki had a Gigantic dick eyaeyayo"+currentFileURL);
+            //System.out.println("noki had a Gigantic dick eyaeyayo"+currentFileURL);
             if(!currentFileURL.equals(new String("noki"))) {
                 Image image = new Image(currentFileURL);
                 profilePicture.setImage(image);
