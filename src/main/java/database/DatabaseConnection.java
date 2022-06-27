@@ -17,11 +17,12 @@ public class DatabaseConnection {
         }
         return null;
     }
+
     public static Connection getStatsConnection() throws SQLException {
-        try{
+        try {
             Class.forName("org.sqlite.JDBC");
             return DriverManager.getConnection(StatsConn);
-        }catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

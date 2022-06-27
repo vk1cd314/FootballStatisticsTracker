@@ -10,38 +10,45 @@ import java.sql.SQLException;
 public class Admin {
     public boolean isAdmin;
     public String name, password;
-    public Admin(String name, String pass){
+
+    public Admin(String name, String pass) {
         this.name = name;
         this.password = pass;
     }
-    public void makeAdmin(String name){
+
+    public void makeAdmin(String name) {
         String makeAdmin = "UPDATE loginInfo SET Type = ? WHERE Username = ?";
-        try{
+        try {
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(makeAdmin);
             stmt.setString(1, "Admin");
             stmt.setString(2, name);
             stmt.execute();
             conn.close();
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void deleteUser(String name){
+
+    public void deleteUser(String name) {
         String delete = "DELETE FROM loginInfo WHERE Username = ?";
-        try{
+        try {
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(delete);
             stmt.setString(1, name);
             stmt.execute();
             conn.close();
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void addPlayer(Player player){
-        String insert = "INSERT INTO players(full_name, age, birthday, league, position, Current_Club, nationality,  appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall) Values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try{
+
+    public void addPlayer(Player player) {
+        String insert = "INSERT INTO players(full_name, age, birthday," +
+                " league, position, Current_Club, nationality,  appearances_overall," +
+                " goals_overall, assists_overall, clean_sheets_overall, red_cards_overall," +
+                " yellow_cards_overall) Values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
             Connection conn = DatabaseConnection.getStatsConnection();
             PreparedStatement stmt = conn.prepareStatement(insert);
             stmt.setString(1, player.name);
@@ -59,11 +66,14 @@ public class Admin {
             stmt.setString(13, String.valueOf(player.yellow_cards));
             stmt.execute();
             conn.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void addTeam(String name){
-        String insert = "INSERT INTO teams(team_name, league_position, matches_played, wins, draws, losses, goals_scored, goals_conceded, goal_difference, clean_sheets) VALUES()";
+
+    public void addTeam(String name) {
+        String insert = "INSERT INTO teams(team_name, league_position," +
+                " matches_played, wins, draws, losses, goals_scored, goals_conceded," +
+                " goal_difference, clean_sheets) VALUES()";
     }
 }

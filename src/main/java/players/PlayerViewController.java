@@ -68,7 +68,7 @@ public class PlayerViewController {
 
     Admin adminCredentials;
 
-    public void load(Player player){
+    public void load(Player player) {
         this.player = player;
         nameLabel.setText(player.name);
         birthdayLabel.setText(player.birthday);
@@ -101,12 +101,13 @@ public class PlayerViewController {
             delete.setTextFill(Color.TRANSPARENT);
         }
     }
-    public void deletePlayer(){
+
+    public void deletePlayer() {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Delete Player");
         a.setContentText("Are you sure you want to delete this player?");
         Optional<ButtonType> result = a.showAndWait();
-        if(result.get() == ButtonType.OK) {
+        if (result.get() == ButtonType.OK) {
             try {
                 Connection con = DatabaseConnection.getStatsConnection();
                 String stmt = "DELETE FROM players WHERE full_name = '" + player.name + "';";
@@ -123,15 +124,17 @@ public class PlayerViewController {
             }
         }
     }
-    public void editPlayer(){
+
+    public void editPlayer() {
         try {
             quit();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         PlayerEdit playerEdit = new PlayerEdit();
         playerEdit.show(this.player);
     }
+
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();

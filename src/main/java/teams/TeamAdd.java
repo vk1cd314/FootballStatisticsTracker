@@ -7,14 +7,15 @@ import java.io.IOException;
 
 public class TeamAdd {
     TeamAddController teamAddController = new TeamAddController();
-    public void show(BorderPane borderPane){
-        try{
+
+    public void show(BorderPane borderPane) {
+        try {
 
             FXMLLoader root = new FXMLLoader(getClass().getResource("teamAddFXML.fxml"));
             borderPane.setCenter(root.load());
             teamAddController = root.getController();
             teamAddController.load();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

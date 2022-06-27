@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showPlayerData" prefHeight="50.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="players.PlayerCardController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showPlayerData" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #dedede;" styleClass="big" stylesheets="@playerViewStyleSheet.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="players.PlayerCardController">
    <children>
       <Label fx:id="playerName" prefHeight="75.0" prefWidth="219.0" text="Label" />
       <Label fx:id="teamName" prefHeight="50.0" prefWidth="190.0" text="Label" />

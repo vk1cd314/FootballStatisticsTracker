@@ -6,12 +6,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="players.PlayerEditController">
    <children>
       <AnchorPane prefHeight="695.0" prefWidth="807.0">
          <children>
-            <Button fx:id="cross" layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" text="exit" />
+            <Button fx:id="cross" layoutX="747.0" layoutY="13.0" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: #b05951;" stylesheets="@playerViewStyleSheet.css" text="exit">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Button>
             <Label layoutX="28.0" layoutY="38.0" prefHeight="35.0" prefWidth="111.0" text="Name" />
             <Label layoutX="28.0" layoutY="91.0" prefHeight="35.0" prefWidth="59.0" text="Age" />
             <Label layoutX="182.0" layoutY="91.0" prefHeight="35.0" prefWidth="67.0" text="Position" />
@@ -24,24 +28,24 @@
             <Label layoutX="592.0" layoutY="217.0" prefHeight="35.0" prefWidth="95.0" text="Clean Sheets" />
             <Label layoutX="24.0" layoutY="305.0" prefHeight="35.0" prefWidth="86.0" text="Yellow Cards" />
             <Label layoutX="249.0" layoutY="305.0" prefHeight="35.0" prefWidth="86.0" text="Red Cards" />
-            <TextField fx:id="nameField" layoutX="119.0" layoutY="38.0" prefHeight="35.0" prefWidth="491.0" />
-            <TextField fx:id="ageField" layoutX="97.0" layoutY="91.0" prefHeight="35.0" prefWidth="67.0" />
-            <TextField fx:id="nationalityField" layoutX="139.0" layoutY="143.0" prefHeight="35.0" prefWidth="231.0" />
-            <TextField fx:id="appField" layoutX="131.0" layoutY="217.0" prefHeight="35.0" prefWidth="67.0" />
-            <TextField fx:id="goalsField" layoutX="331.0" layoutY="217.0" prefHeight="35.0" prefWidth="67.0" />
-            <TextField fx:id="assBox" layoutX="510.0" layoutY="217.0" prefHeight="35.0" prefWidth="67.0" />
-            <TextField fx:id="cleanSheetBox" layoutX="693.0" layoutY="220.0" prefHeight="35.0" prefWidth="67.0" />
-            <TextField fx:id="yellowField" layoutX="145.0" layoutY="300.0" prefHeight="35.0" prefWidth="67.0" />
-            <TextField fx:id="redField" layoutX="337.0" layoutY="300.0" prefHeight="35.0" prefWidth="67.0" />
-            <DatePicker fx:id="bdayPicker" layoutX="485.0" layoutY="143.0" prefHeight="35.0" prefWidth="302.0" />
-            <Button layoutX="373.0" layoutY="505.0" mnemonicParsing="false" onAction="#clear" text="clear" />
-            <Button layoutX="336.0" layoutY="541.0" mnemonicParsing="false" onAction="#change" text="Commit Changes" />
+            <TextField fx:id="nameField" layoutX="119.0" layoutY="38.0" prefHeight="35.0" prefWidth="491.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <TextField fx:id="ageField" layoutX="97.0" layoutY="91.0" prefHeight="35.0" prefWidth="67.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <TextField fx:id="nationalityField" layoutX="139.0" layoutY="143.0" prefHeight="35.0" prefWidth="231.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <TextField fx:id="appField" layoutX="131.0" layoutY="217.0" prefHeight="35.0" prefWidth="67.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <TextField fx:id="goalsField" layoutX="331.0" layoutY="217.0" prefHeight="35.0" prefWidth="67.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <TextField fx:id="assBox" layoutX="510.0" layoutY="217.0" prefHeight="35.0" prefWidth="67.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <TextField fx:id="cleanSheetBox" layoutX="693.0" layoutY="220.0" prefHeight="35.0" prefWidth="67.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <TextField fx:id="yellowField" layoutX="145.0" layoutY="302.0" prefHeight="35.0" prefWidth="67.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <TextField fx:id="redField" layoutX="337.0" layoutY="304.0" prefHeight="35.0" prefWidth="67.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <DatePicker fx:id="bdayPicker" layoutX="485.0" layoutY="143.0" prefHeight="35.0" prefWidth="302.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <Button layoutX="377.0" layoutY="505.0" mnemonicParsing="false" onAction="#clear" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: #51b05b;" stylesheets="@playerViewStyleSheet.css" text="clear" />
+            <Button layoutX="336.0" layoutY="545.0" mnemonicParsing="false" onAction="#change" prefHeight="28.0" prefWidth="144.0" style="-fx-background-color: #51aeb0;" stylesheets="@playerViewStyleSheet.css" text="Commit Changes" />
             <Label fx:id="errLabel" layoutX="234.0" layoutY="452.0" prefHeight="44.0" prefWidth="339.0" />
-            <Button layoutX="374.0" layoutY="585.0" mnemonicParsing="false" onAction="#quit" text="cancel" />
+            <Button layoutX="376.0" layoutY="585.0" mnemonicParsing="false" onAction="#quit" prefHeight="28.0" prefWidth="61.0" style="-fx-background-color: #b05951;" stylesheets="@playerViewStyleSheet.css" text="cancel" />
             <Label layoutX="429.0" layoutY="300.0" prefHeight="35.0" prefWidth="61.0" text="League" />
-            <ComboBox fx:id="leagueComboBox" layoutX="498.0" layoutY="300.0" prefHeight="35.0" prefWidth="269.0" />
-            <ComboBox fx:id="clubComboBox" layoutX="485.0" layoutY="88.0" prefHeight="35.0" prefWidth="269.0" />
-            <ComboBox fx:id="positionComboBox" layoutX="244.0" layoutY="88.0" prefHeight="35.0" prefWidth="160.0" />
+            <ComboBox fx:id="leagueComboBox" layoutX="498.0" layoutY="301.0" prefHeight="35.0" prefWidth="269.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <ComboBox fx:id="clubComboBox" layoutX="485.0" layoutY="88.0" prefHeight="35.0" prefWidth="269.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
+            <ComboBox fx:id="positionComboBox" layoutX="244.0" layoutY="88.0" prefHeight="35.0" prefWidth="160.0" styleClass="searchbar" stylesheets="@playerViewStyleSheet.css" />
          </children>
       </AnchorPane>
    </children>

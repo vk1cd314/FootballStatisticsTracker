@@ -23,23 +23,38 @@
             <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
          </font>
       </Button>
-      <ScrollPane layoutY="96.0" prefHeight="598.0" prefWidth="697.0">
+      <ScrollPane layoutY="96.0" prefHeight="598.0" prefWidth="657.0">
          <content>
-            <VBox fx:id="playerListCont" prefHeight="598.0" prefWidth="693.0" />
+            <VBox fx:id="playerListCont" prefHeight="598.0" prefWidth="680.0" />
          </content>
       </ScrollPane>
-      <VBox layoutX="697.0" layoutY="96.0" prefHeight="598.0" prefWidth="113.0">
+      <VBox alignment="CENTER" layoutX="660.0" layoutY="96.0" prefHeight="598.0" prefWidth="150.0">
          <children>
-            <Label prefHeight="52.0" prefWidth="111.0" text="Search Filters" />
-            <Label prefHeight="31.0" prefWidth="108.0" text="Position" />
+            <Label prefHeight="52.0" prefWidth="111.0" text="Search Filters">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="108.0" text="Position">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Label>
             <ComboBox fx:id="positionFilter" onAction="#filter" prefHeight="24.0" prefWidth="107.0" promptText="Select Position" />
-            <Label prefHeight="27.0" prefWidth="111.0" text="League" />
+            <Label alignment="CENTER" prefHeight="37.0" prefWidth="111.0" text="League">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Label>
             <ComboBox fx:id="leagueFilter" onAction="#filter" prefHeight="24.0" prefWidth="108.0" promptText="Select League" />
-            <Label prefHeight="33.0" prefWidth="113.0" text="Teams" />
+            <Label alignment="CENTER" prefHeight="39.0" prefWidth="113.0" text="Teams">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Label>
             <ComboBox fx:id="teamFilter" onAction="#filter" prefHeight="24.0" prefWidth="109.0" promptText="Select Team" />
-            <Label prefHeight="41.0" prefWidth="110.0" text="Nationality" />
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="110.0" text="Nationality">
+               <font>
+                  <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+               </font></Label>
             <ComboBox fx:id="nationFilter" onAction="#filter" prefHeight="24.0" prefWidth="110.0" promptText="Select Nation" />
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="116.0" />
             <Button mnemonicParsing="false" onAction="#clear" prefHeight="24.0" prefWidth="108.0" text="Clear Filters" />
          </children>
       </VBox>

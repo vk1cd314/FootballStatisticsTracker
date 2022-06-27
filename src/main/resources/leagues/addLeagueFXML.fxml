@@ -5,20 +5,42 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.LeagueAddController">
    <children>
-      <Label layoutX="47.0" layoutY="14.0" prefHeight="50.0" prefWidth="199.0" text="Add New League" />
-      <Label layoutX="47.0" layoutY="79.0" prefHeight="34.0" prefWidth="121.0" text="League Name" />
-      <Label layoutX="47.0" layoutY="199.0" prefHeight="34.0" prefWidth="115.0" text="Country" />
-      <TextField fx:id="leagueNameField" layoutX="47.0" layoutY="134.0" prefHeight="34.0" prefWidth="372.0" />
-      <TextField fx:id="countryNameField" layoutX="47.0" layoutY="246.0" prefHeight="34.0" prefWidth="372.0" />
-      <Button fx:id="cross" layoutX="731.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" text="cross" />
+      <Label layoutX="47.0" layoutY="14.0" prefHeight="50.0" prefWidth="199.0" text="Add New League">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="22.0" />
+         </font></Label>
+      <Label layoutX="47.0" layoutY="79.0" prefHeight="34.0" prefWidth="129.0" text="League Name">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="18.0" />
+         </font></Label>
+      <Label layoutX="47.0" layoutY="199.0" prefHeight="34.0" prefWidth="115.0" text="Country">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="19.0" />
+         </font></Label>
+      <TextField fx:id="leagueNameField" layoutX="47.0" layoutY="134.0" prefHeight="34.0" prefWidth="372.0" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
+      <TextField fx:id="countryNameField" layoutX="47.0" layoutY="246.0" prefHeight="34.0" prefWidth="372.0" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
+      <Button fx:id="cross" layoutX="754.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: #ad2924;" stylesheets="@teamCardStyleSheet.css" text="X">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
       <Label fx:id="errorPrompt" layoutX="309.0" layoutY="293.0" prefHeight="40.0" prefWidth="220.0" />
-      <Button layoutX="371.0" layoutY="347.0" mnemonicParsing="false" onAction="#addLeague" text="Add League" />
-      <Button layoutX="520.0" layoutY="204.0" mnemonicParsing="false" onAction="#clear" text="clear" />
-      <Label layoutX="47.0" layoutY="455.0" prefHeight="34.0" prefWidth="115.0" text="Delete League" />
-      <ComboBox fx:id="leagueComboBox" layoutX="184.0" layoutY="455.0" prefHeight="34.0" prefWidth="210.0" promptText="Select League to Delete" />
-      <Button layoutX="455.0" layoutY="460.0" mnemonicParsing="false" onAction="#deleteLeague" prefHeight="24.0" prefWidth="115.0" text="Delete League" />
+      <Button layoutX="359.0" layoutY="347.0" mnemonicParsing="false" onAction="#addLeague" prefHeight="50.0" prefWidth="108.0" style="-fx-background-color: #4a8fa8;" stylesheets="@teamCardStyleSheet.css" text="Add League">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete Mono" size="13.0" />
+         </font></Button>
+      <Button layoutX="510.0" layoutY="193.0" mnemonicParsing="false" onAction="#clear" prefHeight="40.0" prefWidth="61.0" style="-fx-background-color: #5cad68;" stylesheets="@teamCardStyleSheet.css" text="clear">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Button>
+      <Label layoutX="40.0" layoutY="455.0" prefHeight="34.0" prefWidth="129.0" text="Delete League">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="15.0" />
+         </font></Label>
+      <ComboBox fx:id="leagueComboBox" layoutX="184.0" layoutY="455.0" prefHeight="34.0" prefWidth="210.0" promptText="Select League to Delete" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
+      <Button layoutX="453.0" layoutY="456.0" mnemonicParsing="false" onAction="#deleteLeague" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #a34643;" stylesheets="@teamCardStyleSheet.css" text="Delete League" />
    </children>
 </AnchorPane>

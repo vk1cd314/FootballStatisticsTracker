@@ -42,23 +42,23 @@ public class TeamAddController {
 
     ArrayList<String> leagueList = new ArrayList<>();
 
-    public void load(){
+    public void load() {
         leagueList.clear();
-        try
-        {
+        try {
             Connection con = DatabaseConnection.getStatsConnection();
             String sql = "SELECT league_name FROM leagues;";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 this.leagueList.add(rs.getString(1));
             }
             con.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         leagueComboBox.setItems(FXCollections.observableArrayList(leagueList));
     }
-    public void clear(){
+
+    public void clear() {
         commonNameField.clear();
         teamNameField.clear();
         leagueComboBox.setValue("");
@@ -70,13 +70,14 @@ public class TeamAddController {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
     }
-    public void addTeam(){
-        if(teamNameField != null && teamNameField.getText() != "" && commonNameField.getText() != "" && leagueComboBox != null) {
+
+    public void addTeam() {
+        if (teamNameField != null && teamNameField.getText() != "" && commonNameField.getText() != "" && leagueComboBox != null) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setTitle("Confirm Changes");
             a.setContentText("Are you sure you want to add this team?");
             Optional<ButtonType> result = a.showAndWait();
-            if(result.get() == ButtonType.OK) {
+            if (result.get() == ButtonType.OK) {
                 String insert = "INSERT INTO teams(team_name, common_name, league, matches_played, wins, draws, losses, goals_scored, goals_conceded, goal_difference, clean_sheets)" +
                         "VALUES (?, ?, ?, '0', '0', '0', '0', '0', '0', '0', '0');";
                 try {
@@ -93,8 +94,7 @@ public class TeamAddController {
                     e.printStackTrace();
                 }
             }
-        }
-        else{
+        } else {
             progressLabel.setText("please enter valid data");
         }
     }

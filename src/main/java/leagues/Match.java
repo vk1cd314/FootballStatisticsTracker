@@ -8,9 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Match {
-    MatchController matchController = new MatchController();;
-    public void show(String league){
-        try{
+    MatchController matchController = new MatchController();
+
+    public void show(String league) {
+        try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("matchFXML.fxml"));
@@ -21,7 +22,7 @@ public class Match {
             stage.show();
             matchController = loader.getController();
             matchController.load(league);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

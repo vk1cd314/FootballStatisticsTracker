@@ -14,6 +14,7 @@ public class DashboardModel {
     private static double xShift = 0;
     private static double yShift = 0;
     DashboardController dashboardController;
+
     public void start(Admin admin) {
         try {
             Stage stage = new Stage();
@@ -30,7 +31,6 @@ public class DashboardModel {
                 stage.setY(event.getScreenY() - yShift);
             });
             Scene scene = new Scene(root, Color.TRANSPARENT);
-            //stage.initStyle(StageStyle.UNDECORATED);
             scene.setFill(Color.TRANSPARENT);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.getIcons().add(new Image("football_transparent.png"));
@@ -39,7 +39,6 @@ public class DashboardModel {
             stage.setScene(scene);
             stage.show();
             dashboardController.adminCredentials = admin;
-            //System.out.println(admin.name);
             dashboardController.changeUsername(admin.name);
             dashboardController.changeProfilePicture(admin.name);
         } catch (Exception exception) {

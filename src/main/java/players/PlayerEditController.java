@@ -33,14 +33,12 @@ public class PlayerEditController {
     @FXML
     private TextField cleanSheetBox;
 
-//    @FXML
-//    private TextField clubField;
     @FXML
     private ComboBox<String> clubComboBox;
 
 
     @FXML
-    private  ComboBox<String> leagueComboBox;
+    private ComboBox<String> leagueComboBox;
 
     @FXML
     private Button cross;
@@ -57,8 +55,6 @@ public class PlayerEditController {
     @FXML
     private TextField nationalityField;
 
-//    @FXML
-//    private TextField positionField;
     @FXML
     private ComboBox<Positions> positionComboBox;
 
@@ -75,27 +71,34 @@ public class PlayerEditController {
     ArrayList<String> clubList = new ArrayList<>();
     ArrayList<String> leagueList = new ArrayList<>();
 
-    public void change(){
+    public void change() {
 
-        if(nameField != null && positionComboBox != null && ageField != null && bdayPicker != null && leagueComboBox != null && clubComboBox != null && nationalityField != null && appField != null && goalsField != null && assBox != null && cleanSheetBox != null && redField != null && yellowField != null) {
+        if (nameField != null && positionComboBox != null && ageField != null && bdayPicker != null && leagueComboBox != null && clubComboBox != null && nationalityField != null && appField != null && goalsField != null && assBox != null && cleanSheetBox != null && redField != null && yellowField != null) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setTitle("Confirm Changes");
             a.setContentText("Are you sure you want to make these changes?");
             Optional<ButtonType> result = a.showAndWait();
-            if(result.get() == ButtonType.OK) {
+            if (result.get() == ButtonType.OK) {
                 try {
+                    String Bday = "";
+                    if(bdayPicker.getValue()==null){
+                        Bday = player.birthday;
+                    }
+                    else {
+                        Bday = bdayPicker.getValue().toString();
+                    }
                     Connection con = DatabaseConnection.getStatsConnection();
-                    String stmt = "UPDATE teams SET full_name = '" + nameField.getText() +
+                    String stmt = "UPDATE players SET full_name = '" + nameField.getText() +
                             "'  , position = '" + positionComboBox.getValue().toString() +
                             "' , age = '" + ageField.getText() +
-                            "' , birthday = '" + bdayPicker.getValue().toString() +
+                            "' , birthday_GMT = '" + Bday +
                             "' , league  = '" + leagueComboBox.getValue() +
                             "' , Current_Club = '" + clubComboBox.getValue() +
                             "' , goals_overall = '" + goalsField.getText() +
                             "' , nationality = '" + nationalityField.getText() +
                             "' , appearances_overall = '" + appField.getText() +
-                            "' , asssts_overall = '" + assBox.getText() +
-                            "' , clean_sheet_overall = '" + cleanSheetBox.getText() +
+                            "' , assists_overall = '" + assBox.getText() +
+                            "' , clean_sheets_overall = '" + cleanSheetBox.getText() +
                             "' , red_cards_overall = '" + redField.getText() +
                             "' , yellow_cards_overall = '" + yellowField.getText() +
                             "' WHERE full_name = '" + player.name + "'  ;";
@@ -111,17 +114,17 @@ public class PlayerEditController {
                     e.printStackTrace();
                 }
             }
-        }
-        else{
+        } else {
             errLabel.setText("Please input valid entries");
         }
     }
-    public void clear(){
+
+    public void clear() {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Confirm Clear");
         a.setContentText("Are you sure you want to clear all fields?");
         Optional<ButtonType> result = a.showAndWait();
-        if(result.get() == ButtonType.OK) {
+        if (result.get() == ButtonType.OK) {
             nameField.clear();
             positionComboBox.setValue(null);
             ageField.clear();
@@ -137,32 +140,33 @@ public class PlayerEditController {
             yellowField.clear();
         }
     }
-    public void load(Player player){
+
+    public void load(Player player) {
         this.player = player;
         leagueList.clear();
         clubList.clear();
-        try{
+        try {
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT league_name FROM leagues"+filterByTeam+";";
+            String sql = "SELECT league_name FROM leagues" + filterByTeam + ";";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 this.leagueList.add(rs.getString(1));
             }
             con.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         leagueComboBox.setItems(FXCollections.observableArrayList(leagueList));
         leagueComboBox.setValue(player.league);
-        try{
+        try {
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT team_name FROM teams"+filterByLeague+";";
+            String sql = "SELECT team_name FROM teams" + filterByLeague + ";";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 this.clubList.add(rs.getString(1));
             }
             con.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         ageField.textProperty().addListener(new ChangeListener<String>() {
@@ -244,6 +248,7 @@ public class PlayerEditController {
         redField.setText(String.valueOf(player.red_cards));
         yellowField.setText(String.valueOf(player.yellow_cards));
     }
+
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();

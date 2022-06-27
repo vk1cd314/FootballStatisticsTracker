@@ -50,7 +50,7 @@ public class PlayerListController implements Initializable {
     ArrayList<String> leagueList = new ArrayList<>();
     String positionFilterString = "";
     String nationFilterString = "";
-    Set<String> nationList = new HashSet<String>();
+    Set<String> nationList = new TreeSet<String>();
     String teamFilterString = "";
     ArrayList<String> teamList = new ArrayList<>();
     boolean filtered = false;
@@ -63,18 +63,21 @@ public class PlayerListController implements Initializable {
     private final List<Player> data = new ArrayList<>();
 
     HBox tile = null;
+
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         loadPlayerData();
         loadCards();
         loadFilters();
     }
+
     @FXML
     void quit(ActionEvent event) throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();
     }
-    public void clear(){
+
+    public void clear() {
         filtered = false;
         nationList.clear();
         teamList.clear();
@@ -84,12 +87,19 @@ public class PlayerListController implements Initializable {
         teamFilterString = "";
         leagueFilterString = "";
         playerSearch.setText("");
+        leagueFilter.setValue("");
+        teamFilter.setValue("");
+        positionFilter.setValue(null);
+        nationFilter.setValue("");
         playerListCont.getChildren().clear();
         System.out.println(filtered);
+        //filter();
+        filtered = false;
         loadPlayerData();
         loadCards();
     }
-    public void loadFilters(){
+
+    public void loadFilters() {
         positionFilter.setValue(null);
         leagueFilter.setValue(null);
         nationFilter.setValue(null);
@@ -97,56 +107,57 @@ public class PlayerListController implements Initializable {
         positionFilter.setItems(FXCollections.observableArrayList(Positions.values()));
         leagueList.clear();
         teamList.clear();
-        try{
+        try {
             Connection con = DatabaseConnection.getStatsConnection();
             String sql = "SELECT league_name FROM leagues ORDER BY league_name ASC;";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 this.leagueList.add(rs.getString(1));
             }
             con.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         leagueFilter.setItems(FXCollections.observableArrayList(leagueList));
-        try{
+        try {
             Connection con = DatabaseConnection.getStatsConnection();
             String sql = "SELECT common_name FROM teams ORDER BY common_name ASC;";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 this.teamList.add(rs.getString(1));
             }
             con.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         teamFilter.setItems(FXCollections.observableArrayList(teamList));
-        try{
+        try {
             Connection con = DatabaseConnection.getStatsConnection();
             String sql = "SELECT nationality FROM players ORDER BY nationality ASC;";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 this.nationList.add(rs.getString(1));
             }
             con.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         nationFilter.setItems(FXCollections.observableArrayList(nationList));
     }
-    public void filter(){
+
+    public void filter() {
         filtered = true;
-        if(positionFilter.getValue() != null && !positionFilter.getValue().toString().equals("") ){
-            positionFilterString = "AND position = '"+positionFilter.getValue().toString()+"'";
+        if (positionFilter.getValue() != null && !positionFilter.getValue().toString().equals("")) {
+            positionFilterString = "AND position = '" + positionFilter.getValue().toString() + "'";
         }
-        if(leagueFilter.getValue() != null && !leagueFilter.getValue().equals("")){
-            leagueFilterString = "AND league = '"+leagueFilter.getValue()+"'";
+        if (leagueFilter.getValue() != null && !leagueFilter.getValue().equals("")) {
+            leagueFilterString = "AND league = '" + leagueFilter.getValue() + "'";
         }
-        if(nationFilter.getValue() != null && !nationFilter.getValue().equals("")){
-            nationFilterString = "AND nationality = '"+nationFilter.getValue()+"'";
+        if (nationFilter.getValue() != null && !nationFilter.getValue().equals("")) {
+            nationFilterString = "AND nationality = '" + nationFilter.getValue() + "'";
         }
-        if(teamFilter.getValue() != null && !teamFilter.getValue().equals("")){
-            teamFilterString = "AND Current_Club = '"+teamFilter.getValue()+"'";
+        if (teamFilter.getValue() != null && !teamFilter.getValue().equals("")) {
+            teamFilterString = "AND Current_Club = '" + teamFilter.getValue() + "'";
         }
         loadPlayerData();
         System.out.println(leagueFilterString);
@@ -159,21 +170,20 @@ public class PlayerListController implements Initializable {
         playerSearch.setOnKeyReleased(keyEvent -> {
             data.clear();
             playerListCont.getChildren().clear();
-            if(playerSearch.getText().equals("")){
+            if (playerSearch.getText().equals("")) {
                 loadPlayerData();
                 loadCards();
-            }
-            else{
-                try{
+            } else {
+                try {
                     Connection conn = DatabaseConnection.getStatsConnection();
-                    String sql = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE ( full_name LIKE '%"+playerSearch.getText()+"%'"+teamFilterString+" "+leagueFilterString+" "+positionFilterString+" "+nationFilterString+") ORDER BY Current_Club ASC;";
+                    String sql = "SELECT position , full_name, age, birthday_GMT, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE ( full_name LIKE '%" + playerSearch.getText() + "%'" + teamFilterString + " " + leagueFilterString + " " + positionFilterString + " " + nationFilterString + ") ORDER BY Current_Club ASC;";
                     ResultSet rs = conn.createStatement().executeQuery(sql);
-                    while(rs.next()){
-                        this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13)));
+                    while (rs.next()) {
+                        this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12), rs.getInt(13)));
                     }
                     loadCards();
                     conn.close();
-                }catch (SQLException e) {
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
@@ -181,49 +191,39 @@ public class PlayerListController implements Initializable {
     }
 
 
-
-//    public void playerViewStart(BorderPane borderPane){
-//        try{
-//            FXMLLoader root = new FXMLLoader(getClass().getResource("playerList.fxml"));
-//            borderPane.setCenter(root.load());
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
-//    }
-
-    public void loadPlayerData(){
+    public void loadPlayerData() {
         data.clear();
         try {
             Connection conn = DatabaseConnection.getStatsConnection();
             assert conn != null;
-            String Komal = ""+leagueFilterString+""+teamFilterString+""+nationFilterString+""+positionFilterString+"";
+            String Komal = "" + leagueFilterString + "" + teamFilterString + "" + nationFilterString + "" + positionFilterString + "";
             System.out.println(Komal);
             ResultSet rs = null;
             System.out.println(filtered);
-            if(filtered) {
+            if (filtered) {
                 String filt = new String(Komal.substring(3));
-                String Where = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE( "+filt+" ) ORDER BY Current_Club ASC;";
+                String Where = "SELECT position , full_name, age, birthday_GMT, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players WHERE( " + filt + " ) ORDER BY Current_Club ASC;";
                 System.out.println(filt);
                 rs = conn.createStatement().executeQuery(Where);
                 System.out.println(Where);
-            }
-            else {
-                String NoWhere = "SELECT position , full_name, age, birthday, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY Current_Club ASC;";
+            } else {
+                String NoWhere = "SELECT position , full_name, age, birthday_GMT, league, Current_Club, nationality, appearances_overall, goals_overall, assists_overall, clean_sheets_overall, red_cards_overall, yellow_cards_overall FROM players ORDER BY Current_Club ASC;";
                 rs = conn.createStatement().executeQuery(NoWhere);
                 System.out.println(NoWhere);
             }
             while (rs.next()) {
-                this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13)));
+                this.data.add(new Player(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12), rs.getInt(13)));
             }
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void loadCards(){
+
+    public void loadCards() {
         playerListCont.getChildren().clear();
-        for(int i=0; i<data.size(); i++){
-            try{
+        for (int i = 0; i < data.size(); i++) {
+            try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("playerCard.fxml"));
                 tile = fxmlLoader.load();
@@ -231,7 +231,7 @@ public class PlayerListController implements Initializable {
                 playerCardController.setData(data.get(i));
                 playerCardController.adminCredentials = adminCredentials;
                 playerListCont.getChildren().add(tile);
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

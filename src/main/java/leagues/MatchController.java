@@ -45,23 +45,23 @@ public class MatchController {
     ArrayList<String> teamList = new ArrayList<>();
     String league;
 
-    public void load(String league){
-        try
-        {
+    public void load(String league) {
+        try {
             Connection con = DatabaseConnection.getStatsConnection();
-            String sql = "SELECT team_name FROM teams WHERE league = '"+league+"';";
+            String sql = "SELECT team_name FROM teams WHERE league = '" + league + "';";
             ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 this.teamList.add(rs.getString(1));
             }
             con.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         this.homeTeamCombobox.setItems(FXCollections.observableArrayList(teamList));
         this.awayteamCombobox.setItems(FXCollections.observableArrayList(teamList));
     }
-    public void clear(){
+
+    public void clear() {
         homeGoalsbox.clear();
         awayGoalsbox.clear();
         homeTeamCombobox.setValue("");
@@ -69,14 +69,12 @@ public class MatchController {
         homeTeamCombobox.setPromptText("Select Home Team");
         awayteamCombobox.setPromptText("Select Away Team");
     }
-    public void addMatch(){
-        if(homeTeamCombobox.getValue()==awayteamCombobox.getValue()||homeTeamCombobox.getValue()==null||awayteamCombobox.getValue()==null){
+
+    public void addMatch() {
+        if (homeTeamCombobox.getValue() == awayteamCombobox.getValue() || homeTeamCombobox.getValue() == null || awayteamCombobox.getValue() == null) {
             errorLabel.setText("Error");
-        }
-        else
-        {
-            try
-            {
+        } else {
+            try {
                 Connection con = DatabaseConnection.getStatsConnection();
                 int homeGoals = Integer.valueOf(homeGoalsbox.getText());
                 int awayGoals = Integer.valueOf(awayGoalsbox.getText());
@@ -84,16 +82,16 @@ public class MatchController {
                 int homeCleanSheet = 0, awayCleanSheet = 0;
                 int homePoints = 0, awayPoints = 0;
                 //cleanSheetCalc
-                if(awayGoals == 0) homeCleanSheet = 1;
-                if(homeGoals == 0) awayCleanSheet =1;
+                if (awayGoals == 0) homeCleanSheet = 1;
+                if (homeGoals == 0) awayCleanSheet = 1;
                 //wincalc
-                if(homeGoals>awayGoals){
+                if (homeGoals > awayGoals) {
                     homeWins = 1;
                     homePoints = 3;
-                }else if(homeGoals<awayGoals){
+                } else if (homeGoals < awayGoals) {
                     homeLosses = 1;
                     awayPoints = 3;
-                }else{
+                } else {
                     homeDraws = 1;
                     homePoints = 1;
                     awayPoints = 1;
@@ -107,7 +105,7 @@ public class MatchController {
                         "    goals_conceded = goals_conceded + ?," +
                         "    goal_difference = goals_scored + ? - goals_conceded - ?," +
                         "    clean_sheets = clean_sheets + ?," +
-                        "     points = points + ?"+
+                        "     points = points + ?" +
                         "WHERE team_name = ?;";
 
                 //home team update
@@ -139,17 +137,17 @@ public class MatchController {
                 query.execute();
                 con.close();
 
-            } catch(SQLException e)
-            {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
-            try{
+            try {
                 quit();
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
     public void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
         stage.close();

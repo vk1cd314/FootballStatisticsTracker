@@ -6,28 +6,47 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="694.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.MatchController">
+<AnchorPane prefHeight="468.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leagues.MatchController">
    <children>
-      <Label layoutX="8.0" layoutY="6.0" prefHeight="36.0" prefWidth="154.0" text="Add Match" />
-      <Button fx:id="cross" layoutX="732.0" layoutY="12.0" mnemonicParsing="false" onAction="#quit" text="exit" />
+      <Label layoutX="8.0" layoutY="6.0" prefHeight="36.0" prefWidth="154.0" text="Add Match">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+         </font></Label>
+      <Button fx:id="cross" layoutX="748.0" layoutY="11.0" mnemonicParsing="false" onAction="#quit" prefHeight="28.0" prefWidth="45.0" style="-fx-background-color: #ad3024;" stylesheets="@teamCardStyleSheet.css" text="EXIT">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete" size="10.0" />
+         </font></Button>
       <ScrollPane layoutY="48.0" prefHeight="645.0" prefWidth="807.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="646.0" prefWidth="807.0">
                <children>
-                  <Label layoutX="14.0" layoutY="4.0" prefHeight="36.0" prefWidth="325.0" text="Home Team" />
-                  <Label layoutX="492.0" layoutY="4.0" prefHeight="36.0" prefWidth="330.0" text="Away team" />
-                  <ComboBox fx:id="homeTeamCombobox" layoutX="14.0" layoutY="52.0" prefHeight="43.0" prefWidth="301.0" promptText="Choose Home Team" />
-                  <ComboBox fx:id="awayteamCombobox" layoutX="492.0" layoutY="52.0" prefHeight="36.0" prefWidth="301.0" promptText="Choose Away Team" />
-                  <Label layoutX="364.0" layoutY="137.0" prefHeight="36.0" prefWidth="79.0" text="   Goals" textAlignment="CENTER" />
-                  <TextField fx:id="homeGoalsbox" layoutX="91.0" layoutY="143.0" />
-                  <TextField fx:id="awayGoalsbox" layoutX="521.0" layoutY="143.0" />
-                  <Button fx:id="addMatchButton" layoutX="360.0" layoutY="323.0" mnemonicParsing="false" onAction="#addMatch" text="Add Match" />
+                  <Label layoutX="14.0" layoutY="4.0" prefHeight="36.0" prefWidth="325.0" text="Home Team">
+                     <font>
+                        <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+                     </font></Label>
+                  <Label layoutX="492.0" layoutY="4.0" prefHeight="36.0" prefWidth="330.0" text="Away team">
+                     <font>
+                        <Font name="Meslo LG M Regular Nerd Font Complete" size="13.0" />
+                     </font></Label>
+                  <ComboBox fx:id="homeTeamCombobox" layoutX="14.0" layoutY="52.0" prefHeight="43.0" prefWidth="301.0" promptText="Choose Home Team" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
+                  <ComboBox fx:id="awayteamCombobox" layoutX="490.0" layoutY="53.0" prefHeight="43.0" prefWidth="301.0" promptText="Choose Away Team" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
+                  <Label layoutX="364.0" layoutY="137.0" prefHeight="36.0" prefWidth="79.0" text="   Goals" textAlignment="CENTER">
+                     <font>
+                        <Font name="Meslo LG M Regular Nerd Font Complete Mono" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="homeGoalsbox" layoutX="91.0" layoutY="143.0" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
+                  <TextField fx:id="awayGoalsbox" layoutX="521.0" layoutY="143.0" styleClass="searchbar" stylesheets="@teamCardStyleSheet.css" />
+                  <Button fx:id="addMatchButton" layoutX="353.0" layoutY="289.0" mnemonicParsing="false" onAction="#addMatch" prefHeight="36.0" prefWidth="102.0" style="-fx-background-color: #2482ad;" stylesheets="@teamCardStyleSheet.css" text="Add Match" />
                   <Label fx:id="errorLabel" layoutX="356.0" layoutY="271.0" prefHeight="36.0" prefWidth="95.0" />
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="clearButton" layoutX="646.0" layoutY="12.0" mnemonicParsing="false" onAction="#clear" text="clear" />
+      <Button fx:id="clearButton" layoutX="672.0" layoutY="12.0" mnemonicParsing="false" onAction="#clear" prefHeight="22.0" prefWidth="61.0" style="-fx-background-color: #24ad4b;" stylesheets="@teamCardStyleSheet.css" text="Clear">
+         <font>
+            <Font name="Meslo LG M Regular Nerd Font Complete Mono" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>

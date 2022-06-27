@@ -9,16 +9,15 @@ public class PlayerCardModel {
     PlayerCardController playerCardController;
 
     public HBox show(Player player) {
-        try{
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("playerCard.fxml"));
             Object tile = fxmlLoader.load();
             playerCardController = fxmlLoader.getController();
             playerCardController.setData(player);
             System.out.println(player.name);
-            //playerListContainer.getChildren().add(tile);
             return (HBox) tile;
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;

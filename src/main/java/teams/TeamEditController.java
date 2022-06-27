@@ -42,8 +42,7 @@ public class TeamEditController {
     @FXML
     private TextField matchesPldbox;
 
-    @FXML
-    private Label positionBox;
+
 
     @FXML
     private TextField teamNamebox;
@@ -53,7 +52,7 @@ public class TeamEditController {
 
     Team team;
 
-    public void load(Team inTeam){
+    public void load(Team inTeam) {
         this.team = inTeam;
         winsBox.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -117,9 +116,9 @@ public class TeamEditController {
             return null;
         };
 
-        goalDiffBox.setTextFormatter( new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
+        goalDiffBox.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
         teamNamebox.setText(team.name);
-        positionBox.setText(String.valueOf(team.position));
+        //positionBox.setText(String.valueOf(team.position));
         matchesPldbox.setText(String.valueOf(team.matchesPlayed));
         winsBox.setText(String.valueOf(team.wins));
         lossesBox.setText(String.valueOf(team.losses));
@@ -129,12 +128,13 @@ public class TeamEditController {
         goalsAgainstBox.setText(String.valueOf(team.goalsConceded));
         cleanSheetsBox.setText(String.valueOf(team.cleanSheet));
     }
-    public void change(){
+
+    public void change() {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Confirm Changes");
         a.setContentText("Are you sure you want to make these changes?");
         Optional<ButtonType> result = a.showAndWait();
-        if(result.get() == ButtonType.OK) {
+        if (result.get() == ButtonType.OK) {
             try {
                 Connection con = DatabaseConnection.getStatsConnection();
                 String stmt = "UPDATE teams SET team_name = '" + teamNamebox.getText() +

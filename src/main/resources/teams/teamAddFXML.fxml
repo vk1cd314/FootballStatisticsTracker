@@ -10,19 +10,19 @@
 <AnchorPane prefHeight="649.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teams.TeamAddController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="206.0" text="Add New Team" />
-      <Button fx:id="cross" layoutX="731.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#quit" text="exit" />
+      <Button fx:id="cross" layoutX="741.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#quit" style="-fx-background-color: #a35143;" stylesheets="@teamViewStyleSheet.css" text="exit" />
       <VBox layoutX="112.0" layoutY="47.0" prefHeight="319.0" prefWidth="551.0">
          <children>
             <Label prefHeight="49.0" prefWidth="219.0" text="Team Name" />
-            <TextField fx:id="teamNameField" prefHeight="24.0" prefWidth="494.0" />
+            <TextField fx:id="teamNameField" prefHeight="24.0" prefWidth="494.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
             <Label prefHeight="49.0" prefWidth="219.0" text="Common Name" />
-            <TextField fx:id="commonNameField" prefHeight="24.0" prefWidth="642.0" />
+            <TextField fx:id="commonNameField" prefHeight="24.0" prefWidth="642.0" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
             <Label prefHeight="44.0" prefWidth="551.0" text="League Name" />
-            <ComboBox fx:id="leagueComboBox" prefHeight="41.0" prefWidth="561.0" promptText="Select League" />
+            <ComboBox fx:id="leagueComboBox" prefHeight="41.0" prefWidth="561.0" promptText="Select League" styleClass="searchbar" stylesheets="@teamViewStyleSheet.css" />
          </children>
       </VBox>
-      <Button fx:id="clearButton" layoutX="362.0" layoutY="466.0" mnemonicParsing="false" onMouseClicked="#clear" text="Clear" />
-      <Button fx:id="addButton" layoutX="320.0" layoutY="418.0" mnemonicParsing="false" onMouseClicked="#addTeam" prefHeight="24.0" prefWidth="136.0" text="Add Team" />
+      <Button fx:id="clearButton" layoutX="363.0" layoutY="472.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="33.0" prefWidth="52.0" style="-fx-background-color: #914c3f;" stylesheets="@teamViewStyleSheet.css" text="Clear" />
+      <Button fx:id="addButton" layoutX="320.0" layoutY="418.0" mnemonicParsing="false" onMouseClicked="#addTeam" prefHeight="41.0" prefWidth="136.0" style="-fx-background-color: #4386a3;" stylesheets="@teamViewStyleSheet.css" text="Add Team" />
       <Label fx:id="progressLabel" layoutX="316.0" layoutY="369.0" prefHeight="33.0" prefWidth="136.0" />
    </children>
 </AnchorPane>

@@ -9,11 +9,9 @@ import java.io.IOException;
 
 public class LeagueModel {
     LeagueController leagueController;
+
     public void show(BorderPane borderPane, Admin admin) {
-        //adminCredentials = admin;
-        //System.out.println(adminCredentials.name + " " + adminCredentials.password);
         try {
-            //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboardHboxFXML.fxml")));
             FXMLLoader root = new FXMLLoader(getClass().getResource("leagueFXML.fxml"));
             borderPane.setCenter(root.load());
             leagueController = root.getController();

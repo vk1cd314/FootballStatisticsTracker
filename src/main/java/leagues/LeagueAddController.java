@@ -34,30 +34,22 @@ public class LeagueAddController implements Initializable {
     @FXML
     private Button cross;
 
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
     }
-//    public void show(BorderPane borderPane){
-//        try {
-//            FXMLLoader root = new FXMLLoader(getClass().getResource("addLeagueFXML.fxml"));
-//            borderPane.setCenter(root.load());
-//
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
-//        //loadBox();
-//    }
-    public void clear(){
+
+    public void clear() {
         leagueNameField.clear();
         countryNameField.clear();
         loadBox();
     }
-    public void addLeague(){
-        if(leagueNameField.getText()!= "" && leagueNameField != null && countryNameField.getText()!= "" && countryNameField != null){
+
+    public void addLeague() {
+        if (leagueNameField.getText() != "" && leagueNameField != null && countryNameField.getText() != "" && countryNameField != null) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setTitle("Confirm New League");
             a.setContentText("Are you sure you want to add this league?");
             Optional<ButtonType> result = a.showAndWait();
-            if(result.get() == ButtonType.OK) {
+            if (result.get() == ButtonType.OK) {
                 String insert = "INSERT INTO leagues(league_name, country) VALUES (?,?)";
                 try {
                     Connection con = DatabaseConnection.getStatsConnection();
@@ -65,35 +57,37 @@ public class LeagueAddController implements Initializable {
                     stmt.setString(1, leagueNameField.getText());
                     stmt.setString(2, countryNameField.getText());
                     stmt.execute();
+                    errorPrompt.setText("Success!");
                     clear();
                     con.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        }
-        else {
+        } else {
             errorPrompt.setText("Please enter valid data");
         }
     }
-    void loadBox(){
+
+    void loadBox() {
         leagueList.clear();
         leagueComboBox.setItems(null);
-        try{
+        try {
             String l = "SELECT league_name FROM leagues ORDER BY league_name ASC";
             Connection con = DatabaseConnection.getStatsConnection();
             PreparedStatement stmt = con.prepareStatement(l);
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 leagueList.add(rs.getString(1));
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         leagueComboBox.setItems(FXCollections.observableArrayList(leagueList));
     }
-    public void deleteLeague(){
-        if(leagueComboBox.getValue()!=null && !leagueComboBox.getValue().equals("")) {
+
+    public void deleteLeague() {
+        if (leagueComboBox.getValue() != null && !leagueComboBox.getValue().equals("")) {
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setTitle("Delete League");
             a.setContentText("Are you sure you want to delete this league");
@@ -113,6 +107,7 @@ public class LeagueAddController implements Initializable {
             }
         }
     }
+
     @FXML
     void quit() throws IOException {
         Stage stage = (Stage) this.cross.getScene().getWindow();
